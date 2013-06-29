@@ -4,7 +4,7 @@
       <div>
         <% for  same_category in @categories %>
           <div class="mini_simbox">
-            <a><%= link_to same_category.category, search_businesses_path('business[name]' => same_category.category) %></a>
+            <a><%= link_to same_category.category, search_businesses_path('business[name]' => same_category.name) %></a>
             <br />
             <%= same_category.address %>
             <br />
