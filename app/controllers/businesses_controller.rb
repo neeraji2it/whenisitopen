@@ -13,14 +13,14 @@ class BusinessesController < ApplicationController
   end
 
   def cities
-    @cities = Business.select('DISTINCT city').where("city like '#{params[:city]}%'")
+    @cities = Business.select('DISTINCT city').where("city ILIKE ?", '#{params[:city]}%')
     respond_to do |format|
       format.js
     end
   end
 
   def city_businesses
-    @cities = Business.select('DISTINCT name').where("name like '#{params[:name]}%' and city = '#{session[:city]}'")
+    @cities = Business.select('DISTINCT name').where("name ILIKE ?", "'#{params[:name]}%' and city = '#{session[:city]}'")
     respond_to do |format|
       format.js
     end
