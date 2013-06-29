@@ -27,8 +27,8 @@ Whenitopen::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'abouttrees93@gmail.com',
-    :password             => 'abouttree502',
+    :user_name            => 'whenisitopen@gmail.com',
+    :password             => 'whenisitopen123',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
