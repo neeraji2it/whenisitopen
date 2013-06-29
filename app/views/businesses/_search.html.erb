@@ -1,7 +1,7 @@
 <div class="search-part" style="height: 70px;">
   <div style="position: relative;width: 210px;">
     <form id="cityForm" method="post">
-      <input id="city_stater" class="city_state" value="<%= session[:city] %>" type="text" style="color: #C5C5C5;top: 2px;"/>
+      <input id="city_stater" class="city_state" placeholder="<%= session[:city] %>" type="text" style="color: #C5C5C5;top: 2px;"/>
     </form>
     <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
   </div>
@@ -11,7 +11,7 @@
         <tbody>
           <tr>
             <td class="home-search">
-              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :placeholder => 'Enter business name and/or city',:size => "60px", :style=>"color:#aaa;margin:0px;" %>
+              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :placeholder => 'Enter business name',:size => "60px", :style=>"color:#aaa;margin:0px;" %>
               <button type="submit" style="background: none; border: none;left: 282px;position: relative;top: -45px;"><%= image_tag("/assets/sear-icon.png", :class => 'search-icon') %></button>
             </td>
           </tr>
