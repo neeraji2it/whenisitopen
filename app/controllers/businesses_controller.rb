@@ -28,7 +28,7 @@ class BusinessesController < ApplicationController
 
   def search
     puts params[:business][:name]
-    @ab_business_databases = Business.where("name = '#{params[:business][:name]}'"), :limit => 1
+    @ab_business_databases = Business.where("name = '#{params[:business][:name]}'").limit(1)
     for ccategory in @ab_business_databases
       @categories = Business.where("category = '#{ccategory.category}'").paginate :page => params[:category_page], :per_page => 9
     end
