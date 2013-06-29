@@ -1,0 +1,11 @@
+<div>
+  <% @cities.each_with_index do |city,index| %>
+    <div id="hint<%= index+1 %>"><%= link_to_function city.name,"text_field_value('#{city.name}')" %></div>
+  <% end %>
+</div>
+<script>
+  function text_field_value(city){
+    $("#keywords").val(city);
+    $("#ajaxresults").hide();
+  }
+</script>

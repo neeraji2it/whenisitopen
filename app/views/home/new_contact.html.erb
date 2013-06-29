@@ -1,0 +1,33 @@
+<div class="innerContainer" style="margin: 0 auto; min-height: 915px; width: 980px;padding-top: 0px;">
+  <div id="ContactContainer1">
+    <div class="abtcon" style="width:980px; width: 980px;">
+      <h1 class="page-title1">Contact</h1>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <ul>
+          <li style = 'color: red;'>
+            <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+      <p class="any">Any suggestions, questions, or concerns may be submitted by filling out the following form:</p>
+      <%= form_for @contact, :url =>  post_contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
+        Name:
+        <br/>
+        <%= f.text_field :name, :class => "name", :size => "20" %>
+        <br/>
+        <br/>
+        Email:
+        <br/>
+        <%= f.email_field :email, :class => 'email', :size => '40' %>
+        <br/>
+        <br/>
+        Message:
+        <br/>
+        <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50' %>
+        <br/>
+        <br/>
+        <input class="sub" type="submit" onclick="show_alert()" value=""/>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+body{margin:0px;
+	font-family:Arial;
+	font-size:15px;}
+.open-page-wrapper{background:url(../images/open-page-bg.png) repeat-x;
+	
+}
+.header-open-bg{background:url(../images/header-bg.png) repeat-x;
+	}
+.open-auto-service{background:url(../images/auto-service-bg.png) no-repeat;
+	 height: 192px;
+     width: 242px;
+}
+.open-page{ margin:0 auto;
+	padding: 48px 0 0;
+}
+.open-header-left{ float:left; }
+
+.open-header-left img{margin: -35px 0 0;}
+.open-header{ width:850px;
+	margin:auto;}
+.open-logo{}
+.open-auto-service{color: #FFFFFF;
+    margin: 0;}
+.open-auto-service p{  margin: 0px; }
+.open-auto-service-para{font-size: 15px;
+    padding: 60px 0 0 40px;
+    text-align: center;
+    width: 165px;
+	font-weight:bold;
+	line-height: 24px;}
+.open-auto-service .ja-auto{ font-weight:bold; 
+	  color: #000000;
+	   border-bottom: 1px solid #FFFFFF;}

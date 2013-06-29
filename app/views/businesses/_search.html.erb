@@ -1,0 +1,69 @@
+<div class="search-part" style="height: 70px;">
+  <div style="position: relative;width: 210px;">
+    <form id="cityForm" method="post">
+      <input id="city_stater" class="city_state" value="<%= session[:city] %>" type="text" style="color: #C5C5C5;top: 2px;"/>
+    </form>
+    <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
+  </div>
+  <div class="searchContainer" style="left: 212px;position: relative;top: -46px;width: 338px;">
+    <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm" }) do |f| %>
+      <table style="margin: auto;">
+        <tbody>
+          <tr>
+            <td class="home-search">
+              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :placeholder => 'Enter business name and/or city',:size => "60px", :style=>"color:#aaa;margin:0px;" %>
+              <button type="submit" style="background: none; border: none;left: 282px;position: relative;top: -45px;"><%= image_tag("/assets/sear-icon.png", :class => 'search-icon') %></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div id="ajaxresults" style="display:block;top: 45px;height: 200px;overflow: auto;"></div>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+<script type="text/javascript">
+
+  jQuery(document).ready(function($) {
+    if($("#city_stater").val() == ''){
+      $("#city_stater").val(geoplugin_city()+ ","+ geoplugin_regionCode());
+    }else{
+      $("#city_stater").val('<%= session[:city] %>');
+    }
+  });
+  jQuery(document).ready(function($) {
+    $("#city_stater").keyup(function(){
+      var cit = $(this).val();
+      $("#ajaxcity").show();
+      $.ajax({
+        url:'/businesses/cities',
+        data:{
+          city:cit
+        },
+        type:'GET',
+        datatype:'script',
+        success:function(data){}
+      });
+    });
+
+    $("#keywords").keyup(function(){
+      var cit = $(this).val();
+      $.ajax({
+        url:'/businesses/city_businesses',
+        data:{
+          name:cit
+        },
+        type:'GET',
+        datatype:'script',
+        success:function(data){}
+      });
+    });
+  });
+</script>

@@ -1,0 +1,5 @@
+<div>
+  <% @cities.each_with_index do |city,index| %>
+    <div class="citySuggest"><%= link_to city.city,root_path(:city => city.city),:remote => true %></div>
+  <% end %>
+</div>

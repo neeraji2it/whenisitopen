@@ -1,0 +1,140 @@
+<div class="search-part">
+  <div class="searchContainer">
+    <%= render :partial => '/businesses/search' %>
+  </div>
+</div>
+<% for business in @ab_business_databases %>
+  <div class="firstResult">
+    <div class="closed-auto-service-para">
+      <div class="location" style="font-family:'Arial Black'">
+        <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
+          <div id="main_id0">
+            <div class="spacedout1">
+              <div class="loc_name"><%= business.category %></div>
+              <%= business.address %>
+              <br />
+              <%= business.city %>, <%= business.state %>
+              <br />
+              <div class="primephone"><%= business.phone %></div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% for timing in business.store_timings %>
+      <div class="hand-icon">
+        <img width="44" height="17" alt="hand-icon" src="/assets/like-close.png">
+      </div>
+      <div class="scheduleDiv">
+        <div id="schedule0">
+          <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
+            <tbody>
+              <tr class="Mon">
+                <td>
+                  <span class="day">Monday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.mon_from.split(/[am pm]/).first %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.mon_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Tue">
+                <td>
+                  <span class="day">Tuesday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.tue_from.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.tue_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Wed">
+                <td>
+                  <span class="day">Wednesday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.tue_from.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.tue_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Thu">
+                <td>
+                  <span class="day">Thursday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.thur_from.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.thur_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
+            <tbody>
+              <tr class="Fri">
+                <td>
+                  <span class="day">Friday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.fri_from.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.fri_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Sat">
+                <td>
+                  <span class="day">Saturday </span>
+                  <span class="val">
+                    <span class="border_time">
+                      <%= timing.sat_from.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>am</sup>
+                    <span class="border_time">
+                      <%= timing.sat_to.split(/[am pm]/).first  %>
+                    </span>
+                    <sup>pm</sup>
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+    <div style="clear:both;"></div>
+  </div>
+<% end %>
+<div style="clear: both;"></div>
+<script>
+  var a = "<%= Date.today.strftime('%a') %>"
+  $("."+a).addClass("todaya");
+</script>
