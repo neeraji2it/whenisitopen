@@ -1,7 +1,7 @@
 <div class="search-part" style="height: 70px;">
   <div style="position: relative;width: 210px;">
     <form id="cityForm" method="post">
-      <input id="city_stater" class="city_state" value="<%= session[:city] %>, <%= session[:state] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text" style="color: #C5C5C5;top: 2px;"/>
+      <input id="city_stater" class="city_state" value="<%= session[:city] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text" style="color: #C5C5C5;top: 2px;"/>
     </form>
     <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
   </div>
@@ -11,7 +11,7 @@
         <tbody>
           <tr>
             <td class="home-search">
-              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px;text-align: center;" %>
+              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px;text-align: center;top: -4px;" %>
               <button type="submit" style="background: none; border: none;left: 272px;position: relative;top: -50px;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon') %></button>
             </td>
           </tr>
@@ -35,7 +35,7 @@
     if($("#city_stater").val() == ''){
       $("#city_stater").val(geoplugin_city()+ ","+ geoplugin_regionCode());
     }else{
-      $("#city_stater").val('<%= session[:city] %>');
+      $("#city_stater").val('<%= session[:city] %>'+ ","+" "+'<%= session[:state] %>');
     }
   });
   jQuery(document).ready(function($) {

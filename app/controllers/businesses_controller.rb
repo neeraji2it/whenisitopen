@@ -5,8 +5,8 @@ class BusinessesController < ApplicationController
     if params[:city]
       session[:city] = params[:city]
       session[:state] = params[:state]
-      puts session[:state]
     end
+    puts session[:state]
     if request.xhr?
       respond_to do |format|
         format.js
