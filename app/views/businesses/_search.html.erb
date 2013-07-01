@@ -6,7 +6,7 @@
     <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
   </div>
   <div class="searchContainer" style="left: 212px;position: relative;top: -46px;width: 338px;">
-    <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm" }) do |f| %>
+    <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm",:autocomplete => "off"}) do |f| %>
       <table style="margin: auto;">
         <tbody>
           <tr>
