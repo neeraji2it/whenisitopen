@@ -13,3 +13,49 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function onBlur(el) {
+    if (el.value == '') {
+        el.value = el.defaultValue;
+    }
+}
+function onFocus(el) {
+    if (el.value == el.defaultValue) {
+        el.value = '';
+    }
+}
+
+
+$(document).ready(function(){
+    var mouse_in_side = false;
+
+    $('#resss').hover(function(){
+        mouse_in_side=true;
+    }, function(){
+        mouse_in_side=false;
+    });
+
+    $(document).click(function(){
+        if(mouse_in_side == false){
+            $("#ajaxcity").hide();
+        }
+    });
+});
+
+
+$(document).ready(function(){
+    var mouse_in_side = false;
+
+    $('#searchContainer').hover(function(){
+        mouse_in_side=true;
+    }, function(){
+        mouse_in_side=false;
+    });
+
+    $(document).click(function(){
+        if(mouse_in_side == false){
+            $("#ajaxresults").hide();
+        }
+    });
+});
+

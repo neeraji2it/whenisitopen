@@ -1,7 +1,7 @@
 <div class="search-part" style="height: 70px;">
   <div style="position: relative;width: 210px;">
     <form id="cityForm" method="post">
-      <input id="city_stater" class="city_state" placeholder="<%= session[:city] %>" type="text" style="color: #C5C5C5;top: 2px;"/>
+      <input id="city_stater" class="city_state" value="<%= session[:city] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text" style="color: #C5C5C5;top: 2px;"/>
     </form>
     <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
   </div>
@@ -11,13 +11,13 @@
         <tbody>
           <tr>
             <td class="home-search">
-              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :placeholder => 'Enter business name',:size => "60px", :style=>"color:#aaa;margin:0px;" %>
-              <button type="submit" style="background: none; border: none;left: 282px;position: relative;top: -45px;"><%= image_tag("/assets/sear-icon.png", :class => 'search-icon') %></button>
+              <%= f.text_field :name,:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px;text-align: center;" %>
+              <button type="submit" style="background: none; border: none;left: 272px;position: relative;top: -50px;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon') %></button>
             </td>
           </tr>
           <tr>
             <td>
-              <div id="ajaxresults" style="display:block;top: 45px;height: 200px;overflow: auto;"></div>
+              <div id="ajaxresults" style="display:none;top: 45px;height: 200px;overflow: auto;"></div>
             </td>
             <td></td>
             <td></td>
@@ -55,6 +55,7 @@
 
     $("#keywords").keyup(function(){
       var cit = $(this).val();
+      $("#ajaxresults").show();
       $.ajax({
         url:'/businesses/city_businesses',
         data:{

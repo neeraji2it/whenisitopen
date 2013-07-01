@@ -4,213 +4,231 @@
       <%= link_to image_tag("/assets/logo-nohour.png",:width => "253", :height => "367"), '/' %>
     </div>
     <%= render :partial => 'businesses/search' %>
-    <% if @ab_business_databases.present? %>
-      <% for business in @ab_business_databases %>
-        <div class="firstResult">
-          <div class="closed-auto-service-para">
-            <div class="location" style="font-family:'Arial Black'">
-              <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
-                <div id="main_id0">
-                  <div class="spacedout1">
-                    <div class="loc_name"><%= business.category %></div>
-                    <%= business.address %>
-                    <br />
-                    <%= business.city %>, <%= business.state %>
-                    <br />
-                    <div class="primephone"><%= business.phone %></div>
-                    <br />
-                  </div>
+    <% for business in @ab_business_databases %>
+      <div class="firstResult">
+        <div class="closed-auto-service-para">
+          <div class="location" style="font-family:'Arial Black'">
+            <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
+              <div id="main_id0">
+                <div class="spacedout1">
+                  <div class="loc_name"><%= business.category %></div>
+                  <%= business.address %>
+                  <br />
+                  <%= business.city %>, <%= business.state %>
+                  <br />
+                  <div class="primephone"><%= business.phone %></div>
+                  <br />
                 </div>
               </div>
             </div>
           </div>
-          <div class="hand-icon">
-            <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
-            <span id="timer30"><%= @time %></span>
-            <span id="defaultCountdown"></span>
+        </div>
+        <div class="hand-icon">
+          <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
+        </div>
+        <div class="red-rib" style="margin-top:27px;">
+          <div class="closeOpenLogo" style="display: block;">
+            <div id="image_src" style="display: block;"></div>
+            <div id="message" style="display: block;">
+              <%= image_tag("/assets/opensin.png") %>
+            </div>
+            <div id="phone" style="display:none;">905-507-1147</div>
           </div>
-          <div class="scheduleDiv" style="margin-top: 52px;">
-            <div id="schedule0">
-              <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
-                <tbody>
-                  <tr class="Mon">
-                    <td>
-                      <span class="day">Monday </span>
-                      <span class="val">
-                        <% if !(business.mon_from == 'Closed' or business.mon_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.mon_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.mon_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="Tue">
-                    <td>
-                      <span class="day">Tuesday </span>
-                      <span class="val">
-                        <% if !(business.tue_from == 'Closed' or business.tue_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.tue_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.tue_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="Wed">
-                    <td>
-                      <span class="day">Wednesday </span>
-                      <span class="val">
-                        <% if !(business.wed_from == 'Closed' or business.wed_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.wed_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.wed_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="Thu">
-                    <td>
-                      <span class="day">Thursday </span>
-                      <span class="val">
-                        <% if !(business.thur_from == 'Closed' or business.thur_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.thur_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.thur_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
-                <tbody>
-                  <tr class="Fri">
-                    <td>
-                      <span class="day">Friday </span>
-                      <span class="val">
-                        <% if !(business.fri_from == 'Closed' or business.fri_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.fri_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.fri_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="Sat">
-                    <td>
-                      <span class="day">Saturday </span>
-                      <span class="val">
-                        <% if !(business.sat_from == 'Closed' or business.sat_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.sat_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.sat_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="Sun">
-                    <td>
-                      <span class="day">Sunday </span>
-                      <span class="val">
-                        <% if !(business.sun_from == 'Closed' or business.sun_from.nil?) %>
-                          <span class="border_time">
-                            <%= business.sun_from  %>
-                          </span>&nbsp;&nbsp;&nbsp;
-                          <span class="border_time">
-                            <%= business.sun_to  %>
-                          </span>
-                        <% else %>
-                          <span class="border_time">
-                            Closed
-                          </span>
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="clockDiv" id="clockDiv">
+            <div id="time_left" class="clockStyle">
             </div>
           </div>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="red-rib" style="left: 300px;position: relative;top: -9px;">
-        <div class="closeOpenLogo">
-          <div id="image_src" style="display: none;"></div>
-          <div id="message" style="display: none;">
-            <%= image_tag("/assets/closesin.png") %>
+          <div id="twentyfour" class="twentyfour" style="text-align: center; width: 534px; display: none;">
+            <%= image_tag("/assets/247.png") %>
           </div>
-          <div id="phone">416-321-6363 </div>
         </div>
-        <div style="clear:both;"></div>
+        <div class="scheduleDiv">
+          <div id="schedule0">
+            <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
+              <tbody>
+                <tr class="Mon">
+                  <td>
+                    <span class="day">Monday </span>
+                    <span class="val">
+                      <% if (business.mon_from == 'Closed' or business.mon_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.mon_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Mon">
+                          <%= business.mon_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="Tue">
+                  <td>
+                    <span class="day">Tuesday </span>
+                    <span class="val">
+                      <% if (business.tue_from == 'Closed' or business.tue_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.tue_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Tue">
+                          <%= business.tue_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="Wed">
+                  <td>
+                    <span class="day">Wednesday </span>
+                    <span class="val">
+                      <% if (business.wed_from == 'Closed' or business.wed_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.wed_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Wed">
+                          <%= business.wed_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="Thu">
+                  <td>
+                    <span class="day">Thursday </span>
+                    <span class="val">
+                      <% if (business.thur_from == 'Closed' or business.thur_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.thur_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Thu">
+                          <%= business.thur_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
+              <tbody>
+                <tr class="Fri">
+                  <td>
+                    <span class="day">Friday </span>
+                    <span class="val">
+                      <% if (business.fri_from == 'Closed' or business.fri_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.fri_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Fri">
+                          <%= business.fri_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="Sat">
+                  <td>
+                    <span class="day">Saturday </span>
+                    <span class="val">
+                      <% if (business.sat_from == 'Closed' or business.sat_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.sat_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Sat">
+                          <%= business.sat_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="Sun">
+                  <td>
+                    <span class="day">Sunday </span>
+                    <span class="val">
+                      <% if (business.sun_from == 'Closed' or business.sun_from.nil?) %>
+                        <span class="border_time">
+                          Closed
+                        </span>
+                      <% else %>
+                        <span class="border_time">
+                          <%= business.sun_from  %>
+                        </span>&nbsp;&nbsp;&nbsp;
+                        <span class="border_time" id="Sun">
+                          <%= business.sun_to  %>
+                        </span>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="schedule1" style="display: none;">
+          </div>
+          <div style="clear:both;"></div>
+        </div>
       </div>
     <% end %>
     <div style="clear: both;"></div>
+  </div>
+</div>
+<div id="PageContainer">
+  <div class="orange">
+    <div class="titles">
+      <p class="more">Select a Location</p>
+      <p>Open Similar Businesses</p>
+    </div>
+  </div>
+  <div class="mainContainer" style="margin-top:10px;clear:both; ">
+    <div class="searchResults">
+      <div class="otherResultsContainer" style="height:532px;overflow:hidden;width:240px;">
+        <div class="onlyResults">
+          <div id="1" class="otherResults">
+            <div id="main_id1">
+              <div class="spacedout1">
+                <div class="loc_name"><br /><%= business.category %></div><br />
+                <%= business.address %>
+                <br /><br />
+                <%= business.city %>, <%= business.state %>
+                <br /><br />
+                <div class="primephone"><%= business.phone %></div>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="category" style="float:right;position:relative;width:700px; padding-right:40px;">
+        <%= render :partial => 'category' %>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
   </div>
 </div>
 <script>
   var a = "<%= Date.today.strftime('%a') %>"
   $("."+a).addClass("todaya");
 </script>
-<div id="PageContainer">
-  <div class="orange">
-    <div class="titles">
-      <p class="more">More Locations</p>
-      <p>Similar Businesses That Are Currently Open</p>
-    </div>
-  </div>
-  <div class="mainContainer" style="margin-top:10px;clear:both; ">
-    <div class="searchResults">
-      <div class="otherResultsContainer" style="height:532px;overflow:hidden;width:240px;">
-        <div class="onlyResults"> </div>
-      </div>
-      <div id="category">
-        <%= render :partial => 'category' %>
-      </div>
-      <div style="clear:both;"></div>
-    </div>
-  </div>
-</div>

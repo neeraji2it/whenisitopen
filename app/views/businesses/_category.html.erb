@@ -1,39 +1,37 @@
-<div style="float:right;position:relative;width:700px; padding-right:40px;">
-  <div id="simresults">
-    <% if @categories.present? %>
-      <div>
-        <% for  same_category in @categories %>
-          <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>">
-            <a><%= same_category.category %></a>
-            <br />
-            <%= same_category.address %>
-            <br />
-            <%= same_category.city %>, <%= same_category.state %>
-            <br />
-            <%= same_category.phone %>
-            <br />
-          </div>
-          <script>
-            $('#mini_simbox_<%=same_category.id%>').click(function(){
-              window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
-            })
-
-            $(function() {
-              $(".pagination a").click(function() {
-                $.getScript(this.href);
-                return false;
-              });
-            });
-          </script>
-        <% end %>
-        <div style="clear:both;text-align:right;font-size:14px;padding:10px; padding-right:150px;">
+<div id="simresults">
+  <% if @categories.present? %>
+    <div>
+      <% for  same_category in @categories %>
+        <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>" style="cursor: pointer;">
+          <a><%= same_category.category %></a>
+          <br />
+          <%= same_category.address %>
+          <br />
+          <%= same_category.city %>, <%= same_category.state %>
+          <br />
+          <%= same_category.phone %>
+          <br />
         </div>
+        <script>
+          $('#mini_simbox_<%=same_category.id%>').click(function(){
+            window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
+          })
+
+          $(function() {
+            $(".pagination a").click(function() {
+              $.getScript(this.href);
+              return false;
+            });
+          });
+        </script>
+      <% end %>
+      <div style="clear:both;text-align:right;font-size:14px;padding:10px; padding-right:150px;">
       </div>
-      <div style="float: right;left: -40px;position: relative;top: -25px;">
-        <%= will_paginate @categories, :param_name => 'category_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>
-      </div>
-    <% else %>
-      Sorry. There are no similar businesses open right now.
-    <% end %>
-  </div>
+    </div>
+    <div style="float: right;left: -40px;position: relative;top: -25px;">
+      <%= will_paginate @categories, :param_name => 'category_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>
+    </div>
+  <% else %>
+    Sorry. There are no similar businesses open right now.
+  <% end %>
 </div>

@@ -4,6 +4,7 @@
     <script>
       function text_field_value(city){
         $("#keywords").val(city);
+        $("#ajaxresults").hide();
         window.location.href = '<%= search_businesses_path('business[name]' => city.name) %>';
       }
     </script>
