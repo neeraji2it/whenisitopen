@@ -4,9 +4,8 @@ class BusinessesController < ApplicationController
   def index
     if params[:city]
       session[:city] = params[:city]
-      session[:state] = Business.find_by_city(params[:city]).state if session[:city].present?
-
-      puts Business.find_by_city(params[:city]).state
+      session[:state] = params[:state]
+      puts session[:state]
     end
     if request.xhr?
       respond_to do |format|

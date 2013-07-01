@@ -1,5 +1,5 @@
 <div>
   <% @cities.each_with_index do |city,index| %>
-    <%= link_to "<div class='citySuggest'>#{city.city}, #{city.state}</div>".html_safe ,root_path(:city => city.city),:remote => true, :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
+    <%= link_to "<div class='citySuggest'>#{city.city}, #{city.state}</div>".html_safe ,root_path(:city => city.city, :state => city.state),:remote => true, :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
   <% end %>
 </div>
