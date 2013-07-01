@@ -37,7 +37,7 @@
                     <td>
                       <span class="day">Monday </span>
                       <span class="val">
-                        <% if !(business.mon_from == 'Closed' or business.mon_from == ' ') %>
+                        <% if !(business.mon_from == 'Closed' or business.mon_from.nil?) %>
                           <span class="border_time">
                             <%= business.mon_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -56,7 +56,7 @@
                     <td>
                       <span class="day">Tuesday </span>
                       <span class="val">
-                        <% if !(business.tue_from == 'Closed' or business.tue_from == ' ') %>
+                        <% if !(business.tue_from == 'Closed' or business.tue_from.nil?) %>
                           <span class="border_time">
                             <%= business.tue_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -75,7 +75,7 @@
                     <td>
                       <span class="day">Wednesday </span>
                       <span class="val">
-                        <% if !(business.wed_from == 'Closed' or business.wed_from == ' ') %>
+                        <% if !(business.wed_from == 'Closed' or business.wed_from.nil?) %>
                           <span class="border_time">
                             <%= business.wed_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -94,7 +94,7 @@
                     <td>
                       <span class="day">Thursday </span>
                       <span class="val">
-                        <% if !(business.thur_from == 'Closed' or business.thur_from == ' ') %>
+                        <% if !(business.thur_from == 'Closed' or business.thur_from.nil?) %>
                           <span class="border_time">
                             <%= business.thur_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -117,7 +117,7 @@
                     <td>
                       <span class="day">Friday </span>
                       <span class="val">
-                        <% if !(business.fri_from == 'Closed' or business.fri_from == ' ') %>
+                        <% if !(business.fri_from == 'Closed' or business.fri_from.nil?) %>
                           <span class="border_time">
                             <%= business.fri_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -136,7 +136,7 @@
                     <td>
                       <span class="day">Saturday </span>
                       <span class="val">
-                        <% if !(business.sat_from == 'Closed' or business.sat_from == ' ') %>
+                        <% if !(business.sat_from == 'Closed' or business.sat_from.nil?) %>
                           <span class="border_time">
                             <%= business.sat_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
@@ -155,7 +155,7 @@
                     <td>
                       <span class="day">Sunday </span>
                       <span class="val">
-                        <% if !(business.sun_from == 'Closed' or business.sun_from == ' ') %>
+                        <% if !(business.sun_from == 'Closed' or business.sun_from.nil?) %>
                           <span class="border_time">
                             <%= business.sun_from  %>
                           </span>&nbsp;&nbsp;&nbsp;
