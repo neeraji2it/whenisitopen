@@ -3,8 +3,8 @@
     <% if @categories.present? %>
       <div>
         <% for  same_category in @categories %>
-          <div class="mini_simbox">
-            <a><%= link_to same_category.category, search_businesses_path('business[name]' => same_category.name) %></a>
+          <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>">
+            <a><%= same_category.category %></a>
             <br />
             <%= same_category.address %>
             <br />
@@ -13,6 +13,18 @@
             <%= same_category.phone %>
             <br />
           </div>
+          <script>
+            $('#mini_simbox_<%=same_category.id%>').click(function(){
+              window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
+            })
+
+            $(function() {
+              $(".pagination a").click(function() {
+                $.getScript(this.href);
+                return false;
+              });
+            });
+          </script>
         <% end %>
         <div style="clear:both;text-align:right;font-size:14px;padding:10px; padding-right:150px;">
         </div>
@@ -25,11 +37,3 @@
     <% end %>
   </div>
 </div>
-<script>
-  $(function() {
-    $(".pagination a").click(function() {
-      $.getScript(this.href);
-      return false;
-    });
-  });
-</script>
