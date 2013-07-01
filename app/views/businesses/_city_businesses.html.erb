@@ -1,11 +1,11 @@
 <div>
   <% @cities.each_with_index do |city,index| %>
-    <div id="hint<%= index+1 %>"><%= link_to_function city.name,"text_field_value('#{city.name}')" %></div>
+    <%= link_to_function "<div class='hint#{index+1}'>#{city.name}</div>".html_safe,"text_field_value('#{city.name}')", :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
+    <script>
+      function text_field_value(city){
+        $("#keywords").val(city);
+        window.location.href = '<%= search_businesses_path('business[name]' => city.name) %>';
+      }
+    </script>
   <% end %>
 </div>
-<script>
-  function text_field_value(city){
-    $("#keywords").val(city);
-    $("#ajaxresults").hide();
-  }
-</script>
