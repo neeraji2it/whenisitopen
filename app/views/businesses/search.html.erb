@@ -30,12 +30,13 @@
           <div class="closeOpenLogo" style="display: block;">
             <div id="image_src" style="display: block;"></div>
             <div id="message" style="display: block;">
+              <%= image_tag("/assets/opensin.png") %>
             </div>
             <div id="phone" style="display:none;">905-507-1147</div>
           </div>
           <div class="clockDiv" id="clockDiv">
-            <div id="time_left" class="clockStyle">
-            </div>
+            <div id="time_left" class="clockStyle"></div>
+            <div id="noDays_<%= Date.today.strftime("%a") %>" style="width:229px;"></div>
           </div>
           <div id="twentyfour" class="twentyfour" style="text-align: center; width: 534px; display: none;">
             <%= image_tag("/assets/247.png") %>
@@ -50,7 +51,7 @@
                     <span class="day">Monday </span>
                     <span class="val">
                       <% if (business.mon_from == 'Closed' or business.mon_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Mon">
                           Closed
                         </span>
                       <% else %>
@@ -69,7 +70,7 @@
                     <span class="day">Tuesday </span>
                     <span class="val">
                       <% if (business.tue_from == 'Closed' or business.tue_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Tue">
                           Closed
                         </span>
                       <% else %>
@@ -88,7 +89,7 @@
                     <span class="day">Wednesday </span>
                     <span class="val">
                       <% if (business.wed_from == 'Closed' or business.wed_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Wed">
                           Closed
                         </span>
                       <% else %>
@@ -107,7 +108,7 @@
                     <span class="day">Thursday </span>
                     <span class="val">
                       <% if (business.thur_from == 'Closed' or business.thur_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Thu">
                           Closed
                         </span>
                       <% else %>
@@ -130,7 +131,7 @@
                     <span class="day">Friday </span>
                     <span class="val">
                       <% if (business.fri_from == 'Closed' or business.fri_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Fri">
                           Closed
                         </span>
                       <% else %>
@@ -149,7 +150,7 @@
                     <span class="day">Saturday </span>
                     <span class="val">
                       <% if (business.sat_from == 'Closed' or business.sat_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Sat">
                           Closed
                         </span>
                       <% else %>
@@ -168,7 +169,7 @@
                     <span class="day">Sunday </span>
                     <span class="val">
                       <% if (business.sun_from == 'Closed' or business.sun_from.nil?) %>
-                        <span class="border_time">
+                        <span class="border_time" id="Sun">
                           Closed
                         </span>
                       <% else %>
@@ -227,7 +228,25 @@
     <div style="clear:both;"></div>
   </div>
 </div>
+
 <script>
   var a = "<%= Date.today.strftime('%a') %>"
   $("."+a).addClass("todaya");
+
+  $(function() {
+    var b = $("#<%= Date.today.strftime('%a') %>").text().split(':')[0]
+    var liftoff = new Date();
+    liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(),parseInt(b)+12, 00, 00);
+    $('#noDays_<%= Date.today.strftime("%a") %>').countdown({until: liftoff});
+  });
+
+  $(document).ready(function(){
+    setInterval(function() {
+      if($("#noDays_<%= Date.today.strftime("%a") %>").text() == '0H0M0S' || $("#noDays_<%= Date.today.strftime("%a") %>").text() == 'NaNHNaNMNaNS'){
+        $("#noDays_<%= Date.today.strftime("%a") %>").text('')
+        $('body').removeClass('open').addClass('close');
+      }
+    }, 30);
+    
+  });
 </script>

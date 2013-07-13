@@ -540,7 +540,7 @@
                     (inst.options.significant && showSignificant[period]) ?
                     '<span class="' + plugin._sectionClass + '">' +
                     '<span class="' + plugin._amountClass + '">' +
-                    self._translateDigits(inst, inst._periods[period]) + '</span><br/>' +
+                    self._translateDigits(inst, inst._periods[period]) + '</span>' +
                     (labelsNum ? labelsNum[period] : labels[period]) + '</span>' : '');
             };
             return (inst.options.layout ? this._buildLayout(inst, show, inst.options.layout,
