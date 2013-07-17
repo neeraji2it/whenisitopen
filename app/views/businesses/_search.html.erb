@@ -3,7 +3,7 @@
     <form id="cityForm" method="post">
       <input id="city_stater" class="city_state" value="<%= session[:city] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text" style="color: #C5C5C5;top: 2px;"/>
     </form>
-    <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 300px;overflow: auto;"></div>
+    <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 350px;overflow: auto;"></div>
   </div>
   <div class="searchContainer" style="left: 212px;position: relative;top: -46px;width: 338px;">
     <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm",:autocomplete => "off"}) do |f| %>
@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <td>
-              <div id="ajaxresults" style="display:none;top: 45px;height: 300px;overflow: auto;"></div>
+              <div id="ajaxresults" style="display:none;top: 45px;height: 350px;overflow: auto;"></div>
             </td>
             <td></td>
             <td></td>
