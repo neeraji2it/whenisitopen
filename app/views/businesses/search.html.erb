@@ -1,7 +1,7 @@
 <div class="con-header">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/logo-nohour.png",:width => "253", :height => "367"), '/' %>
+      <%= link_to image_tag("/assets/logo-open.png",:width => "253", :height => "367", :alt => " "), '/' %>
     </div>
     <%= render :partial => 'businesses/search' %>
     <% for business in @ab_business_databases %>
@@ -30,7 +30,7 @@
           <div class="closeOpenLogo" style="display: block;">
             <div id="image_src" style="display: block;"></div>
             <div id="message" style="display: block;">
-              <%= image_tag("/assets/opensin.png") %>
+              <%= image_tag("/assets/closesin.png") %>
             </div>
             <div id="phone" style="display:none;">905-507-1147</div>
           </div>
@@ -56,11 +56,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.mon_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.mon_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Mon">
-                          <%= business.mon_to  %>
+                          <%= business.mon_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -75,11 +76,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.tue_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.tue_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Tue">
-                          <%= business.tue_to  %>
+                          <%= business.tue_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -94,11 +96,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.wed_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.wed_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Wed">
-                          <%= business.wed_to  %>
+                          <%= business.wed_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -113,11 +116,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.thur_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.thur_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Thu">
-                          <%= business.thur_to  %>
+                          <%= business.thur_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -136,11 +140,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.fri_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.fri_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Fri">
-                          <%= business.fri_to  %>
+                          <%= business.fri_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -155,11 +160,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.sat_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.sat_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Sat">
-                          <%= business.sat_to  %>
+                          <%= business.sat_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -174,11 +180,12 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.sun_from  %>
-                        </span>&nbsp;&nbsp;&nbsp;
+                          <%= business.sun_from.split('am').first  %>
+                        </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Sun">
-                          <%= business.sun_to  %>
+                          <%= business.sun_to.split('pm').first  %>
                         </span>
+                        &nbsp;<sup>pm</sup>
                       <% end %>
                     </span>
                   </td>
@@ -242,11 +249,13 @@
 
   $(document).ready(function(){
     setInterval(function() {
-      if($("#noDays_<%= Date.today.strftime("%a") %>").text() == '0H0M0S' || $("#noDays_<%= Date.today.strftime("%a") %>").text() == 'NaNHNaNMNaNS'){
+      if($("#noDays_<%= Date.today.strftime("%a") %>").text() == '0:0:0' || $("#noDays_<%= Date.today.strftime("%a") %>").text() == 'NaN:NaN:NaN'){
         $("#noDays_<%= Date.today.strftime("%a") %>").text('')
         $('body').removeClass('open').addClass('close');
+        $(".logo a img").attr('src',"/assets/logo-closed.png");
+        $(".hand-icon img").attr('src',"/assets/like-close.png");
+        $("#message img").attr('src',"/assets/opensin.png");
       }
     }, 30);
-    
   });
 </script>

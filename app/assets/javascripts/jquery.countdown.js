@@ -16,9 +16,8 @@
         this.regional = []; // Available regional settings, indexed by language code
         this.regional[''] = { // Default regional settings
             // The display texts for the counters
-            labels: [' ', ' ', ' ', ' ', 'H', 'M', 'S'],
+            labels: [' ', ' ', ' ', ' ', ':', ':', ''],
             // The display texts for the counters if only one
-            labels1: ['Year', 'Month', 'Week', 'Day', 'Hour', 'Minute', 'Second'],
             compactLabels: ['y', 'm', 'w', 'd'], // The compact texts for the counters
             whichLabels: null, // Function to determine which labels to use
             digits: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // The digits to display
@@ -177,7 +176,7 @@
             var inst = {
                 options: $.extend({}, this._defaults),
                 _periods: [0, 0, 0, 0, 0, 0, 0]
-                };
+            };
             target.addClass(this.markerClassName).data(this.propertyName, inst);
             this._optionPlugin(target, options);
         },
@@ -640,7 +639,7 @@
                 s10: digit(inst._periods[S], 10),
                 s100: digit(inst._periods[S], 100),
                 s1000: digit(inst._periods[S], 1000)
-                };
+            };
             var html = layout;
             // Replace period containers: {p<}...{p>}
             for (var i = Y; i <= S; i++) {
