@@ -32,7 +32,7 @@ class BusinessesController < ApplicationController
     @ab_business_databases = Business.where("name ILIKE '#{params[:business][:name].split("'").first}%'").limit(1)
 
     for ccategory in @ab_business_databases
-      @categories = Business.where("category = '#{ccategory.category}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+      @categories = Business.where("name = '#{ccategory.name}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
     end
   end
 end

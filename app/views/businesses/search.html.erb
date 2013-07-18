@@ -11,7 +11,7 @@
             <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
               <div id="main_id0" style="color: gray;">
                 <div class="spacedout1">
-                  <div class="loc_name"><%= business.category %></div>
+                  <div class="loc_name"><%= business.name %></div>
                   <%= business.address %>
                   <br />
                   <%= business.city %>, <%= business.state %>
@@ -56,10 +56,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.mon_from.split('am').first  %>
+                          <%= business.mon_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Mon">
-                          <%= business.mon_to.split('pm').first  %>
+                          <%= business.mon_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -76,10 +76,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.tue_from.split('am').first  %>
+                          <%= business.tue_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Tue">
-                          <%= business.tue_to.split('pm').first  %>
+                          <%= business.tue_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -96,10 +96,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.wed_from.split('am').first  %>
+                          <%= business.wed_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Wed">
-                          <%= business.wed_to.split('pm').first  %>
+                          <%= business.wed_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -116,10 +116,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.thur_from.split('am').first  %>
+                          <%= business.thur_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Thu">
-                          <%= business.thur_to.split('pm').first  %>
+                          <%= business.thur_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -140,10 +140,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.fri_from.split('am').first  %>
+                          <%= business.fri_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Fri">
-                          <%= business.fri_to.split('pm').first  %>
+                          <%= business.fri_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -160,10 +160,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.sat_from.split('am').first  %>
+                          <%= business.sat_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Sat">
-                          <%= business.sat_to.split('pm').first  %>
+                          <%= business.sat_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -180,10 +180,10 @@
                         </span>
                       <% else %>
                         <span class="border_time">
-                          <%= business.sun_from.split('am').first  %>
+                          <%= business.sun_from.split(/[am pm]/).first  %>
                         </span>&nbsp;<sup>am</sup>
                         <span class="border_time" id="Sun">
-                          <%= business.sun_to.split('pm').first  %>
+                          <%= business.sun_to.split(/[am pm]/).first  %>
                         </span>
                         &nbsp;<sup>pm</sup>
                       <% end %>
@@ -216,7 +216,7 @@
           <div id="1" class="otherResults">
             <div id="main_id1">
               <div class="spacedout1">
-                <div class="loc_name"><br /><%= business.category %></div><br />
+                <div class="loc_name"><br /><%= business.name %></div><br />
                 <%= business.address %>
                 <br /><br />
                 <%= business.city %>, <%= business.state %>

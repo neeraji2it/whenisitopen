@@ -59,3 +59,41 @@ $(document).ready(function(){
     });
 });
 
+
+jQuery(document).ready(function($) {
+    $("#city_stater").keyup(function(){
+        var cit = $(this).val();
+        $("#ajaxcity").fadeIn('slow');
+        $.ajax({
+            url:'/businesses/cities',
+            data:{
+                city:cit
+            },
+            type:'GET',
+            datatype:'script',
+            success:function(data){}
+        });
+        if(cit == ''){
+            $("#ajaxcity").fadeOut('slow');
+        }
+    });
+
+    $("#keywords").keyup(function(){
+        var cit = $(this).val();
+        $("#ajaxresults").fadeIn('slow');
+        $.ajax({
+
+            url:'/businesses/city_businesses',
+            data:{
+                name:cit
+            },
+            type:'GET',
+            datatype:'script',
+            success:function(data){}
+        });
+        if(cit == ''){
+            $("#ajaxresults").fadeOut('slow');
+        }
+    });
+});
+

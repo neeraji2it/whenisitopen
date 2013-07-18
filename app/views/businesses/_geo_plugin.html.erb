@@ -1,0 +1,10 @@
+<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    if($("#city_stater").val() == ', '){
+      $("#city_stater").val(geoplugin_city()+ ","+" "+ geoplugin_regionCode());
+    }else{
+      $("#city_stater").val('<%= session[:city] %>'+ ","+" "+'<%= session[:state] %>');
+    }
+  });
+</script>
