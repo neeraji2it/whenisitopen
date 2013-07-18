@@ -22,14 +22,14 @@ class BusinessesController < ApplicationController
   end
 
   def city_businesses
-    @cities = Business.select('DISTINCT name').where("name ILIKE '#{params[:name]}%' and city = '#{session[:city]}'")
+    @cities = Business.select('DISTINCT name').where("name ILIKE '#{params[:name].split("'").first}%' and city = '#{session[:city]}'")
     respond_to do |format|
       format.js
     end
   end
 
   def search
-    @ab_business_databases = Business.where("name = '#{params[:business][:name]}'").limit(1)
+    @ab_business_databases = Business.where("name ILIKE '#{params[:business][:name].split("'").first}%'").limit(1)
 
     for ccategory in @ab_business_databases
       @categories = Business.where("category = '#{ccategory.category}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9

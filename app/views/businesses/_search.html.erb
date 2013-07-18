@@ -41,7 +41,7 @@
   jQuery(document).ready(function($) {
     $("#city_stater").keyup(function(){
       var cit = $(this).val();
-      $("#ajaxcity").show();
+      $("#ajaxcity").fadeIn('slow');
       $.ajax({
         url:'/businesses/cities',
         data:{
@@ -51,12 +51,16 @@
         datatype:'script',
         success:function(data){}
       });
+      if(cit == ''){
+        $("#ajaxcity").fadeOut('slow');
+      }
     });
 
     $("#keywords").keyup(function(){
       var cit = $(this).val();
-      $("#ajaxresults").show();
+      $("#ajaxresults").fadeIn('slow');
       $.ajax({
+
         url:'/businesses/city_businesses',
         data:{
           name:cit
@@ -65,6 +69,9 @@
         datatype:'script',
         success:function(data){}
       });
+      if(cit == ''){
+        $("#ajaxresults").fadeOut('slow');
+      }
     });
   });
 </script>
