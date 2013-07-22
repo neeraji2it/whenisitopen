@@ -193,11 +193,16 @@
                 </tr>
                 <% if business.url.present? %>
                   <tr class="todaya">
-                    <td style="text-align: center;font-style: italic;">
-                      <%= link_to "WEBSITE", business.url, :target => '_blank', :style => 'color: white; text-decoration: none;' %>
+                    <td style="text-align: center;font-family: House Slant;">
+                      <%= "WEBSITE" %>
                     </td>
                   </tr>
-                <% end %>
+                <script>
+                  $("#website").click(function(){
+                    window.location.href = '<%= business.url %>'
+                  })
+                </script>
+              <% end %>
               </tbody>
             </table>
           </div>
