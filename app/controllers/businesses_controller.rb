@@ -30,9 +30,12 @@ class BusinessesController < ApplicationController
 
   def search
     @ab_business_databases = Business.where("name ILIKE '#{params[:business][:name].split("'").first}%'").limit(1)
+    if @ab_business_databases.empty?
+      @spelling_suggestion = Business.search_spelling_suggestions(params[:business][:name].split("'").first)
+    end
 
     for ccategory in @ab_business_databases
-      @categories = Business.where("name = '#{ccategory.name.split("'").first}}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+      @categories = Business.where("name = '#{ccategory.name.split("'").first}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
     end
   end
 end
