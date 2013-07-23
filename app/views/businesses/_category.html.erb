@@ -3,7 +3,7 @@
     <div>
       <% for  same_category in @categories %>
         <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>" style="cursor: pointer;">
-          <a><%= same_category.category %></a>
+          <a><%= same_category.name %></a>
           <br />
           <%= same_category.address %>
           <br />
@@ -15,6 +15,7 @@
         <script>
           $('#mini_simbox_<%=same_category.id%>').click(function(){
             window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
+            $("#city_stater").val('<%= session[:city] = same_category.city %>'+ ","+" "+'<%= session[:state] = same_category.state %>');
           })
 
           $(function() {

@@ -35,7 +35,7 @@ class BusinessesController < ApplicationController
     end
 
     for ccategory in @ab_business_databases
-      @categories = Business.where("name = '#{ccategory.name.split("'").first}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+      @categories = Business.where("category = '#{ccategory.category.split("'").first}' and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
     end
   end
 end
