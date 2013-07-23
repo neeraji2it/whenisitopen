@@ -203,7 +203,8 @@
                     </tr>
                   <script>
                     $("#website").click(function(){
-                      window.location.href = '<%= business.url %>'
+                      var url = '<%= business.url %>'
+                      window.open(url, '_blank');
                     })
                   </script>
                 <% end %>
