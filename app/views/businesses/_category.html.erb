@@ -1,6 +1,6 @@
 <div id="simresults">
   <% if @categories.present? %>
-    <div>
+    <div style="text-align: center;position: relative;left: 50px;">
       <% for  same_category in @categories %>
         <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>" style="cursor: pointer;">
           <a><%= same_category.name %></a>
