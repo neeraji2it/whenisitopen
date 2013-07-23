@@ -15,7 +15,6 @@
         <script>
           $('#mini_simbox_<%=same_category.id%>').click(function(){
             window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
-            $("#city_stater").val('<%= session[:city] = same_category.city %>'+ ","+" "+'<%= session[:state] = same_category.state %>');
           })
 
           $(function() {
