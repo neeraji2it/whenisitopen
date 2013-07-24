@@ -1,7 +1,8 @@
 <div class="con-header">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/logo-open.png",:width => "253", :height => "367", :alt => " "), '/' %>
+      <%= link_to image_tag("/assets/Top Half Logo Results Page.png"), "/" %>
+      <%= image_tag("/assets/Bottom Half Logo Results Page.png", :style => 'position: relative;top: 169px;', :id => 'ssss') %>
     </div>
     <%= render :partial => 'businesses/search' %>
     <% if @spelling_suggestion %>
@@ -218,7 +219,7 @@
                   </tr>
                   <% if business.url.present? %>
                     <tr class="todaya" id="website">
-                      <td style="text-align: center;font-family: House Slant;font-size: 18px;cursor: pointer;">
+                      <td style="text-align: center;font-family: House Slant;font-size: 18px;cursor: pointer;font-weight: normal;">
                         <%= "WEBSITE" %>
                       </td>
                     </tr>
@@ -284,7 +285,9 @@
     setInterval(function() {
       if($("#noDays_"+a).text() == '00:00:00' || $("#noDays_"+a).text() == 'NaN:NaN:NaN' || $("#noDays_"+a).text() == ''){
         $('body').removeClass('open').addClass('close');
-        $(".logo a img").attr('src',"/assets/logo-closed.png");
+        $(".logo a img").attr('src',"/assets/Top Half Logo Results Page.png");
+        $("#ssss").attr('src',"/assets/closed-banner.png");
+        $("#ssss").css('left', '5.5px');
         $(".hand-icon img").attr('src',"/assets/like-close.png");
         $("#message img").attr('src',"/assets/opensin.png");
         if($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed"){

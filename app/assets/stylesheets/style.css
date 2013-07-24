@@ -481,26 +481,34 @@ body.nohours {
 .con-header .logo {
     position: absolute;
     top: 13px;
-    width: 251px;
+    width: 258px;
 }
-.nohour .con-header .logo a {
+/*.nohour .con-header .logo a {
     display:block;
-    width:253px;
-    height:367px;
+    width:249px;
+    height:196px;
     background:url("/assets/logo-nohour.png") no-repeat;
+    position: relative;
+    top: 169px;
+    left: 5.5px;
 }
 .open .con-header .logo a {
     display:block;
-    width:253px;
-    height:367px;
-    background:url("/assets/logo-open.png") no-repeat;
+    width:249px;
+    height:196px;
+    background:url("/assets/Bottom Half Logo Results Page.png") no-repeat;
+    position: relative;
+    top: 169px;
 }
 .close .con-header .logo a {
     display:block;
-    width:253px;
-    height:367px;
-    background:url("/assets/logo-closed.png") no-repeat;
-}
+    width:249px;
+    height:196px;
+    background:url("/assets/closed-banner.png") no-repeat;
+    position: relative;
+    top: 169px;
+    left: 5.5px;
+}*/
 .headewrap {
     clear: both;
     /*height: 385px;*/

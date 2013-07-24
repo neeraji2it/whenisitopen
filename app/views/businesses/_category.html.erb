@@ -1,6 +1,8 @@
 <div id="simresults">
   <% if @categories.present? %>
-    <div style="text-align: center;position: relative;left: 50px;">
+    <div style="text-align: center;">
+      <% a = Date.today.strftime('%a').downcase %>
+      <%= puts a %>
       <% for  same_category in @categories %>
         <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>" style="cursor: pointer;">
           <a><%= same_category.name %></a>

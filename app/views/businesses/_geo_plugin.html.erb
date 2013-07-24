@@ -3,6 +3,14 @@
   jQuery(document).ready(function($) {
     if($("#city_stater").val() == ', '){
       $("#city_stater").val(geoplugin_city()+ ","+" "+ geoplugin_regionCode());
+      $.ajax({
+        url:"/",
+        data:{
+          city: $("#city_stater").val().split(',')[0]
+        },
+        type:'GET',
+        success:function(data){}
+      });
     }else{
       $("#city_stater").val('<%= session[:city] %>'+ ","+" "+'<%= session[:state] %>');
     }

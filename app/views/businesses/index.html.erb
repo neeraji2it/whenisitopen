@@ -3,7 +3,7 @@
     <form id="cityForm" method="post">
       <input id="city_stater" class="city_state" value="<%= session[:city] %>, <%= session[:state] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text"/>
     </form>
-    <div id="ajaxcity" style="margin-left:35px;width:120px;border:solid 1px #999;display: none;height: 200px;overflow: auto;"></div>
+    <div id="ajaxcity" style="display: none;overflow: auto;"></div>
   </div>
   <div class="searchContainer">
     <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm",:autocomplete => "off"}) do |f| %>
