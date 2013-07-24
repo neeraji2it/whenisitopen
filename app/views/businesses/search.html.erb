@@ -61,10 +61,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="mon">
-                            <%= business.mon_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.mon_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.mon_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Mon">
-                            <%= business.mon_to.split(/[am pm]/).first  %>
+                            <%= business.mon_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.mon_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -81,10 +84,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="tue">
-                            <%= business.tue_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.tue_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.tue_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Tue">
-                            <%= business.tue_to.split(/[am pm]/).first  %>
+                            <%= business.tue_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.tue_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -101,10 +107,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="wed">
-                            <%= business.wed_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.wed_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.wed_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Wed">
-                            <%= business.wed_to.split(/[am pm]/).first  %>
+                            <%= business.wed_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.wed_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -121,10 +130,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="thu">
-                            <%= business.thur_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.thur_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.thur_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Thu">
-                            <%= business.thur_to.split(/[am pm]/).first  %>
+                            <%= business.thur_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.thur_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -145,10 +157,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="fri">
-                            <%= business.fri_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.fri_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.fri_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Fri">
-                            <%= business.fri_to.split(/[am pm]/).first  %>
+                            <%= business.fri_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.fri_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -165,10 +180,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="sat">
-                            <%= business.sat_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.sat_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.sat_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Sat">
-                            <%= business.sat_to.split(/[am pm]/).first  %>
+                            <%= business.sat_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.sat_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -185,10 +203,13 @@
                           </span>
                         <% else %>
                           <span class="border_time" id="sun">
-                            <%= business.sun_from.split(/[am pm]/).first  %>
-                          </span>&nbsp;<sup>am</sup>
+                            <%= business.sun_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.sun_from.split(/[: am pm]/).last %></sup>
+                          </span>
+                          &nbsp;<sup>am</sup>
                           <span class="border_time" id="Sun">
-                            <%= business.sun_to.split(/[am pm]/).first  %>
+                            <%= business.sun_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.sun_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -258,6 +279,7 @@
 <script>
   var a = "<%= Date.today.strftime('%a') %>"
   $("."+a).addClass("todaya");
+
   $(function() {
     setInterval(function() {
       if($("#noDays_"+a).text() == '00:00:00' || $("#noDays_"+a).text() == 'NaN:NaN:NaN' || $("#noDays_"+a).text() == ''){
@@ -268,17 +290,17 @@
         if($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed"){
           if($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed"){
             var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().split(':')[0].trim()
-            var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().split(':')[1].trim()
+            var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
           }else{
             var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().split(':')[0].trim()
-            var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().split(':')[1].trim()
+            var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
           }
         }else{
           var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
-          var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().split(':')[0].trim()
-          var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().split(':')[1].trim()
+          var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
+          var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
         }
         var mn = parseInt(<%= Date.today.strftime("%m") %>)
         var y = parseInt(<%= Date.today.strftime("%Y") %>)
@@ -292,8 +314,8 @@
         $('#noDayss_'+a).show();
         $('#noDays_'+a).hide();
       }else{
-        var h = $("#"+a).text().split(':')[0]
-        var m = $("#"+a).text().split(':')[1]
+        var h = $("#"+a).text().trim().split(' ')[0]
+        var m= $("#"+a).children('sup').text();
         var liftoff = new Date();
         liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(),parseInt(h)+12, parseInt(m), 00);
         $('#noDays_'+a).countdown({until: liftoff});
