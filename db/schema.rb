@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619131935) do
+ActiveRecord::Schema.define(:version => 20130725060219) do
 
   create_table "businesses", :force => true do |t|
     t.string   "address"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20130619131935) do
     t.string   "tue_to"
     t.string   "wed_from"
     t.string   "wed_to"
-    t.string   "thur_from"
-    t.string   "thur_to"
+    t.string   "thu_from"
+    t.string   "thu_to"
     t.string   "fri_from"
     t.string   "fri_to"
     t.string   "sat_from"

@@ -1,8 +1,8 @@
 <div class="con-header">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/Top Half Logo Results Page.png"), "/" %>
-      <%= image_tag("/assets/Bottom Half Logo Results Page.png", :style => 'position: relative;top: 169px;', :id => 'ssss') %>
+      <%= link_to image_tag("/assets/when-image-open.png"), "/" %>
+      <%= image_tag("/assets/auto-service-bg.png", :style => 'position: relative;top: 173px;', :id => 'ssss') %>
     </div>
     <%= render :partial => 'businesses/search' %>
     <% if @spelling_suggestion %>
@@ -125,19 +125,19 @@
                     <td>
                       <span class="day">Thursday </span>
                       <span class="val">
-                        <% if (business.thur_from == 'Closed' or business.thur_from.nil? or business.thur_to == 'Closed' or business.thur_to.nil?) %>
+                        <% if (business.thu_from == 'Closed' or business.thu_from.nil? or business.thu_to == 'Closed' or business.thu_to.nil?) %>
                           <span class="border_time" id="Thu" style="position: relative;left: -20px;">
                             Closed
                           </span>
                         <% else %>
                           <span class="border_time" id="thu">
-                            <%= business.thur_from.split(/[am pm :]/).first  %>
-                            <sup class="time_mi"><%= business.thur_from.split(/[: am pm]/).last %></sup>
+                            <%= business.thu_from.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.thu_from.split(/[: am pm]/).last %></sup>
                           </span>
                           &nbsp;<sup>am</sup>
                           <span class="border_time" id="Thu">
-                            <%= business.thur_to.split(/[am pm :]/).first  %>
-                            <sup class="time_mi"><%= business.thur_to.split(/[: am pm]/).last  %></sup>
+                            <%= business.thu_to.split(/[am pm :]/).first  %>
+                            <sup class="time_mi"><%= business.thu_to.split(/[: am pm]/).last  %></sup>
                           </span>
                           &nbsp;<sup>pm</sup>
                         <% end %>
@@ -285,9 +285,9 @@
     setInterval(function() {
       if($("#noDays_"+a).text() == '00:00:00' || $("#noDays_"+a).text() == 'NaN:NaN:NaN' || $("#noDays_"+a).text() == ''){
         $('body').removeClass('open').addClass('close');
-        $(".logo a img").attr('src',"/assets/Top Half Logo Results Page.png");
+        $(".logo a img").attr('src',"/assets/when-image-open.png");
         $("#ssss").attr('src',"/assets/closed-banner.png");
-        $("#ssss").css('left', '5.5px');
+        $("#ssss").css('left', '2.3px');
         $(".hand-icon img").attr('src',"/assets/like-close.png");
         $("#message img").attr('src',"/assets/opensin.png");
         if($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed"){

@@ -2,11 +2,12 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     if($("#city_stater").val() == ', '){
-      $("#city_stater").val(geoplugin_city()+ ","+" "+ geoplugin_regionCode());
+      $("#city_stater").val(geoplugin_city()+ ","+" "+ geoplugin_continentCode());
       $.ajax({
         url:"/",
         data:{
-          city: $("#city_stater").val().split(',')[0]
+          city: geoplugin_city(),
+          state: geoplugin_continentCode()
         },
         type:'GET',
         success:function(data){}
