@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include ApplicationHelper
   layout :get_layout
 
   def get_layout

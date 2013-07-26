@@ -35,8 +35,8 @@ class BusinessesController < ApplicationController
     end
 
     for ccategory in @ab_business_databases
-      @date = Date.today.strftime("%a").downcase+'_to'
-      @categories = Business.where("category = '#{ccategory.category.split("'").first}' and #{ccategory.fri_to.split(":").first.to_i} > #{Time.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+      a = datee(ccategory)
+      @categories = Business.where("category = '#{ccategory.category.split("'").first}' and #{a} > #{Time.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
     end
   end
 end
