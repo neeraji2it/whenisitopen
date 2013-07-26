@@ -13,7 +13,7 @@
           <br />
         </div>
         <script>
-          $('#mini_simbox_<%=same_category.id%>').click(function(){
+          $('#mini_simbox_<%=same_category.id%>').click(function() {
             window.location.href = '<%= search_businesses_path('business[name]' => same_category.name) %>';
           })
 
