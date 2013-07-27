@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" href="http://whenisitopen.ca/favicon.ico" type="image/x-icon" />
+    <%= stylesheet_link_tag 'style','styleabt', :media => "all" %>
+    <%= javascript_include_tag "application", "/assets/jquery.countdown.js" %>
+    <title>When Is It Open?</title>
+  </head>
+  <body class="open">
+    <div id="main" style="min-height: 100%; position:relative; background-color:#F3F3F3;">
+      <div class="top-head">
+        <div class="icons">
+          <div class="social">
+            <table width="239" border="0">
+              <tbody>
+                <tr>
+                  <td width="39">
+                    <% if current_admin %>
+                      <%= link_to "Logout", destroy_admin_session_path(), :method => :delete %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+      <div class="footer" style="font-size:13px">
+        <div class="footer-inner" style="min-width:1000px; margin:0 auto;">
+          <div class="copyright">© When is it Open Inc. 2013</div>
+          <div class="footer-menu">
+            <ul>
+              <li>
+                <%= link_to "About Us", aboutus_path %>
+              </li>
+              <li>
+                <%= link_to "Contact Us", new_contact_path %>
+              </li>
+              <li>
+                <%= link_to "Terms and Conditions", terms_and_conditions_path, :target => '_blank' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

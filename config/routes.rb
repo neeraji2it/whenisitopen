@@ -1,4 +1,6 @@
 Whenitopen::Application.routes.draw do
+  devise_for :admins
+
   get "/aboutus" => 'home#aboutus', :as => :aboutus
 
   get "/new_contact" => 'home#new_contact', :as => :new_contact

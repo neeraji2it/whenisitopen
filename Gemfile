@@ -12,6 +12,7 @@ gem 'geocoder'
 gem "geokit"
 gem 'thin'
 gem 'quiet_assets'
+gem 'devise'
 gem 'spreadsheet'
 gem 'will_paginate'
 gem 'thinking-sphinx', '2.0.10'

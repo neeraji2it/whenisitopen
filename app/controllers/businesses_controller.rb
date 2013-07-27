@@ -15,7 +15,7 @@ class BusinessesController < ApplicationController
   end
 
   def cities
-    @cities = Business.select('DISTINCT city,state').where("city ILIKE '#{params[:city]}%'").limit(10)
+    @cities = Business.select('DISTINCT city,state').where("city ILIKE '#{params[:city]}%'")
     respond_to do |format|
       format.js
     end
@@ -34,6 +34,6 @@ class BusinessesController < ApplicationController
       @spelling_suggestion = Business.search_spelling_suggestions(params[:business][:name].split("'").first)
     end
     a = Date.today.strftime("%a").downcase+"_to"
-    @categories = Business.where("category = '#{@ab_business_databases.first.category.split("'").first}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+    @categories = Business.where("category = '#{@ab_business_databases.first.category.split("'").first}' and #{a} > #{Time.now.strftime("%I").to_i - 12} and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
   end
 end
