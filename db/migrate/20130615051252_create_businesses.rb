@@ -3,7 +3,16 @@ class CreateBusinesses < ActiveRecord::Migration
     create_table(:businesses) do |t|
       t.string :address
       t.string :city
-      t.string :name
+      t.string :contact_name
+      t.string :company_name
+      t.string :fax_number
+      t.string :gender
+      t.string :sales
+      t.text :major_division_description
+      t.string :sic_4_code
+      t.text :sic_2_code_description
+      t.string :employee
+      t.string :title
       t.string :url
       t.string :phone
       t.string :state
@@ -18,15 +27,14 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :tue_to
       t.string :wed_from
       t.string :wed_to
-      t.string :thur_from
-      t.string :thur_to
+      t.string :thu_from
+      t.string :thu_to
       t.string :fri_from
       t.string :fri_to
       t.string :sat_from
       t.string :sat_to
       t.string :sun_from
       t.string :sun_to
-      t.timestamps
     end
   end
 end

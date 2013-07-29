@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
 
             url:'/businesses/city_businesses',
             data:{
-                name:cit
+                company_name:cit
             },
             type:'GET',
             datatype:'script',

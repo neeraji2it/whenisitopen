@@ -7,7 +7,7 @@
     <%= render :partial => 'businesses/search' %>
     <% if @spelling_suggestion %>
       Did you mean:
-      <%=link_to @spelling_suggestion.name, search_businesses_path('business[name]' => @spelling_suggestion.name) %>
+      <%=link_to @spelling_suggestion.company_name, search_businesses_path('business[name]' => @spelling_suggestion.company_name) %>
     <% else %>
       <% for business in @ab_business_databases %>
         <div class="firstResult">
@@ -16,7 +16,7 @@
               <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
                 <div id="main_id0">
                   <div class="spacedout1">
-                    <div class="loc_name"><%= business.name %></div>
+                    <div class="loc_name"><%= business.company_name %></div>
                     <%= business.address %>
                     <br />
                     <%= business.city %>, <%= business.state %>
@@ -257,7 +257,7 @@
           <div id="1" class="otherResults">
             <div id="main_id1">
               <div class="spacedout1">
-                <div class="loc_name"><br /><%= business.name %></div><br />
+                <div class="loc_name"><br /><%= business.company_name %></div><br />
                 <%= business.address %>
                 <br /><br />
                 <%= business.city %>, <%= business.state %>
