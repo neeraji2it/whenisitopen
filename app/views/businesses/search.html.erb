@@ -320,7 +320,11 @@
         var h = $("#" + a).text().trim().split(' ')[0]
         var m = $("#" + a).children('sup').text();
         var liftoff = new Date();
-        liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) + 12, parseInt(m), 00);
+        if (h == 12) {
+          liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 12, parseInt(m), 00);
+        } else {
+          liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) + 12, parseInt(m), 00);
+        }
         $('#noDays_' + a).countdown({until: liftoff});
         $('#noDays_' + a).show();
         $('#noDayss_' + a).hide();
