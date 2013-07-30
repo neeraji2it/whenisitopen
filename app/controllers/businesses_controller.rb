@@ -36,7 +36,15 @@ class BusinessesController < ApplicationController
       @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name])
     else
       a = Date.today.strftime("%a").downcase+"_to"
-      @categories = Business.select('distinct address, city,state,company_name,phone').where("company_name = '#{@ab_business_databases.first.company_name}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != '#{@ab_business_databases.first.address}'").paginate :page => params[:category_page], :per_page => 9
+      @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = '#{@ab_business_databases.first.company_name}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
     end
+  end
+  
+  def categorie_search
+    @ab_business_databases = Business.where("company_name ILIKE '#{params[:company_name]}%' and city = '#{session[:city]}'").limit(1) if Rails.env == 'production'
+    @ab_business_databases = Business.where("company_name LIKE '#{params[:company_name]}%' and city = '#{params[:city]}'").limit(1) if Rails.env == 'development'
+    a = Date.today.strftime("%a").downcase+"_to"
+    @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = '#{@ab_business_databases.first.company_name}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+    render :action => 'search'
   end
 end
