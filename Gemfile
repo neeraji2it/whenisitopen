@@ -15,6 +15,7 @@ gem 'quiet_assets'
 gem 'devise'
 gem 'spreadsheet'
 gem 'will_paginate'
+gem 'riddle', '1.5.0'
 gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx', '0.6.1'
 gem "heroku"
