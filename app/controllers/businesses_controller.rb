@@ -23,7 +23,7 @@ class BusinessesController < ApplicationController
 
   def city_businesses
     @name = params[:company_name].split('and').join('&')
-    @cities = Business.select('DISTINCT company_name').where("company_name ILIKE '#{params[:company_name]}%' or company_name ILIKE '#{@name}%') and city = '#{session[:city]}'") if Rails.env == 'production'
+    @cities = Business.select('DISTINCT company_name').where("(company_name ILIKE '#{params[:company_name]}%' or company_name ILIKE '#{@name}%') and city = '#{session[:city]}'") if Rails.env == 'production'
     @cities = Business.select('DISTINCT company_name').where("(company_name LIKE '#{params[:company_name]}%' or company_name LIKE '#{@name}%') and city = '#{session[:city]}'") if Rails.env == 'development'
     respond_to do |format|
       format.js
