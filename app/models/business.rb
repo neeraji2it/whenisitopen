@@ -5,6 +5,7 @@ class Business < ActiveRecord::Base
     indexes company_name
     indexes city
     indexes state
+    indexes address
   end
   
   def self.search_spelling_suggestions(query)
