@@ -16,6 +16,7 @@ gem 'devise'
 gem 'spreadsheet'
 gem 'will_paginate'
 gem 'thinking-sphinx', '2.0.10'
+gem 'flying-sphinx', '0.6.1'
 gem "heroku"
 
 group :production do
