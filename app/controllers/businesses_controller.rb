@@ -30,8 +30,8 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    @ab_business_databases = Business.where("company_name ILIKE '#{params[:business][:company_name]}%' and city = '#{session[:city]}'").limit(1) if Rails.env == 'production'
-    @ab_business_databases = Business.search "*#{params[:company_name]}*",:conditions => {:city => "'#{session[:city]}'"},:limit => 1 if Rails.env == 'development'
+    @ab_business_databases = Business.where("company_name ILIKE '#{[:company_name]}%' and city = '#{session[:city]}'").limit(1) if Rails.env == 'production'
+    @ab_business_databases = Business.where("company_name LIKE '#{[:company_name]}%' and city = '#{session[:city]}'").limit(1) if Rails.env == 'production'
     if @ab_business_databases.empty?
       @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name])
     else
