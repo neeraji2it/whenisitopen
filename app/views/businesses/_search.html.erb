@@ -5,13 +5,13 @@
     </form>
     <div id="ajaxcity" style="display: none;overflow: auto;max-height: 200px;"></div>
   </div>
-  <div class="searchContainer" style="left: 212px;position: relative;top: -46px;width: 338px;">
-    <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm",:autocomplete => "off"}) do |f| %>
+  <div class="searchContainer" style="left: 212px;position: relative;top: -46px;width: 340px;">
+    <%= form_tag search_businesses_path, :method => :get, :id => "searchForm",:autocomplete => "off" do %>
       <table style="margin: auto;">
         <tbody>
           <tr>
             <td class="home-search">
-              <%= f.text_field :company_name,:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: -3px;" %>
+              <%= text_field_tag :company_name, "",:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: -3px;" %>
               <button type="submit" style="background: none; border: none;left: 275px;position: relative;top: -47px;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon', :width => '29', :height => '26') %></button>
             </td>
           </tr>

@@ -6,12 +6,12 @@
     <div id="ajaxcity" style="display: none;overflow: auto;max-height: 200px;"></div>
   </div>
   <div class="searchContainer">
-    <%= form_for(:business, :url => search_businesses_path, :html => {:method => "GET", :id => "searchForm",:autocomplete => "off"}) do |f| %>
+    <%= form_tag search_businesses_path, :method => :get, :id => "searchForm",:autocomplete => "off" do  %>
       <table style="margin: auto;">
         <tbody>
           <tr>
             <td class="home-search">
-              <%= f.text_field :company_name,:class=>"textField",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: 2px;" %>
+              <%= text_field_tag :company_name, "",:class=>"textField",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: 2px;" %>
               <button type="submit" style="background: none; border: none;float: right;top: -5px;position: relative;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon') %></button>
             </td>
           </tr>
