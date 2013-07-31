@@ -3,7 +3,7 @@ namespace :whenitopen do
 
   desc "Send after two months of bussiness bid if customer didn't accept the bid. This will be sent after 2 months of bids "
 	task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/c.csv"
+    file = "#{Rails.root}/lib/a.csv"
     CSV.foreach(file, :row_sep => :auto, :col_sep => ";", :encoding => 'UTF-8') do |row|
       @business = Business.new({
           :company_name => row[0],
