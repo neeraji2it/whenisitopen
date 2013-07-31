@@ -258,17 +258,19 @@
                         var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
                         var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
                         var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
+                        var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
                       } else {
                         var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
                         var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
                         var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
+                        var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
                       }
                     } else {
                       var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
                       var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
                       var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
+                      var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
                     }
-                    var mn = parseInt(<%= Date.today.strftime("%m") %>)
                     var y = parseInt(<%= Date.today.strftime("%Y") %>)
                     if (mn == 12) {
                       mn = 1
