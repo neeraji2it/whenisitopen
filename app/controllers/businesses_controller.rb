@@ -14,8 +14,8 @@ class BusinessesController < ApplicationController
   end
 
   def cities
-    @cities = Business.select('DISTINCT city,state').where("city ILIKE '#{params[:city]}%'") if Rails.env == 'production'
-    @cities = Business.select('DISTINCT city,state').where("city LIKE '#{params[:city]}%'") if Rails.env == 'development'
+    @cities = Business.select('DISTINCT city,state').where("city LIKE ?", "#{params[:city]}%") if Rails.env == 'production'
+    @cities = Business.select('DISTINCT city,state').where("city LIKE ?", "#{params[:city]}%") if Rails.env == 'development'
     respond_to do |format|
       format.js
     end
@@ -23,29 +23,29 @@ class BusinessesController < ApplicationController
 
   def city_businesses
     @name = params[:company_name].split('and').join('&')
-    @cities = Business.select('DISTINCT company_name').where("(company_name ILIKE '#{params[:company_name]}%' or company_name ILIKE '#{@name}%') and city = '#{session[:city]}'") if Rails.env == 'production'
-    @cities = Business.select('DISTINCT company_name').where("(company_name LIKE '#{params[:company_name]}%' or company_name LIKE '#{@name}%') and city = '#{session[:city]}'") if Rails.env == 'development'
+    @cities = Business.select('DISTINCT company_name').where("(company_name LIKE ? or company_name LIKE ?) and city = ?", "#{params[:company_name]}%", "#{@name}%", "#{session[:city]}") if Rails.env == 'production'
+    @cities = Business.select('DISTINCT company_name').where("(company_name LIKE ? or company_name LIKE ?) and city = ?", "#{params[:company_name]}%", "#{@name}%", "#{session[:city]}") if Rails.env == 'development'
     respond_to do |format|
       format.js
     end
   end
 
   def search
-    @ab_business_databases = Business.search "*#{params[:company_name]}*", :conditions => {:city => "'#{session[:city]}'"}, :limit => 1 if Rails.env == 'production'
-    @ab_business_databases = Business.search "*#{params[:company_name]}*", :conditions => {:city => "'#{session[:city]}'"}, :limit => 1 if Rails.env == 'development'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
     if @ab_business_databases.empty?
       @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name])
     else
       a = Date.today.strftime("%a").downcase+"_to"
-      @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = '#{@ab_business_databases.first.company_name}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != '#{@ab_business_databases.first.address.split("'").last}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+      @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = ? and #{a} >? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", @ab_business_databases.first.company_name,Time.now.strftime("%H").to_i - 12,@ab_business_databases.first.address,@ab_business_databases.first.id).paginate :page => params[:category_page], :per_page => 9
     end
   end
   
   def categorie_search
-    @ab_business_databases = Business.search "*#{params[:company_name]}*", :conditions => {:city => "'#{params[:city]}'", :address => "'#{params[:address]}"}, :limit => 1 if Rails.env == 'production'
-    @ab_business_databases = Business.search "*#{params[:company_name]}*", :conditions => {:city => "'#{params[:city]}'", :address => "'#{params[:address]}"}, :limit => 1 if Rails.env == 'development'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'production'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'development'
     a = Date.today.strftime("%a").downcase+"_to"
-    @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = '#{@ab_business_databases.first.company_name}' and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != '#{@ab_business_databases.first.address.split("'").last}' and id NOT IN (#{@ab_business_databases.first.id})").paginate :page => params[:category_page], :per_page => 9
+    @categories = Business.select('distinct address, city,state,company_name,phone,id').where("company_name = ? and #{a} >? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", @ab_business_databases.first.company_name,Time.now.strftime("%H").to_i - 12,@ab_business_databases.first.address,@ab_business_databases.first.id).paginate :page => params[:category_page], :per_page => 9
     render :action => 'search'
   end
 end

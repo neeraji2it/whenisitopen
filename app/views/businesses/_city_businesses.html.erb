@@ -1,13 +1,11 @@
 <div>
   <% @cities.each_with_index do |city,index| %>
-    <% if city.company_name.split("'").count == 1 %>
-      <%= link_to_function "<div class='hint#{index+1}'>#{city.company_name}</div>".html_safe,"text_field_value('#{city.company_name}')", :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
-      <script>
-        function text_field_value(city) {
-          $("#keywords").val(city);
-          $("#ajaxresults").hide();
-        }
-      </script>
-    <% end %>
+    <%= link_to_function "<div class='hint#{index+1}'>#{city.company_name}</div>".html_safe,"text_field_value(this)", :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
+    <script>
+      function text_field_value(city) {
+        $("#keywords").val($(city).text());
+        $("#ajaxresults").hide();
+      }
+    </script>
   <% end %>
 </div>

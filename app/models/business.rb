@@ -6,11 +6,12 @@ class Business < ActiveRecord::Base
     indexes city
     indexes state
     indexes address
+    set_property :enable_star => true
   end
   
   def self.search_spelling_suggestions(query)
     word = Business.where("company_name ILIKE '#{query.slice(0..2)}%'").limit(1) if Rails.env == 'production'
-    word = Business.where("company_name sounds LIKE '#{query}'").limit(1) if Rails.env == 'development'
+    word = Business.where("company_name sounds LIKE ?",query).limit(1) if Rails.env == 'development'
     if word
       word
     end

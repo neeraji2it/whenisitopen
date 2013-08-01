@@ -10,35 +10,42 @@ class ImportsController < ApplicationController
     @title="Import Users"
     if params[:file].present?
       if request.post?
-        CSV.parse(params[:file].read) do |row|
-          row = row.collect(&:to_s).collect(&:strip).collect{|s| s.gsub("\"", "")}
-          # row = row[0].to_s.split("\t").collect(&:strip)
-          Business.create({
-              :address => row[0],
-              :city => row[1],
-              :name => row[2],
-              :url => row[3],
-              :phone => row[4],
-              :state => row[5],
-              :zip_code => row[6],
-              :longitude => row[7],
-              :latitude => row[8],
-              :category => row[9],
-              :mon_from => row[10],
-              :mon_to => row[11],
-              :tue_from => row[12],
-              :tue_to => row[13],
-              :wed_from => row[14],
-              :wed_to => row[15],
-              :thu_from => row[16],
-              :thu_to => row[17],
-              :fri_from => row[18],
-              :fri_to => row[19],
-              :sat_from => row[20],
-              :sat_to => row[21],
-              :sun_from => row[22],
-              :sun_to => row[23]
+        CSV.foreach(params[:file].read, :row_sep => :auto, :col_sep => ";") do |row|
+          @business = Business.new({
+              :company_name => row[0],
+              :address => row[1],
+              :city => row[2],
+              :contact_name => row[3],
+              :employee => row[4],
+              :fax_number => row[5],
+              :gender => row[6],
+              :major_division_description => row[7],
+              :phone => row[8],
+              :state => row[9],
+              :sales => row[10],
+              :sic_2_code_description => row[11],
+              :sic_4_code => row[12],
+              :category => row[13],
+              :title => row[14],
+              :mon_from => row[15],
+              :mon_to => row[16],
+              :tue_from => row[17],
+              :tue_to => row[18],
+              :wed_from => row[19],
+              :wed_to => row[20],
+              :thu_from => row[21],
+              :thu_to => row[22],
+              :fri_from => row[23],
+              :fri_to => row[24],
+              :sat_from => row[25],
+              :sat_to => row[26],
+              :sun_from => row[27],
+              :sun_to => row[28],
+              :zip_code => row[29],
+              :longitude => row[31],
+              :latitude => row[32]
             })
+          @business.save if !(Business.exists?(:city => row[2]) and Business.exists?(:address => row[1]) and Business.exists?(:company_name => row[0]))
         end
         flash[:notice] = "Uploading completed."
         redirect_to import_imports_path
