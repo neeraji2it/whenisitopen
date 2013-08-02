@@ -469,6 +469,7 @@ body.nohours {
     height:auto;
     width:100%;
     margin-bottom:20px;
+    min-height: 345px;
 }
 .cont .con-header {
     height:105px;
@@ -610,7 +611,7 @@ height: 28px;*/
     height: 77px;
     padding-left: 44px;
     padding-right: 0;
-    padding-top: 158px;
+    padding-top: 125px;
     width: 44px;
 }
 .closed {

@@ -8,7 +8,7 @@
     <% if @spelling_suggestion %>
       <div style=" float:left; text-align:center; margin-left:265px; margin-top:20px;">
         Did you mean:
-        <%=link_to @spelling_suggestion, search_businesses_path(:company_name => @spelling_suggestion) %>
+        <%=link_to @spelling_suggestion, categorie_search_businesses_path(:company_name => @spelling_suggestion, :city => session[:city]) %>
       </div>
     <% else %>
       <div class="firstResult">
@@ -23,7 +23,7 @@
                     <br />
                     <%= business.city %>, <%= business.state %>
                     <br />
-                    <div class="primephone"><%= business.phone %></div>
+                    <div class="primephone"><%= number_to_phone(business.phone) %></div>
                     <br />
                   </div>
                 </div>
@@ -242,66 +242,72 @@
             </div>
             <script>
               var a = "<%= Date.today.strftime('%a') %>"
+              var b = "<%= Date.today.strftime('%a').downcase %>"
               $("." + a).addClass("todaya");
-
               $(function() {
                 setInterval(function() {
-                  if ($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '') {
-                    $('body').removeClass('open').addClass('close');
-                    $(".logo a img").attr('src', "/assets/when-image-open.png");
-                    $("#ssss").attr('src', "/assets/closed-banner.png");
-                    $("#ssss").css('left', '2.3px');
-                    $(".hand-icon img").attr('src', "/assets/like-close.png");
-                    $("#message img").attr('src', "/assets/opensin.png");
-                    if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
-                      if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
-                        var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
-                        var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                        var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
-                        var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
-                      } else {
-                        var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
-                        var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                        var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
-                        var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
-                      }
-                    } else {
-                      var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
-                      var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                      var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
-                      var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
-                    }
-                    var y = parseInt(<%= Date.today.strftime("%Y") %>)
-                    if (mn == 12) {
-                      mn = 1
-                      var y = parseInt(<%= Date.today.strftime("%Y") %>) + 1
-                    }
-                    var liftoff = new Date(y, mn - 1, d);
-                    liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 24, m, 00);
-                    $('#noDayss_' + a).countdown({until: liftoff});
-                    $('#noDayss_' + a).show();
-                    $('#noDays_' + a).hide();
+                  if ($("#" + a).text().trim().split(' ')[0] == 12 && $("#" + b).text().trim().split(' ')[0] == 12) {
+                    $('body').removeClass('open').addClass('nohour open');
+                    $('.clockDiv').hide();
+                    $('.closeOpenLogo').hide();
+                    $("#twentyfour").show();
+                    $(".scheduleDiv").hide();
                   } else {
-                    var h = $("#" + a).text().trim().split(' ')[0]
-                    var m = $("#" + a).children('sup').text();
-                    var liftoff = new Date();
-                    if (h == 12) {
-                      liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 12, parseInt(m), 00);
+                    if ($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '') {
+                      $('body').removeClass('open').addClass('close');
+                      $(".logo a img").attr('src', "/assets/when-image-open.png");
+                      $("#ssss").attr('src', "/assets/closed-banner.png");
+                      $("#ssss").css('left', '2.3px');
+                      $(".hand-icon img").attr('src', "/assets/like-close.png");
+                      $("#message img").attr('src', "/assets/opensin.png");
+                      if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
+                        if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
+                          var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
+                          var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+                          var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
+                          var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
+                        } else {
+                          var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
+                          var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+                          var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
+                          var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
+                        }
+                      } else {
+                        var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
+                        var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
+                        var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
+                        var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
+                      }
+                      var y = parseInt(<%= Date.today.strftime("%Y") %>)
+                      if (mn == 12) {
+                        mn = 1
+                        var y = parseInt(<%= Date.today.strftime("%Y") %>) + 1
+                      }
+                      var liftoff = new Date(y, mn - 1, d);
+                      liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 24, m, 00);
+                      $('#noDayss_' + a).countdown({until: liftoff});
+                      $('#noDayss_' + a).show();
+                      $('#noDays_' + a).hide();
                     } else {
-                      liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) + 12, parseInt(m), 00);
+                      var h = $("#" + a).text().trim().split(' ')[0]
+                      var m = $("#" + a).children('sup').text();
+                      var liftoff = new Date();
+                      if (h == 12) {
+                        liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 12, parseInt(m), 00);
+                      } else {
+                        liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) + 12, parseInt(m), 00);
+                      }
+                      $('#noDays_' + a).countdown({until: liftoff});
+                      $('#noDays_' + a).show();
+                      $('#noDayss_' + a).hide();
                     }
-                    $('#noDays_' + a).countdown({until: liftoff});
-                    $('#noDays_' + a).show();
-                    $('#noDayss_' + a).hide();
                   }
                 }, 30);
-              });
-
-            </script>
+              });</script>
           <% else %>
-            <div class="red-rib" style="margin-top:27px;margin-left: 40px;">
+            <div class="red-rib" style="margin-top:15px;margin-left: 40px;">
               <div class="closeOpenLogo" style="display: block;">
-                <div id="phone" style="display: block;">905-507-1147</div>
+                <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
               </div>
             </div>
             <script>
@@ -312,6 +318,7 @@
                 $("#ssss").css({left: -3, top: 172});
                 $(".location").css({top: -13});
                 $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                $(".hand-icon").css('padding-top', '110px');
               })
             </script>
           <% end %>
@@ -331,6 +338,11 @@
     </div>
     <div class="mainContainer" style="margin-top:10px;clear:both; ">
       <div class="searchResults">
+        <div class="otherResultsContainer" style="height:auto;overflow:hidden;width:240px;">
+          <div class="onlyResults">
+            <%= render :partial => 'location' %>
+          </div>
+        </div>
         <div id="category" style="float:right;position:relative;width:700px; padding-right:40px;">
           <%= render :partial => 'category' %>
         </div>

@@ -1,7 +1,7 @@
 <div id="simresults">
   <% if @categories.present? %>
     <div style="text-align: center;">
-      <% for  same_category in @categories %>
+      <% @categories.each do |same_category| %>
         <div class="mini_simbox" id="mini_simbox_<%= same_category.id %>" style="cursor: pointer;">
           <a><%= same_category.company_name %></a>
           <br />
@@ -9,7 +9,7 @@
           <br />
           <%= same_category.city %>, <%= same_category.state %>
           <br />
-          <%= same_category.phone %>
+          <%= number_to_phone(same_category.phone) %>
           <br />
         </div>
         <script>
