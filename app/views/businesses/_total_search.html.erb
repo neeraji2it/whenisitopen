@@ -8,7 +8,7 @@
     <% if @spelling_suggestion %>
       <div style=" float:left; text-align:center; margin-left:265px; margin-top:20px;">
         Did you mean:
-        <%=link_to @spelling_suggestion, categorie_search_businesses_path(:company_name => @spelling_suggestion, :city => session[:city]) %>
+        <%=link_to @spelling_suggestion, search_businesses_path(:company_name => @spelling_suggestion, :city => session[:city]) %>
       </div>
     <% else %>
       <div class="firstResult">
