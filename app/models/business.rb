@@ -6,7 +6,6 @@ class Business < ActiveRecord::Base
     indexes city
     indexes state
     indexes address
-    indexes category
     set_property :enable_star => true
   end
   
