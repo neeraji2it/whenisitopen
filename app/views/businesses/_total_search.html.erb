@@ -305,18 +305,25 @@
                 }, 30);
               });</script>
           <% else %>
-            <div class="red-rib" style="margin-top:15px;margin-left: 40px;">
-              <div class="closeOpenLogo" style="display: block;">
-                <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
+            <% if business.phone.present? %>
+              <div class="red-rib" style="margin-top:15px;margin-left: 40px;">
+                <div class="closeOpenLogo" style="display: block;">
+                  <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
+                </div>
               </div>
-            </div>
+            <% else %>
+              <div class="red-ribs" style="margin-top:15px;margin-left: 40px;">
+                <div class="closeOpenLogo" style="display: block;">
+                </div>
+              </div>
+            <% end %>
             <script>
               $(document).ready(function() {
                 $('body').removeClass('open').addClass('nohour');
                 $(".logo a img").attr('src', "/assets/when-image-open.png");
-                $("#ssss").attr('src', "/assets/No Hours Sign.png");
-                $("#ssss").css({left: -3, top: 172});
-                $(".location").css({top: -13});
+                $("#ssss").attr('src', "/assets/no_hour.png");
+                $("#ssss").css({top: 173});
+                $(".location").css({top: 13});
                 $(".hand-icon img").attr('src', "/assets/like-nohour.png");
                 $(".hand-icon").css('padding-top', '110px');
               })
@@ -338,7 +345,7 @@
     </div>
     <div class="mainContainer" style="margin-top:10px;clear:both; ">
       <div class="searchResults">
-        <div class="otherResultsContainer" style="height:auto;overflow:hidden;width:240px;">
+        <div class="otherResultsContainer" style="height:532;overflow:hidden;width:240px;">
           <div class="onlyResults">
             <%= render :partial => 'location' %>
           </div>

@@ -1,24 +1,186 @@
 <% if @locations.present? %>
-  <% @locations.each do |same_category| %>
-    <div class="otherResults" id="location_<%= same_category.id %>">
-      <div id="main_id1">
-        <div class="spacedout">
-          <div class="loc_name"><%= same_category. company_name %></div>
-          <br />
-          <%= same_category.address %>
-          <br />
-          <%= same_category.city %>, <%= same_category.state %>
-          <br />
-          <div class="primephone"><%= number_to_phone(same_category.phone) %></div>
-          <br />
+  <% @locations.each do |business| %>
+    <div class="onlyResults" id="location_<%= business.id %>">
+      <div id="1" class="otherResults">
+        <div id="main_id1" style="font-size: 12px;" id="location_<%= business.id %>">
+          <div class="spacedout" style="height: 100px;">
+            <div class="loc_name" style="font-size: 14px;margin-top: 10px;padding-bottom: 10px;"><%= business. company_name %></div>
+            <%= business.address %>
+            <br>
+            <%= business.city %>, <%= business.state %>
+            <br>
+            <div class="primephone"><%= number_to_phone(business.phone) %></div>
+            <br>
+          </div>
+          <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;display: none;">
+            <tbody>
+              <tr class="Mon" style="display: none;">
+                <td>
+                  <span class="val" style="display: none;">
+                    <% if (business.mon_from == 'Closed' or business.mon_from.nil? or business.mon_to == 'Closed' or business.mon_to.nil?) %>
+                      <span class="border_time" id="Mon" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="mon">
+                        <%= business.mon_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.mon_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Mon_<%= business.id %>">
+                        <%= business.mon_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.mon_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Tue">
+                <td>
+                  <span class="val" style="display: none;">
+                    <% if (business.tue_from == 'Closed' or business.tue_from.nil? or business.tue_to == 'Closed' or business.tue_to.nil?) %>
+                      <span class="border_time" id="Tue" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="tue">
+                        <%= business.tue_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.tue_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Tue_<%= business.id %>">
+                        <%= business.tue_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.tue_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Wed" style="display: none;">
+                <td>
+                  <span class="val">
+                    <% if (business.wed_from == 'Closed' or business.wed_from.nil? or business.wed_to == 'Closed'  or business.wed_to.nil?) %>
+                      <span class="border_time" id="Wed" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="wed">
+                        <%= business.wed_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.wed_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Wed_<%= business.id %>">
+                        <%= business.wed_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.wed_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Thu" style="display: none;">
+                <td>
+                  <span class="val">
+                    <% if (business.thu_from == 'Closed' or business.thu_from.nil? or business.thu_to == 'Closed' or business.thu_to.nil?) %>
+                      <span class="border_time" id="Thu" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="thu">
+                        <%= business.thu_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.thu_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Thu_<%= business.id %>">
+                        <%= business.thu_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.thu_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table cellspacing="2" cellpadding="8" style="font-size: 14px;font-weight: bold;">
+            <tbody>
+              <tr class="Fri" style="display: none;">
+                <td>
+                  <span class="val">
+                    <% if (business.fri_from == 'Closed' or business.fri_from.nil? or business.fri_to == 'Closed'  or business.fri_to.nil?) %>
+                      <span class="border_time" id="Fri" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="fri">
+                        <%= business.fri_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.fri_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Fri_<%= business.id %>">
+                        <%= business.fri_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.fri_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Sat">
+                <td>
+                  <span class="val" style="display: none;">
+                    <% if (business.sat_from == 'Closed' or business.sat_from.nil? or business.sat_to == 'Closed' or business.sat_to.nil?) %>
+                      <span class="border_time" id="Sat" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="sat">
+                        <%= business.sat_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.sat_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Sat_<%= business.id %>">
+                        <%= business.sat_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.sat_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+              <tr class="Sun">
+                <td>
+                  <span class="val" style="display: none;">
+                    <% if (business.sun_from == 'Closed' or business.sun_from.nil? or business.sun_to == 'Closed' or business.sun_to.nil?) %>
+                      <span class="border_time" id="Sun" style="position: relative;left: -20px;">
+                        Closed
+                      </span>
+                    <% else %>
+                      <span class="border_time" id="sun">
+                        <%= business.sun_from.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.sun_from.split(/[: am pm]/).last %></sup>
+                      </span>
+                      <span class="border_time" id="Sun_<%= business.id %>">
+                        <%= business.sun_to.split(/[am pm :]/).first  %>
+                        <sup class="time_mi"><%= business.sun_to.split(/[: am pm]/).last  %></sup>
+                      </span>
+                    <% end %>
+                  </span>
+                </td>
+              </tr>
+            <div id="open_<%= business.id %>" style="display: none;position: relative;left: 2px;text-align: center;"><%= image_tag("/assets/opensidebar.png")%></div>
+            <div id="close_<%= business.id %>" style="display: none;"><%= image_tag("/assets/closedsidebar.png")%></div>
+            <script>
+              var b = "<%= Date.today.strftime('%a') %>"
+              $(function() {
+                setInterval(function() {
+                  if ((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) > <%= (Time.now).strftime("%H").to_i %>) {
+                    $("#open_" +<%= business.id %>).show();
+                  } else {
+                    $("#close_" +<%= business.id %>).show();
+                  }
+                }, 30);
+              });
+
+              $('#location_' +<%= business.id%>).click(function() {
+                window.location.href = '<%= categorie_search_businesses_path('company_name' => business.company_name, :city => business.city, :address => business.address) %>';
+              });
+            </script>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <script>
-      $('#location_<%=same_category.id%>').click(function() {
-        window.location.href = '<%= categorie_search_businesses_path('company_name' => same_category.company_name, :city => same_category.city, :address => same_category.address) %>';
-      });
-    </script>
   <% end %>
   <div style="float: right;left: -25px;position: relative;">
     <%= will_paginate @locations, :param_name => 'location_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>

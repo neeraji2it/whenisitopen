@@ -181,7 +181,6 @@ min-height:600px;*/
     width: 209px;
     border:3px solid #ffffff;
     margin-bottom:16px;
-
     box-shadow:2px 2px 3px gray;
 }
 .otherResults:hover {
@@ -610,7 +609,7 @@ height: 28px;*/
     height: 77px;
     padding-left: 44px;
     padding-right: 0;
-    padding-top: 125px;
+    padding-top: 135px;
     width: 44px;
 }
 .closed {
@@ -660,6 +659,16 @@ height: 28px;*/
 }
 .red-rib {
     background: url("/assets/nohour-rib.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 212px;
+    margin:0 auto;
+    margin-top: 30px;
+    padding-top: 0;
+    width: 480px;
+}
+
+.red-ribs {
+    background: url("/assets/no_phone.png") no-repeat scroll 0 0 transparent;
     float: left;
     height: 212px;
     margin:0 auto;

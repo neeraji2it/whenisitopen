@@ -27,34 +27,34 @@ function onFocus(el) {
 }
 
 
-$(document).ready(function(){
+$(document).ready(function() {
     var mouse_in_side = false;
 
-    $('#resss').hover(function(){
-        mouse_in_side=true;
-    }, function(){
-        mouse_in_side=false;
+    $('#resss').hover(function() {
+        mouse_in_side = true;
+    }, function() {
+        mouse_in_side = false;
     });
 
-    $(document).click(function(){
-        if(mouse_in_side == false){
+    $(document).click(function() {
+        if (mouse_in_side == false) {
             $("#ajaxcity").hide();
         }
     });
 });
 
 
-$(document).ready(function(){
+$(document).ready(function() {
     var mouse_in_side = false;
 
-    $('#searchContainer').hover(function(){
-        mouse_in_side=true;
-    }, function(){
-        mouse_in_side=false;
+    $('#searchContainer').hover(function() {
+        mouse_in_side = true;
+    }, function() {
+        mouse_in_side = false;
     });
 
-    $(document).click(function(){
-        if(mouse_in_side == false){
+    $(document).click(function() {
+        if (mouse_in_side == false) {
             $("#ajaxresults").hide();
         }
     });
@@ -62,39 +62,41 @@ $(document).ready(function(){
 
 
 jQuery(document).ready(function($) {
-    $("#city_stater").keyup(function(){
+    $("#city_stater").keyup(function() {
         var cit = $(this).val();
         $("#ajaxcity").fadeIn('slow');
         $.ajax({
-            url:'/businesses/cities',
-            data:{
-                city:cit
+            url: '/businesses/cities',
+            data: {
+                city: cit
             },
-            type:'GET',
-            datatype:'script',
-            success:function(data){}
+            type: 'GET',
+            datatype: 'script',
+            success: function(data) {
+            }
         });
-        if(cit == ''){
+        if (cit == '') {
             $("#ajaxcity").fadeOut('slow');
         }
     });
 
-    $("#keywords").keyup(function(){
+    $("#keywords").keyup(function() {
         var cit = $(this).val();
         $("#ajaxresults").fadeIn('slow');
         $.ajax({
-
-            url:'/businesses/city_businesses',
-            data:{
-                company_name:cit
+            url: '/businesses/city_businesses',
+            data: {
+                company_name: cit
             },
-            type:'GET',
-            datatype:'script',
-            success:function(data){}
+            type: 'GET',
+            datatype: 'script',
+            success: function(data) {
+            }
         });
-        if(cit == ''){
+        if (cit == '') {
             $("#ajaxresults").fadeOut('slow');
         }
     });
 });
+
 
