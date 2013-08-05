@@ -1,6 +1,6 @@
 <% if @locations.present? %>
   <% @locations.each do |same_category| %>
-    <div class="otherResults">
+    <div class="otherResults" id="location_<%= same_category.id %>">
       <div id="main_id1">
         <div class="spacedout">
           <div class="loc_name"><%= same_category. company_name %></div>
@@ -14,6 +14,11 @@
         </div>
       </div>
     </div>
+    <script>
+      $('#location_<%=same_category.id%>').click(function() {
+        window.location.href = '<%= categorie_search_businesses_path('company_name' => same_category.company_name, :city => same_category.city, :address => same_category.address) %>';
+      });
+    </script>
   <% end %>
   <div style="float: right;left: -25px;position: relative;">
     <%= will_paginate @locations, :param_name => 'location_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>
