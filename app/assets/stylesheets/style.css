@@ -129,8 +129,8 @@ h1.page-title {
     margin:0 auto;
     min-height:695px;
     /*background-image: url('/assets/Arm_Edit.jpg');
-		background-repeat: no-repeat;
-		background-position: 0px -70px;
+                background-repeat: no-repeat;
+                background-position: 0px -70px;
     */	display:block;
     background-size: contain;
 }
@@ -322,8 +322,8 @@ input.city_state:hover {
     padding: 19px;
     text-align: center;
     width: 141px;
-	color:#575757;
-	line-height:18px;
+        color:#575757;
+        line-height:18px;
 }
 */
 .mini_simbox a {
@@ -702,14 +702,13 @@ height: 28px;*/
     background-color: #D21111;
 }
 #message {
-    padding-top:8px;
     color: #F3F3F3;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 32px;
     font-weight: 900 !important;
     line-height: 49px;
     padding-left: 50px;
-    padding-right:17px;
+    padding-right:7px;
     text-transform: uppercase;
 
 }
