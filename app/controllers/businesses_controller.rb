@@ -37,7 +37,7 @@ class BusinessesController < ApplicationController
       @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
     else
       a = Date.today.strftime("%a").downcase+"_to"
-      @nears = Business.near(params[:company_name],20, :order =>:distance)
+      @nears = Business.near(params[:company_name],100, :order =>:distance)
       @all_categories = Business.where("category = ? and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
       @categorie_with_cond = @nears.where_values.reduce(:and)
       @categorie_with = @all_categories.where_values.reduce(:and)
@@ -53,7 +53,7 @@ class BusinessesController < ApplicationController
     @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'production'
     @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'development'
     a = Date.today.strftime("%a").downcase+"_to"
-    @nears = Business.near(params[:company_name],20, :order =>:distance)
+    @nears = Business.near(params[:company_name],100, :order =>:distance)
     @all_categories = Business.where("category = ? and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
     @categorie_with_cond = @nears.where_values.reduce(:and)
     @categorie_with = @all_categories.where_values.reduce(:and)
