@@ -9,9 +9,9 @@ class Business < ActiveRecord::Base
     set_property :enable_star => true
   end
   
-  def self.search_spelling_suggestions(query)
-    word = Business.where("company_name ILIKE ?", "#{query}%").limit(1) if Rails.env == 'production'
-    word = Business.where("company_name sounds LIKE ?","#{query}%").limit(1) if Rails.env == 'development'
+  def self.search_spelling_suggestions(query,city)
+    word = Business.where("company_name ILIKE ? and city ILIKE ?", "#{query.slice(0..2)}%", "#{city}%").limit(1) if Rails.env == 'production'
+    word = Business.where("company_name sounds LIKE ? and city sounds LIKE ?","#{query}%","#{city}%").limit(1) if Rails.env == 'development'
     if word
       word
     end
