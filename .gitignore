@@ -1,1 +1,4 @@
+/log/*.log
+/tmp
+/config/database.yml
 /nbproject/private/
