@@ -31,8 +31,9 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
-    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
+    @name = params[:company_name].split('and').join('&')
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
     if @ab_business_databases.empty?
       @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
     else
