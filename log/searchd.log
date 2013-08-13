@@ -1,0 +1,11 @@
+[Tue Aug  6 18:45:41.387 2013] [ 4046] caught SIGTERM, shutting down
+[Tue Aug  6 18:45:41.744 2013] [ 4046] shutdown complete
+[Wed Aug  7 18:42:16.296 2013] [ 6021] accepting connections
+[Wed Aug  7 19:10:33.593 2013] [ 6021] caught SIGTERM, shutting down
+[Wed Aug  7 19:10:33.595 2013] [ 6021] shutdown complete
+[Sat Aug 10 13:35:36.120 2013] [ 5278] accepting connections
+[Sat Aug 10 16:08:17.368 2013] [ 5278] caught SIGTERM, shutting down
+[Sat Aug 10 16:08:17.793 2013] [ 5278] shutdown complete
+[Mon Aug 12 10:37:42.500 2013] [30244] accepting connections
+[Mon Aug 12 18:22:23.555 2013] [30244] caught SIGTERM, shutting down
+[Mon Aug 12 18:22:23.653 2013] [30244] shutdown complete
