@@ -38,7 +38,7 @@
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
                 <div id="message" style="display: block;">
-                  Closes In:
+                  <%= image_tag("/assets/closesin.png") %>
                 </div>
                 <div id="phone" style="display:none;">905-507-1147</div>
               </div>
@@ -259,7 +259,7 @@
                       $("#ssss").attr('src', "/assets/closed-banner.png");
                       $("#ssss").css('left', '2.3px');
                       $(".hand-icon img").attr('src', "/assets/like-close.png");
-                      $("#message").text("Opens In:");
+                      $("#message").attr('src', "/assets/opensin.png");
                       if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
                         if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
                           var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
