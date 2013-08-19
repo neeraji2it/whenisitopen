@@ -756,14 +756,11 @@ height: 28px;*/
     font-size: 15px;
     text-decoration: underline;
 }
-.paginaiton {
-    color: #0099CC;
-    font-size: 15px;
+.pagination a.next_page,.pagination a.previous_page{
+    font-weight: bold;
 }
-.paginaiton a {
-    color: #0099CC;
-    font-size: 15px;
-    text-decoration: underline;
+.pagination span.disabled{
+    display: none;
 }
 .page-num {
     color:#6B6B6B;
