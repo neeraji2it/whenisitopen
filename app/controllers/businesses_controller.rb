@@ -65,4 +65,15 @@ class BusinessesController < ApplicationController
     @locations = Business.where("(#{@locations_with_cond}) and (#{@locations_with})").paginate :page => params[:location_page], :per_page => 3
     render :action => 'search'
   end
+  
+  def edit
+    @business = Business.find(params[:id])
+  end
+  
+  def update
+    @business = Business.find(params[:id])
+    if @business.update_attributes(params[:business])
+      redirect_to categorie_search_businesses_path('company_name' => @business.company_name, :city => @business.city, :address => @business.address)
+    end
+  end
 end

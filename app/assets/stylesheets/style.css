@@ -470,7 +470,7 @@ body.nohours {
     margin-bottom:20px;
 }
 .cont .con-header {
-    height:105px;
+    height:900px;
 }
 .top-head {
     background: #F3F3F3;
@@ -541,6 +541,12 @@ body.cont {
     background: url("/assets/sear-bg.png") no-repeat scroll 0 0 transparent;
     height: 41px;
     width: 327px;
+}
+
+.business {
+    background: url("/assets/nam-bg.png") no-repeat scroll 0 0 transparent;
+    height: 41px;
+    width: 198px;
 }
 .textField1 {
     /*border: 1px solid #D9D9D9;

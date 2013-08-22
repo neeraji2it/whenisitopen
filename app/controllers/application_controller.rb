@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     elsif params[:controller] == 'businesses' and params[:action] == 'index'
       return "search"
     elsif current_admin
-      return "admin"
+      return "application"
     else
       return "application"
     end

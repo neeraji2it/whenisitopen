@@ -3,7 +3,7 @@
   <head>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" href="http://whenisitopen.ca/favicon.ico" type="image/x-icon" />
-    <%= stylesheet_link_tag 'style','styleabt', :media => "all" %>
+    <%= stylesheet_link_tag 'style','styleabt','timePicker', :media => "all" %>
     <%= javascript_include_tag "application" %>
     <title>When Is It Open?</title>
   </head>
@@ -15,14 +15,18 @@
             <table width="239" border="0">
               <tbody>
                 <tr>
-                  <td width="65">Like us: </td>
-                  <td width="39">
-                    <%= link_to image_tag("/assets/h-facebook.png", :width => "32", :height => "32"), "http://www.facebook.com/whenisitopen", :target => "_blank" %>
-                  </td>
-                  <td width="80">Follow us:</td>
-                  <td>
-                    <%= link_to image_tag("/assets/h-twitter.png", :width => "32", :height => "32"), "https://twitter.com/WhenisitOpen", :target => "_blank" %>
-                  </td>
+                  <% if current_admin %>
+                    <%= link_to "Logout", destroy_admin_session_path(), :method => :delete %>
+                  <% else %>
+                    <td width="65">Like us: </td>
+                    <td width="39">
+                      <%= link_to image_tag("/assets/h-facebook.png", :width => "32", :height => "32"), "http://www.facebook.com/whenisitopen", :target => "_blank" %>
+                    </td>
+                    <td width="80">Follow us:</td>
+                    <td>
+                      <%= link_to image_tag("/assets/h-twitter.png", :width => "32", :height => "32"), "https://twitter.com/WhenisitOpen", :target => "_blank" %>
+                    </td>
+                  <% end %>
                 </tr>
               </tbody>
             </table>
