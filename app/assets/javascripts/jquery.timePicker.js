@@ -210,9 +210,9 @@
 
     // Plugin defaults.
     $.fn.timePicker.defaults = {
-        step: 30,
+        step: 15,
         startTime: new Date(0, 0, 0, 01, 0, 0),
-        endTime: new Date(0, 0, 0, 11, 30, 0),
+        endTime: new Date(0, 0, 0, 11, 45, 0),
         separator: ':',
         show24Hours: true
     };
