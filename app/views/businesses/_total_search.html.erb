@@ -333,12 +333,14 @@
       <% end %>
     </div>
     <div style="clear: both;"></div>
-    <% if !current_admin %>
-      <% if (business.mon_from.nil? and business.tue_from.nil? and business.wed_from.nil? and business.thu_from.nil? and business.fri_from.nil? and business.sat_from.nil? and business.sun_from.nil?) %>
+    <% if !@spelling_suggestion %>
+      <% if !current_admin %>
+        <% if (business.mon_from.nil? and business.tue_from.nil? and business.wed_from.nil? and business.thu_from.nil? and business.fri_from.nil? and business.sat_from.nil? and business.sun_from.nil?) %>
+          <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
+        <% end %>
+      <% else %>
         <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
       <% end %>
-    <% else %>
-      <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
     <% end %>
   </div>
 </div>
