@@ -214,7 +214,7 @@ min-height:600px;*/
     display: inline;
     float: left;
     /*height: 16%;*/
-    margin-top: 8px;
+    margin-top: 0;
     padding-left: 44px;/*width: 233px;*/
 }
 .nohour .closeOpenLogo {
@@ -470,7 +470,7 @@ body.nohours {
     margin-bottom:20px;
 }
 .cont .con-header {
-    height:900px;
+    height:105px;
 }
 .top-head {
     background: #F3F3F3;
@@ -547,6 +547,19 @@ body.cont {
     background: url("/assets/nam-bg.png") no-repeat scroll 0 0 transparent;
     height: 41px;
     width: 198px;
+}
+
+#business_edit{
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    left: 16px;
+    margin-top: 10px;
+    background-color: #FF6C00;
 }
 .textField1 {
     /*border: 1px solid #D9D9D9;
@@ -762,11 +775,14 @@ height: 28px;*/
     font-size: 15px;
     text-decoration: underline;
 }
-.pagination a.next_page,.pagination a.previous_page{
-    font-weight: bold;
+.paginaiton {
+    color: #0099CC;
+    font-size: 15px;
 }
-.pagination span.disabled{
-    display: none;
+.paginaiton a {
+    color: #0099CC;
+    font-size: 15px;
+    text-decoration: underline;
 }
 .page-num {
     color:#6B6B6B;

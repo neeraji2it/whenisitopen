@@ -24,17 +24,17 @@ body {
 .abt-map
 {
 position:absolute;
-background: url("../images/missuagwa-bg.png") no-repeat;
+background: url("/assets/missuagwa-bg.png") no-repeat;
 }
 .abt-search
 {
-background: url("../images/search-bg.png") no-repeat;
+background: url("/assets/search-bg.png") no-repeat;
 position:absolute;
 
 }
 .abt-header
 {
-  background: url("../images/abt-header-bg.png") repeat-x scroll 0 0 transparent;
+  background: url("/assets/abt-header-bg.png") repeat-x scroll 0 0 transparent;
     height: 35px;
    /* margin: 0 auto;*/
     padding: 70px 0 0;
@@ -42,7 +42,7 @@ position:absolute;
 }
 .abt-page
 {
-  background-image: url("../images/about-bg.png");
+  background-image: url("/assets/about-bg.png");
     height: 944px;
     margin: 0 auto;
     width: 1024px;
@@ -63,14 +63,46 @@ position:absolute;
     padding: 0 0 20px;
 	 margin: 79px 0 0;
 }
-.Mission
-{
+.aboutTitle {
+	float:left;
+	width:100%	
 }
-.works
-{
+#aboutTagline {
+	width:100%;
+	clear:both;
+	margin-bottom:40px;	
 }
-.Countdown
-{
+.aboutTopics {
+	float:left;
+	width:420px;
+	background-repeat:no-repeat;
+	padding-left:55px;
+	text-align:justify;
+	margin-bottom: 20px;
+}
+.aboutGutter {
+	float:left;
+	width:30px;
+	height:1px;
+}
+.aboutPara {
+	margin-top: 10px;
+	padding:0;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	line-height:20px;	
+}
+#ourMission {
+	background-image:url(/assets/circle-mission.png);
+}
+#howItWorks {
+	background-image:url(/assets/circle-howItWorks.png);	
+}
+#ohNo {
+	background-image:url(/assets/circle-ohno.png);	
+}
+#theCountdown {
+	background-image:url(/assets/circle-countdown.png);	
 }
 .para
 {
@@ -81,13 +113,14 @@ position:absolute;
     padding: 0 0 10px;
 	text-align:justify;
 }
-.head2
+.aboutHead2
 {
   color: #333333;
     font-family: Arial,Helvetica,sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 0 0 10px;
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 0 0 0 0;
+	margin:0;
 }
 /*.footer {
  background: none repeat scroll 0 0 #000000;

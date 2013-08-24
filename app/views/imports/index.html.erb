@@ -1,0 +1,12 @@
+<div class="con-header" style="min-height: 900px;">
+  <div class="headewrap">
+    <div class="logo">
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), '/' %>
+    </div>
+    <%= render :partial => 'businesses/search' %>
+  </div>
+  <div style="left: 500px;position: relative;top: 150px;width: 300px;padding: 5px;">
+    <%= link_to "Import Csv", import_imports_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "Export Csv", imports_path(:format => 'csv') %>
+  </div>
+</div>

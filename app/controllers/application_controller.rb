@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
-      import_imports_path
+      imports_path
     end
   end
 
@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
     else
       return "application"
     end
-    
+  end
+  
+  def login?
+    unless current_admin
+      redirect_to '/'
+    end
   end
 end

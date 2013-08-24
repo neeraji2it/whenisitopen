@@ -1,7 +1,7 @@
 <div class="innerContainer" style="margin: 0 auto; min-height: 915px; width: 980px;padding-top: 0px;">
   <div id="ContactContainer1">
-    <div class="abtcon" style="width:980px; width: 980px;">
-      <h1 class="page-title1">Contact</h1>
+    <div class="abtcon" style="width: 550px;position: relative;left: -170px;">
+      <h1 class="page-title1" style="color: #007D8F;">Contact us around the clock.</h1>
       <% @contact.errors.full_messages.each do |msg| %>
         <ul>
           <li style = 'color: red;'>
@@ -9,25 +9,27 @@
           </li>
         </ul>
       <% end %>
-      <p class="any">Any suggestions, questions, or concerns may be submitted by filling out the following form:</p>
       <%= form_for @contact, :url =>  post_contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
-        Name:
+        <span style="color: #007D8F;">Your Name:</span>
         <br/>
         <%= f.text_field :name, :class => "name", :size => "20" %>
         <br/>
         <br/>
-        Email:
+        <span style="color: #007D8F;">Your Email:</span>
         <br/>
         <%= f.email_field :email, :class => 'email', :size => '40' %>
         <br/>
         <br/>
-        Message:
+        <span style="color: #007D8F;">Your Message:</span>
         <br/>
-        <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50' %>
+        <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50', :style => 'resize: none;'%>
         <br/>
         <br/>
         <input class="sub" type="submit" onclick="show_alert()" value=""/>
       <% end %>
+    </div>
+    <div style="float: right;left: 90px;position: relative;top: -465px;">
+      <%= image_tag("/assets/contact-hands.png") %>
     </div>
   </div>
 </div>

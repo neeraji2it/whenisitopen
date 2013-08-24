@@ -40,22 +40,22 @@
 }
 #ContactForm1 .name
 {
-    background: url("/assets/nam-bg.png") no-repeat scroll 0 0 transparent;
+    background: url("/assets/search-bg.png") no-repeat scroll 0 0 transparent;
     border: medium none;
-    height: 41px;
+    height: 58px;
     margin: 10px 0 0;
     padding: 0 0 1px 10px;
-    width: 198px;
+    width: 517px;
 
 }
 #ContactForm1 .email
 {
-    background: url("/assets/eam-bg.png") no-repeat scroll 0 0 transparent;
+    background: url("/assets/search-bg.png") no-repeat scroll 0 0 transparent;
     border: medium none;
-    height: 41px;
+    height: 58px;
     margin: 10px 0 0;
     padding: 0 0 1px 10px;
-    width: 198px;
+    width: 517px;
 
 }
 #ContactForm1 .msg

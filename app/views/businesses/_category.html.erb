@@ -7,7 +7,7 @@
           <br />
           <%= same_category.address %>
           <br />
-          <%= same_category.city %>, <%= same_category.state %>
+          <%= same_category.city %>, <%= link_to "Csv", imports_path(:format => 'csv') %>
           <br />
           <%= number_to_phone(same_category.phone) %>
           <br />

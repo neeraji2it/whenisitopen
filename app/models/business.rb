@@ -9,6 +9,15 @@ class Business < ActiveRecord::Base
     set_property :enable_star => true
   end
   
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |product|
+        csv << product.attributes.values_at(*column_names)
+      end
+    end
+  end
+  
   def self.search_spelling_suggestions(query,city)
     @name = query.split('and').join('&')
     word = Business.where("(company_name ILIKE ? or company_name ILIKE ?) and city ILIKE ?", "#{query.slice(0..2)}%","#{@name.slice(0..2)}", "#{city}%").limit(1) if Rails.env == 'production'

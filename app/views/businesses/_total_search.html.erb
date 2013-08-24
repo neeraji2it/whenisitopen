@@ -37,7 +37,7 @@
             <div class="red-rib" style="margin-top:27px;">
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
-                <div id="message" style="display: block;">
+                <div id="message" style="display: block;padding-top: 9px;">
                   <%= image_tag("/assets/closesin.png") %>
                 </div>
                 <div id="phone" style="display:none;">905-507-1147</div>
@@ -333,10 +333,14 @@
       <% end %>
     </div>
     <div style="clear: both;"></div>
+    <% if !current_admin %>
+      <% if (business.mon_from.nil? and business.tue_from.nil? and business.wed_from.nil? and business.thu_from.nil? and business.fri_from.nil? and business.sat_from.nil? and business.sun_from.nil?) %>
+        <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
+      <% end %>
+    <% else %>
+      <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
+    <% end %>
   </div>
-  <% if current_admin %>
-    <div class="todaya" style="position: relative;border: 1px solid gray;border-radius: 5px;width: 70px;padding: 4px;text-align: center;position: relative;left: 255px;"><%= link_to "Edit", edit_business_path(business) %></div>
-  <% end %>
 </div>
 <% if !@spelling_suggestion %>
   <div id="PageContainer">

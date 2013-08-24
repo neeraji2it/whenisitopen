@@ -31,22 +31,26 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    @name = params[:company_name].split('and').join('&')
-    @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
-    @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
-    if @ab_business_databases.empty?
-      @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
+    if params[:company_name].present?
+      @name = params[:company_name].split('and').join('&')
+      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
+      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
+      if @ab_business_databases.empty?
+        @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
+      else
+        a = Date.today.strftime("%a").downcase+"_to"
+        @nears = Business.near(@name,100, :order =>:distance)
+        @all_categories = Business.where("category = ? and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
+        @categorie_with_cond = @nears.where_values.reduce(:and)
+        @categorie_with = @all_categories.where_values.reduce(:and)
+        @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
+        @all_locations = Business.where("company_name = ? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?) and (mon_from IS NOT NULL and tue_from IS NOT NULL and wed_from IS NOT NULL and thu_from IS NOT NULL and fri_from IS NOT NULL and sat_from IS NOT NULL and sun_from IS NOT NULL)","#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
+        @locations_with_cond = @nears.where_values.reduce(:and)
+        @locations_with = @all_locations.where_values.reduce(:and)
+        @locations = Business.where("(#{@locations_with_cond}) and (#{@locations_with})").paginate :page => params[:location_page], :per_page => 3
+      end
     else
-      a = Date.today.strftime("%a").downcase+"_to"
-      @nears = Business.near(@name,100, :order =>:distance)
-      @all_categories = Business.where("category = ? and #{a} > '#{Time.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
-      @categorie_with_cond = @nears.where_values.reduce(:and)
-      @categorie_with = @all_categories.where_values.reduce(:and)
-      @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
-      @all_locations = Business.where("company_name = ? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?) and (mon_from IS NOT NULL and tue_from IS NOT NULL and wed_from IS NOT NULL and thu_from IS NOT NULL and fri_from IS NOT NULL and sat_from IS NOT NULL and sun_from IS NOT NULL)","#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
-      @locations_with_cond = @nears.where_values.reduce(:and)
-      @locations_with = @all_locations.where_values.reduce(:and)
-      @locations = Business.where("(#{@locations_with_cond}) and (#{@locations_with})").paginate :page => params[:location_page], :per_page => 3
+      redirect_to root_path
     end
   end
   
@@ -72,7 +76,7 @@ class BusinessesController < ApplicationController
   
   def update
     @business = Business.find(params[:id])
-    if @business.update_attributes(params[:business])
+    if @business.update_attributes(params[:business].reject{ |key, value| value.blank?} )
       redirect_to categorie_search_businesses_path('company_name' => @business.company_name, :city => @business.city, :address => @business.address)
     end
   end

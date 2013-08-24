@@ -11,8 +11,8 @@
         <tbody>
           <tr>
             <td class="home-search">
-              <%= text_field_tag :company_name, "",:class=>"textField1",:id => "keywords", :value => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: -3px;" %>
-              <button type="submit" style="background: none; border: none;cursor: pointer;left: 275px;position: relative;top: -47px;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon', :width => '29', :height => '26') %></button>
+              <%= text_field_tag :company_name, "",:class=>"textField1",:id => "keywords", :placeholder => 'Enter business name',:onblur => "onBlur(this)", :onfocus => "onFocus(this)",:size => "60px", :style=>"color:#aaa;margin:0px -10px 0px 0px;top: -3px;" %>
+              <button id="sub" style="background: none; border: none;cursor: pointer;left: 275px;position: relative;top: -47px;"><%= image_tag("/assets/search_icon.png", :class => 'search-icon', :width => '29', :height => '26') %></button>
             </td>
           </tr>
           <tr>
@@ -28,3 +28,13 @@
   </div>
 </div>
 <%= render :partial => 'businesses/geo_plugin' %>
+<script>
+        $("#sub").click(function() {
+          if ($("#keywords").val() == '') {
+            alert("Select Business")
+            return false;
+          } else {
+            $("#searchForm").submit();
+          }
+        });
+</script>
