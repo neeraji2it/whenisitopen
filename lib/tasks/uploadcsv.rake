@@ -1,7 +1,7 @@
 require 'csv'
 namespace :whenitopen do
 
-  desc "Send after two months of bussiness bid if customer didn't accept the bid. This will be sent after 2 months of bids "
+  desc "Upload the businesses"
 	task :upload_csv => :environment do
     file = "#{Rails.root}/lib/f.csv"
     CSV.foreach(file, headers: true) do |row|
