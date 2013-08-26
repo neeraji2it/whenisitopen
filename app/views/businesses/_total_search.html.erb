@@ -240,70 +240,7 @@
               </div>
               <div style="clear:both;"></div>
             </div>
-            <script>
-              var a = "<%= Date.today.strftime('%a') %>"
-              var b = "<%= Date.today.strftime('%a').downcase %>"
-              $("." + a).addClass("todaya");
-              $(function() {
-                setInterval(function() {
-                  if ($("#" + a).text().trim().split(' ')[0] == 12 && $("#" + b).text().trim().split(' ')[0] == 12) {
-                    $('body').removeClass('open').addClass('nohour open');
-                    $('.clockDiv').hide();
-                    $('.closeOpenLogo').hide();
-                    $("#twentyfour").show();
-                    $(".scheduleDiv").hide();
-                  } else {
-                    if ($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '') {
-                      $('body').removeClass('open').addClass('close');
-                      $(".logo a img").attr('src', "/assets/when-image-open.png");
-                      $("#ssss").attr('src', "/assets/closed-banner.png");
-                      $("#ssss").css('left', '2.3px');
-                      $(".hand-icon img").attr('src', "/assets/like-close.png");
-                      $("#message img").attr('src', "/assets/opensin.png");
-                      if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
-                        if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
-                          var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
-                          var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                          var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
-                          var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
-                        } else {
-                          var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
-                          var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                          var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
-                          var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
-                        }
-                      } else {
-                        var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
-                        var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
-                        var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
-                        var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
-                      }
-                      var y = parseInt(<%= Date.today.strftime("%Y") %>)
-                      if (mn == 12) {
-                        mn = 1
-                        var y = parseInt(<%= Date.today.strftime("%Y") %>) + 1
-                      }
-                      var liftoff = new Date(y, mn - 1, d);
-                      liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 24, m, 00);
-                      $('#noDayss_' + a).countdown({until: liftoff});
-                      $('#noDayss_' + a).show();
-                      $('#noDays_' + a).hide();
-                    } else {
-                      var h = $("#" + a).text().trim().split(' ')[0]
-                      var m = $("#" + a).children('sup').text();
-                      var liftoff = new Date();
-                      if (h == 12) {
-                        liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 12, parseInt(m), 00);
-                      } else {
-                        liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) + 12, parseInt(m), 00);
-                      }
-                      $('#noDays_' + a).countdown({until: liftoff});
-                      $('#noDays_' + a).show();
-                      $('#noDayss_' + a).hide();
-                    }
-                  }
-                }, 30);
-              });</script>
+            <%= render :partial => 'script' %>
           <% else %>
             <% if business.phone.present? %>
               <div class="red-rib" style="margin-top:15px;margin-left: 40px;">

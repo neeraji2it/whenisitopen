@@ -12,8 +12,8 @@ class Business < ActiveRecord::Base
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
-      all.each do |product|
-        csv << product.attributes.values_at(*column_names)
+      all.each do |business|
+        csv << business.attributes.values_at(*column_names)
       end
     end
   end
@@ -26,5 +26,13 @@ class Business < ActiveRecord::Base
       word
     end
     return word.first.company_name unless word == query
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      business = find_by_id(row[0]) || new
+      business.attributes = row.to_hash.slice(*accessible_attributes)
+      business.save!
+    end
   end
 end
