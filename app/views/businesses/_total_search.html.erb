@@ -268,7 +268,7 @@
       <% if current_admin %>
         <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
       <% else %>
-        <% if (business.mon_from.nil? and business.tue_from.nil? and business.wed_from.nil? and business.thu_from.nil? and business.fri_from.nil? and business.sat_from.nil? and business.sun_from.nil?) %>
+        <% if (business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
           <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
         <% end %>
       <% end %>
