@@ -77,7 +77,7 @@ class BusinessesController < ApplicationController
   def update
     @business = Business.find(params[:id])
     if @business.update_attributes(params[:business].reject{ |key, value| value.blank?} )
-      system('heroku run rake fs:rebuild')
+      system('rake fs:rebuild')
       redirect_to categorie_search_businesses_path('company_name' => @business.company_name, :city => @business.city, :address => @business.address)
     end
   end
