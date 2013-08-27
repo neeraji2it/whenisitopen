@@ -10,7 +10,7 @@
         $("#twentyfour").show();
         $(".scheduleDiv").hide();
       } else {
-        if (($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '')) {
+        if (($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '' || $("#" + b).text().trim().split(' ')[0] > <%= Time.now.strftime("%H").to_i %>)) {
           $('body').removeClass('open').addClass('close');
           $("." + a).addClass("todaya");
           $(".logo a img").attr('src', "/assets/when-image-open.png");
@@ -18,23 +18,30 @@
           $("#ssss").css('left', '2.3px');
           $(".hand-icon img").attr('src', "/assets/like-close.png");
           $("#message img").attr('src', "/assets/opensin.png");
-          if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
-            if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
-              var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-              var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
-            } else {
-              var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-              var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
-            }
+          if ($("#" + b).text().trim().split(' ')[0] > <%= Time.now.strftime("%H").to_i %>) {
+            var d = <%= (Time.now).strftime("%d").to_i+1 %>
+            var h = $("#<%= (Time.now).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var m = $("#<%= (Time.now).strftime('%a').downcase %>").children('sup').text();
+            var mn = parseInt(<%= (Time.now).strftime("%m") %>)
           } else {
-            var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
-            var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
-            var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
+            if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
+              if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
+                var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
+                var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+                var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
+                var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
+              } else {
+                var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
+                var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+                var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
+                var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
+              }
+            } else {
+              var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
+              var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
+              var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
+            }
           }
           var y = parseInt(<%= Date.today.strftime("%Y") %>)
           if (mn == 12) {

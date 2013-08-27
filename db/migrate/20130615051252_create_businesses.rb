@@ -3,24 +3,20 @@ class CreateBusinesses < ActiveRecord::Migration
     create_table(:businesses) do |t|
       t.string :address
       t.string :city
-      t.string :contact_name
       t.string :company_name
+      t.string :contact_name
+      t.string :employee
       t.string :fax_number
       t.string :gender
-      t.string :sales
       t.text :major_division_description
-      t.string :sic_4_code
-      t.text :sic_2_code_description
-      t.string :employee
-      t.string :title
-      t.string :url
       t.string :phone
       t.string :state
-      t.string :zip_code
-      t.float :longitude
-      t.float :latitude
+      t.string :sales
+      t.text :sic_2_code_description
+      t.string :sic_4_code
       t.string :category
-      t.boolean :gmaps
+      t.string :title
+      t.string :url
       t.string :mon_from
       t.string :mon_to
       t.string :tue_from
@@ -35,6 +31,10 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :sat_to
       t.string :sun_from
       t.string :sun_to
+      t.string :zip_code
+      t.float :longitude
+      t.float :latitude
+      t.boolean :gmaps
     end
   end
 end

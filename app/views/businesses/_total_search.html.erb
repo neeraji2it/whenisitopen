@@ -221,18 +221,12 @@
                       </td>
                     </tr>
                     <% if business.url.present? %>
-                      <tr class="todaya" id="website">
+                      <tr class="todaya" id="website" onclick="window.open('<%= url_with_protocol(business.url) %>', '_blank')">
                         <td style="text-align: center;font-family: House Slant;font-size: 18px;cursor: pointer;font-weight: normal;">
                           <%= "WEBSITE" %>
                         </td>
                       </tr>
-                    <script>
-                      $("#website").click(function() {
-                        var url = '<%= business.url %>'
-                        window.open(url, '_blank');
-                      })
-                    </script>
-                  <% end %>
+                    <% end %>
                   </tbody>
                 </table>
               </div>
@@ -255,15 +249,15 @@
               </div>
             <% end %>
             <script>
-              $(document).ready(function() {
-                $('body').removeClass('open').addClass('nohour');
-                $(".logo a img").attr('src', "/assets/when-image-open.png");
-                $("#ssss").attr('src', "/assets/no_hour.png");
-                $("#ssss").css({top: 173});
-                $(".location").css({top: 13});
-                $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                $(".hand-icon").css('padding-top', '110px');
-              })
+                      $(document).ready(function() {
+                        $('body').removeClass('open').addClass('nohour');
+                        $(".logo a img").attr('src', "/assets/when-image-open.png");
+                        $("#ssss").attr('src', "/assets/no_hour.png");
+                        $("#ssss").css({top: 173});
+                        $(".location").css({top: 13});
+                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                        $(".hand-icon").css('padding-top', '110px');
+                      })
             </script>
           <% end %>
         <% end %>
