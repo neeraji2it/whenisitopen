@@ -6,7 +6,7 @@ class ImportsController < ApplicationController
   end
   
   def index
-    @products = Business.order(:company_name)
+    @products = Business.order(:id)
     respond_to do |format|
       format.html
       format.csv { send_data @products.to_csv }
