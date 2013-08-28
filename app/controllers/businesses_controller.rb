@@ -18,7 +18,7 @@ class BusinessesController < ApplicationController
   end
   
   def create
-    @business = Business.new(params[:business])
+    @business = Business.new(params[:business].reject{ |key, value| value.blank?})
     if @business.save
       redirect_to imports_path
     end
@@ -88,7 +88,13 @@ class BusinessesController < ApplicationController
   def update
     @business = Business.find(params[:id])
     if @business.update_attributes(params[:business].reject{ |key, value| value.blank?} )
-      redirect_to categorie_search_businesses_path('company_name' => @business.company_name, :city => @business.city, :address => @business.address)
+      redirect_to edit_business_path(@business)
     end
+  end
+  
+  def destroy
+    @business = Business.find(params[:id])
+    @business.destroy
+    redirect_to imports_path
   end
 end
