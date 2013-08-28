@@ -1,7 +1,7 @@
 <div class="con-header" style="min-height: 1570px;height: auto;">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), '/' %>
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), imports_path %>
     </div>
     <%= render :partial => 'businesses/search' %>
   </div>
@@ -59,8 +59,8 @@
       <% end %>
       <div style="float: right;left: 856px;position: relative;">
         <%= link_to "Add New Business", new_business_path() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%#= link_to "Import Csv", import_imports_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%#= link_to "Export Csv", imports_path(:format => 'csv') %>
+        <%= link_to "Import Csv", import_imports_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to "Export Csv", imports_path(:format => 'csv') %>
       </div>
     </table><br />
   </div>
