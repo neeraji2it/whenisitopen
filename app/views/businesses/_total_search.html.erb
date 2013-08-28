@@ -1,7 +1,7 @@
 <div class="con-header">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/when-image-open.png"), "/" %>
+      <%= current_admin ? (link_to image_tag("/assets/when-image-open.png"), imports_path) : (link_to image_tag("/assets/when-image-open.png"), "/") %>
       <%= image_tag("/assets/auto-service-bg.png", :style => 'position: relative;top: 173px;', :id => 'ssss') %>
     </div>
     <%= render :partial => 'businesses/search' %>
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                      $(document).ready(function() {
-                        $('body').removeClass('open').addClass('nohour');
-                        $(".logo a img").attr('src', "/assets/when-image-open.png");
-                        $("#ssss").attr('src', "/assets/no_hour.png");
-                        $("#ssss").css({top: 173});
-                        $(".location").css({top: 13});
-                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '110px');
-                      })
+                        $(document).ready(function() {
+                          $('body').removeClass('open').addClass('nohour');
+                          $(".logo a img").attr('src', "/assets/when-image-open.png");
+                          $("#ssss").attr('src', "/assets/no_hour.png");
+                          $("#ssss").css({top: 173});
+                          $(".location").css({top: 13});
+                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                          $(".hand-icon").css('padding-top', '110px');
+                        })
             </script>
           <% end %>
         <% end %>

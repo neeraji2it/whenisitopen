@@ -2,19 +2,19 @@ class ImportsController < ApplicationController
   before_filter :login?
   layout :get_layout
   def import
-    @title="Import Users"
   end
   
   def index
-    @products = Business.order(:id)
+    @per_page = params[:per_page] || 10
+    @businesses = Business.where("company_name IS NOT NULL").paginate(:per_page => @per_page, :page => params[:page])
+    @export_businesses = Business.order(:id)
     respond_to do |format|
       format.html
-      format.csv { send_data @products.to_csv }
+      format.csv { send_data @export_businesses.to_csv }
     end
   end
 
   def upload_xls
-    @title="Import Users"
     if request.post?
       Business.import(params[:file])
       flash[:notice] = "Uploading completed."
