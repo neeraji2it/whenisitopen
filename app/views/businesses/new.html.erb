@@ -9,90 +9,10 @@
       <div class="scheduleDiv" style="min-height: 100%;width: 440px;display: block;float: left;position: relative;top: 60px;left: 264px;background-color: #60BED2;padding: 20px;border-radius: 4px;">
         <div id="schedule0">
           <%= form_for @business, :url => businesses_path(), :method => 'POST' do |f| %>
-            <table cellspacing="2" cellpadding="3" style="font-size: 14px;font-weight: bold;font-size: 18px;text-align: left;font-weight: bold;color:#007D8F;font-family: 'House Slant'">
-              <tbody>
-                <tr>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :company_name, "BUSINESS NAME:" %></td>
-                  <td class="business"><%= f.text_field :company_name, :class => 'textField1' %></td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :address, "ADDRESS:" %></td>
-                  <td class="business"><%= f.text_field :address, :class => 'textField1' %></td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :city, "CITY:" %></td>
-                  <td class="business"><%= f.text_field :city, :class => 'textField1' %></td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :state, "PROVINCE:" %></td>
-                  <td class="business"><%= f.text_field :state, :class => 'textField1' %></td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
-                  <td class="business"><%= f.text_field :category, :class => 'textField1' %></td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;"><%= f.label :phone, "PHONE NUMBER:" %></td>
-                  <td class="business"><%= f.text_field :phone, :class => 'textField1' %></td>
-                </tr>
-              </tbody>
-            </table>
-            <table width="160%" cellpadding="5" style="font-size: 14px;">
-              <tbody>
-                <tr>
-                  <td style="text-align: right;">Mon:</td>
-                  <td><%= f.text_field :mon_from, :id => 'time1', :size => '4' %>-<%= f.text_field :mon_to, :id => 'time2', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Tue:</td>
-                  <td><%= f.text_field :tue_from, :id => 'time3', :size => '4' %>-<%= f.text_field :tue_to, :id => 'time4', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Wed:</td>
-                  <td><%= f.text_field :wed_from, :id => 'time5', :size => '4' %>-<%= f.text_field :wed_to, :id => 'time6', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Thu:</td>
-                  <td><%= f.text_field :thu_from, :id => 'time7', :size => '4' %>-<%= f.text_field :thu_to, :id => 'time8', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Fri:</td>
-                  <td><%= f.text_field :fri_from, :id => 'time9', :size => '4' %>-<%= f.text_field :fri_to, :id => 'time10', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Sat:</td>
-                  <td><%= f.text_field :sat_from, :id => 'time11', :size => '4' %>-<%= f.text_field :sat_to, :id => 'time12', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">Sun:</td>
-                  <td><%= f.text_field :sun_from, :id => 'time13', :size => '4' %>-<%= f.text_field :sun_to, :id => 'time14', :size => '4' %> <%= check_box_tag '' %>Closed</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><div style='position: relative;border: 1px;
-                           border-radius: 5px;
-                           width: 60px;
-                           padding: 5px;
-                           text-align: center;
-                           position: relative;
-                           left: 35px;
-                           margin-top: 10px;
-                           background-color: #FF6C00;'><%= f.submit "Save", :style => 'border: 0;background-color: #FF6C00;' %></div></td>
-                </tr>
-              </tbody>
-            </table>
+            <%= render :partial => 'form', :locals => {:f => f} %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-  $("#time1, #time2, #time3, #time4, #time5, #time6, #time7, #time8, #time9, #time10, #time11, #time12, #time13, #time14").timePicker();
-  $(document).ready(function() {
-    $('body').removeClass('open').addClass('cont');
-    $('#main').css({'min-height': 0, 'background-color': ''});
-  })
-</script>

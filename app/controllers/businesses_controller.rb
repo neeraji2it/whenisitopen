@@ -87,8 +87,6 @@ class BusinessesController < ApplicationController
   
   def update
     @business = Business.find(params[:id])
-    system("rake ts:rebuild") if Rails.env == 'development'
-    system("rake log:clear") if Rails.env == 'development'
     if @business.update_attributes(params[:business].reject{ |key, value| value.blank?} )
       redirect_to categorie_search_businesses_path('company_name' => @business.company_name, :city => @business.city, :address => @business.address)
     end
