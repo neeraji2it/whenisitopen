@@ -212,7 +212,7 @@
     $.fn.timePicker.defaults = {
         step: 15,
         startTime: new Date(0, 0, 0, 01, 0, 0),
-        endTime: new Date(0, 0, 0, 11, 45, 0),
+        endTime: new Date(0, 0, 0, 12, 00, 0),
         separator: ':',
         show24Hours: true
     };
@@ -236,7 +236,7 @@
     }
 
     function formatNumber(value) {
-        return (value < 10 ? '' : '') + value;
+        return (value < 10 ? '0' : '') + value;
     }
 
     function timeToDate(input, settings) {
