@@ -10,7 +10,7 @@
         $("#twentyfour").show();
         $(".scheduleDiv").hide();
       } else {
-        if (($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '' || $("#" + b).text().trim().split(' ')[0] > <%= Time.now.strftime("%H").to_i %>)) {
+        if (($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '')) {
           $('body').removeClass('open').addClass('close');
           $("." + a).addClass("todaya");
           $(".logo a img").attr('src', "/assets/when-image-open.png");
