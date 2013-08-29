@@ -550,6 +550,7 @@ body.cont {
 }
 
 #business_edit{
+    cursor: pointer;
     position: relative;
     border: 1px solid gray;
     border-radius: 5px;
