@@ -5,7 +5,7 @@ namespace :whenitopen do
 	task :upload_csv => :environment do
     file = "#{Rails.root}/lib/0to1.csv"
     CSV.foreach(file, headers: true) do |row|
-      business = PendingScrapper.new
+      business = Business.new
       business.attributes = row.to_hash
       business.save!
     end

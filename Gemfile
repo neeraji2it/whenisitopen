@@ -18,6 +18,7 @@ gem 'riddle', '1.5.0'
 gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx', '0.6.1'
 gem "heroku"
+gem 'nokogiri'
 
 group :production do
   gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too

@@ -23,6 +23,7 @@ Whenitopen::Application.routes.draw do
     collection do
       get :import
       post :upload_xls
+      get :scraptiming
     end
   end
   # The priority is based upon order of creation:
