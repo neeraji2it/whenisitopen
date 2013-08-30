@@ -13,7 +13,7 @@ class ImportsController < ApplicationController
     @export_businesses = Business.order(:id).limit(25000)
     respond_to do |format|
       format.html
-      format.csv { send_data @export_businesses.to_csv }
+      format.csv { send_data @export_businesses.to_csv, :filename => "Businesses.csv"}
     end
   end
 
