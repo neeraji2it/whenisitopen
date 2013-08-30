@@ -63,9 +63,6 @@ GEM
       rash (~> 0.3.0)
       riddle (>= 1.5.0)
       thinking-sphinx
-    geocoder (1.1.8)
-    geokit (1.6.5)
-      multi_json
     gmaps4rails (1.5.6)
     hashie (1.2.0)
     heroku (2.39.5)
@@ -175,8 +172,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   flying-sphinx (= 0.6.1)
-  geocoder
-  geokit
   gmaps4rails
   heroku
   jquery-rails

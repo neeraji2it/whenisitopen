@@ -7,8 +7,6 @@ gem 'rails', '3.2.13'
 
 gem 'mysql2'
 gem 'gmaps4rails'
-gem 'geocoder'
-gem "geokit"
 gem 'thin'
 gem 'quiet_assets'
 gem 'devise'
