@@ -95,6 +95,8 @@ class BusinessesController < ApplicationController
   def destroy
     @business = Business.find(params[:id])
     @business.destroy
+    @admin = Admin.first
+    sign_in(:admin,@admin,:bypass => true)
     redirect_to imports_path
   end
 end
