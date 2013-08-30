@@ -10,7 +10,7 @@ class ImportsController < ApplicationController
   def index
     @per_page = params[:per_page] || 10
     @businesses = Business.where("company_name IS NOT NULL and address IS NOT NULL").paginate(:per_page => @per_page, :page => params[:page])
-    @export_businesses = Business.order(:id)
+    @export_businesses = Business.order(:id).limit(25000)
     respond_to do |format|
       format.html
       format.csv { send_data @export_businesses.to_csv }
