@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727054839) do
+ActiveRecord::Schema.define(:version => 20130829105450) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,24 +39,20 @@ ActiveRecord::Schema.define(:version => 20130727054839) do
   create_table "businesses", :force => true do |t|
     t.string  "address"
     t.string  "city"
-    t.string  "contact_name"
     t.string  "company_name"
+    t.string  "contact_name"
+    t.string  "employee"
     t.string  "fax_number"
     t.string  "gender"
-    t.string  "sales"
     t.text    "major_division_description"
-    t.string  "sic_4_code"
-    t.text    "sic_2_code_description"
-    t.string  "employee"
-    t.string  "title"
-    t.string  "url"
     t.string  "phone"
     t.string  "state"
-    t.string  "zip_code"
-    t.float   "longitude"
-    t.float   "latitude"
+    t.string  "sales"
+    t.text    "sic_2_code_description"
+    t.string  "sic_4_code"
     t.string  "category"
-    t.boolean "gmaps"
+    t.string  "title"
+    t.string  "url"
     t.string  "mon_from"
     t.string  "mon_to"
     t.string  "tue_from"
@@ -71,6 +67,17 @@ ActiveRecord::Schema.define(:version => 20130727054839) do
     t.string  "sat_to"
     t.string  "sun_from"
     t.string  "sun_to"
+    t.string  "zip_code"
+    t.float   "longitude"
+    t.float   "latitude"
+    t.boolean "gmaps"
+    t.string  "mon_closed"
+    t.string  "tue_closed"
+    t.string  "wed_closed"
+    t.string  "thu_closed"
+    t.string  "fri_closed"
+    t.string  "sat_closed"
+    t.string  "sun_closed"
   end
 
   create_table "contacts", :force => true do |t|
@@ -79,6 +86,52 @@ ActiveRecord::Schema.define(:version => 20130727054839) do
     t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pending_scrappers", :force => true do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "company_name"
+    t.string   "contact_name"
+    t.string   "employee"
+    t.string   "fax_number"
+    t.string   "gender"
+    t.text     "major_division_description"
+    t.string   "phone"
+    t.string   "state"
+    t.string   "sales"
+    t.text     "sic_2_code_description"
+    t.string   "sic_4_code"
+    t.string   "category"
+    t.string   "title"
+    t.string   "url"
+    t.string   "mon_from"
+    t.string   "mon_to"
+    t.string   "tue_from"
+    t.string   "tue_to"
+    t.string   "wed_from"
+    t.string   "wed_to"
+    t.string   "thu_from"
+    t.string   "thu_to"
+    t.string   "fri_from"
+    t.string   "fri_to"
+    t.string   "sat_from"
+    t.string   "sat_to"
+    t.string   "sun_from"
+    t.string   "sun_to"
+    t.string   "zip_code"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "mon_closed"
+    t.string   "tue_closed"
+    t.string   "wed_closed"
+    t.string   "thu_closed"
+    t.string   "fri_closed"
+    t.string   "sat_closed"
+    t.string   "sun_closed"
+    t.boolean  "gmaps"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
 end
