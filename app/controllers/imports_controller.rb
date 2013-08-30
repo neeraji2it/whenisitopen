@@ -9,7 +9,7 @@ class ImportsController < ApplicationController
   
   def index
     @per_page = params[:per_page] || 10
-    @businesses = Business.where("company_name IS NOT NULL").paginate(:per_page => @per_page, :page => params[:page])
+    @businesses = Business.where("company_name IS NOT NULL and address IS NOT NULL").paginate(:per_page => @per_page, :page => params[:page])
     @export_businesses = Business.order(:id)
     respond_to do |format|
       format.html
