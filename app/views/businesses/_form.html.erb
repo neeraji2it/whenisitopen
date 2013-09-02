@@ -25,6 +25,14 @@
       </tr>
     <% end %>
     <tr>
+      <td style="text-align: right;"><%= f.label :longitude, "LONGITUDE:" %></td>
+      <td class="business"><%= f.text_field :longitude, :class => 'textField1' %></td>
+    </tr>
+    <tr>
+      <td style="text-align: right;"><%= f.label :latitude, "LATITUDE" %></td>
+      <td class="business"><%= f.text_field :latitude, :class => 'textField1' %></td>
+    </tr>
+    <tr>
       <td style="text-align: right;"><%= f.label :phone, "PHONE NUMBER:" %></td>
       <td class="business"><%= f.text_field :phone, :class => 'textField1' %></td>
     </tr>
