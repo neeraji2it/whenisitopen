@@ -35,7 +35,7 @@ namespace :whenitopen do
   
   def restart_process(name)
     puts "restarting process #{name}:"
-    Heroku::API.new(username: ENV['EMAIL'], password: ENV['PASSWORD'])
-    post_ps_restart(ENV['APP_NAME'])
+    Heroku::API.new(username: 'robertprsa10@gmail.com', password: 'fur?56al')
+    post_ps_restart('whenitopen')
   end
 end
