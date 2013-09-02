@@ -33,7 +33,7 @@
           <div class="hand-icon">
             <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
           </div>
-          <% if !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
+          <% if business.status != 'pending' and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
             <div class="red-rib" style="margin-top:27px;">
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
