@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829105450) do
+ActiveRecord::Schema.define(:version => 20130902122044) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130829105450) do
     t.string  "fri_closed"
     t.string  "sat_closed"
     t.string  "sun_closed"
+    t.string  "status"
   end
 
   create_table "contacts", :force => true do |t|

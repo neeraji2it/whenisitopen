@@ -88,8 +88,19 @@ class BusinessesController < ApplicationController
   def update
     @business = Business.find(params[:id])
     if @business.update_attributes(params[:business].reject{ |key, value| value.blank?} )
+      @business.update_attribute(:status, 'pending') if !current_admin
       redirect_to edit_business_path(@business)
     end
+  end
+  
+  def pending_businesses
+    @businesses = Business.where("status = 'pending'")
+  end
+  
+  def confirm_business
+    @business = Business.find(params[:id])
+    @business.update_attribute(:status, 'confirmed') if !current_admin
+    redirect_to imports_path
   end
   
   def destroy
