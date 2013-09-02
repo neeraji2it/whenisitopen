@@ -179,6 +179,7 @@ DEPENDENCIES
   geokit
   gmaps4rails
   heroku
+  heroku-api
   jquery-rails
   mysql2
   nokogiri
