@@ -30,13 +30,12 @@ namespace :whenitopen do
       0 => %w[web.11 web.12 web.13 web.14],
     }
     processes = time_hash[Time.now.hour]
-    processes.each {|process| process} if processes
-    puts processes
+    processes.each {|process| restart_process(process)} if processes
   end
   
-  #  def restart_process(name)
-  #    puts "restarting process #{name}:"
-  #    Heroku::API.new(username: ENV[EMAIL], password: ENV[PASSWORD])
-  #    post_ps_restart(ENV[APP_NAME])
-  #  end
+  def restart_process(name)
+    puts "restarting process #{name}:"
+    Heroku::API.new(username: ENV['EMAIL'], password: ENV['PASSWORD'])
+    post_ps_restart(ENV['APP_NAME'])
+  end
 end
