@@ -30,7 +30,7 @@
         <th>Actions</th>
       </tr>
       <% for business in @businesses %>
-        <tr>
+        <tr class="<%= cycle('odd', 'even') %>">
           <td><%= business.company_name %></td>
           <td><%= business.address %></td>
           <td><%= business.city %></td>

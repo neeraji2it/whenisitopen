@@ -31,6 +31,10 @@ module Whenitopen
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    if Rails.env == 'production'
+      config.time_zone = 'Eastern Time (US & Canada)'
+      config.active_record.default_timezone = :utc
+    end
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

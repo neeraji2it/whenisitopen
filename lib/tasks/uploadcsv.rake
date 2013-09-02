@@ -3,7 +3,7 @@ namespace :whenitopen do
 
   desc "Upload the businesses"
 	task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/2to3.csv"
+    file = "#{Rails.root}/lib/3to4.csv"
     CSV.foreach(file, headers: true) do |row|
       business = Business.new
       business.attributes = row.to_hash
@@ -35,7 +35,7 @@ namespace :whenitopen do
   
   def restart_process(name)
     puts "restarting process #{name}:"
-    heroku = Heroku::Client.new(ENV['Robert Prsa'], ENV['fur?56al'])
+    heroku = Heroku::Client.new(ENV['robertprsa10@gmail.com'], ENV['fur?56al'])
     heroku.ps_restart(ENV['whenitopen'], :ps => name)
   end
 end
