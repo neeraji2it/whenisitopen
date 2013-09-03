@@ -14,7 +14,7 @@ namespace :whenitopen do
   
   desc "Run the sphinx server"
   task :server => :environment do
-    system("heroku run rake fs:rebuild --app whenitopen")
+    system("heroku run rake fs:rebuild")
   end
   
   desc "Restart app by process and time table"
