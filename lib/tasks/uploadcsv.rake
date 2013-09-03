@@ -1,4 +1,5 @@
 require 'csv'
+require 'heroku-api'
 namespace :whenitopen do
 
   desc "Upload the businesses"
@@ -35,7 +36,7 @@ namespace :whenitopen do
   
   def restart_process(name)
     puts "restarting process #{name}:"
-    Heroku::API.new(username: 'robertprsa10@gmail.com', password: 'fur?56al')
-    post_ps_restart('whenitopen')
+    heroku = Heroku::API.new(:api_key => 'e7b6434e-8977-4e1f-9174-1c84c75fc4a5')
+    heroku.post_ps_scale(ENV['APP_NAME'], 'web', 2)
   end
 end
