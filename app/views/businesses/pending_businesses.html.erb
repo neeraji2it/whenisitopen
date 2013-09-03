@@ -49,7 +49,7 @@
           <td><%= business.sun_from %></td>
           <td><%= business.sun_to %></td>
           <td>
-            <%= link_to "Confirm", confirm_business_business_path(business) %>
+            <%= link_to "Confirm", confirm_business_business_path(business), :method => "PUT" %>
           </td>
         </tr>
       <% end %>
