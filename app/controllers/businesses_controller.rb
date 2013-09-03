@@ -33,7 +33,7 @@ class BusinessesController < ApplicationController
   end
 
   def city_businesses
-    @name = params[:company_name].split('and').join('&')
+    @name = params[:company_name].split(' and').join(' &')
     @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name ILIKE ? and city = ?", "#{@name}%", "#{session[:city]}") if Rails.env == 'production'
     @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? and city = ?", "#{@name}%", "#{session[:city]}") if Rails.env == 'development'
     respond_to do |format|
@@ -43,7 +43,7 @@ class BusinessesController < ApplicationController
 
   def search
     if params[:company_name].present?
-      @name = params[:company_name].split('and').join('&')
+      @name = params[:company_name].split(' and').join(' &')
       @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
       @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
       if @ab_business_databases.empty?
