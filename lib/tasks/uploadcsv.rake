@@ -13,6 +13,8 @@ namespace :whenitopen do
   
   desc "Run the sphinx server"
   task :server => :environment do
+    processes = Time.now.hour
+    processes.each {|process| restart_process(process)} if processes
     system("heroku run rake fs:rebuild --app whenitopen")
   end
   
