@@ -42,7 +42,7 @@
             var y = parseInt(<%= Date.today.strftime("%Y") %>) + 1
           }
           var liftoff = new Date(y, mn - 1, d);
-          liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h) - 24, m, 00);
+          liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), h - 24, m, 00);
           $('#noDayss_' + a).countdown({until: liftoff});
           $('#noDayss_' + a).show();
           $('#noDays_' + a).hide();
