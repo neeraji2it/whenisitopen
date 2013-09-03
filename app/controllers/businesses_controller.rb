@@ -11,7 +11,6 @@ class BusinessesController < ApplicationController
         format.js
       end
     end
-    system("heroku run rake fs:rebuild")
   end
   
   def new

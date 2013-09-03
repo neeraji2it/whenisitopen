@@ -12,13 +12,6 @@ namespace :whenitopen do
     end
   end
   
-  desc "Run the sphinx server"
-  task :server => :environment do
-    ss = Heroku::API.new(:email => 'robertprsa10@gmail.com', :password => 'fur?56al')
-    system("heroku run rake fs:rebuild --app whenitopen")
-    puts ss.inspect
-  end
-  
   desc "Restart app by process and time table"
   task :restart => :environment do
     time_hash = {
