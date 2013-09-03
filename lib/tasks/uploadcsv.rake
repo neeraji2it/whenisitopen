@@ -14,6 +14,7 @@ namespace :whenitopen do
   
   desc "Run the sphinx server"
   task :server => :environment do
+    restart_process
     system("heroku run rake fs:rebuild --app whenitopen")
   end
   
@@ -31,11 +32,10 @@ namespace :whenitopen do
       0 => %w[web.11 web.12 web.13 web.14],
     }
     processes = time_hash[Time.now.hour]
-    processes.each {|process| restart_process(process)} if processes
+    processes.each {|process| restart_process} if processes
   end
   
-  def restart_process(name)
-    puts "restarting process #{name}:"
+  def restart_process
     heroku = Heroku::API.new(:api_key => 'e7b6434e-8977-4e1f-9174-1c84c75fc4a5')
     heroku.post_ps_scale(ENV['APP_NAME'], 'web', 2)
   end
