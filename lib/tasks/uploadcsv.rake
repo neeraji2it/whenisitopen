@@ -51,6 +51,6 @@ namespace :whenitopen do
 
   task :fs do
     puts 'Restarting app servers ...'
-    system 'heroku run rake fs:rebuild --app whenitopen'
+    system 'heroku run rake fs:rebuild'
   end
 end
