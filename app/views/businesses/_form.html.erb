@@ -4,37 +4,37 @@
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :company_name, "BUSINESS NAME:" %></td>
-      <td class="business"><%= f.text_field :company_name, :class => 'textField1' %></td>
+      <td><%= f.text_field :company_name, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :address, "ADDRESS:" %></td>
-      <td class="business"><%= f.text_field :address, :class => 'textField1' %></td>
+      <td><%= f.text_field :address, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :city, "CITY:" %></td>
-      <td class="business"><%= f.text_field :city, :class => 'textField1' %></td>
+      <td><%= f.text_field :city, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :state, "PROVINCE:" %></td>
-      <td class="business"><%= f.text_field :state, :class => 'textField1' %></td>
+      <td><%= f.text_field :state, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <% if @business.new_record? %>
       <tr>
         <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
-        <td class="business"><%= f.text_field :category, :class => 'textField1' %></td>
+        <td><%= f.text_field :category, :class => 'text', 'data-autosize-input' =>  '40' %></td>
       </tr>
     <% end %>
     <tr>
       <td style="text-align: right;"><%= f.label :longitude, "LONGITUDE:" %></td>
-      <td class="business"><%= f.text_field :longitude, :class => 'textField1' %></td>
+      <td><%= f.text_field :longitude, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :latitude, "LATITUDE" %></td>
-      <td class="business"><%= f.text_field :latitude, :class => 'textField1' %></td>
+      <td><%= f.text_field :latitude, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :phone, "PHONE NUMBER:" %></td>
-      <td class="business"><%= f.text_field :phone, :class => 'textField1' %></td>
+      <td><%= f.text_field :phone, :class => 'text', 'data-autosize-input' =>  '40' %></td>
     </tr>
   </tbody>
 </table>
