@@ -12,7 +12,7 @@
       } else {
         if (($("#noDays_" + a).text() == '00:00:00' || $("#noDays_" + a).text() == 'NaN:NaN:NaN' || $("#noDays_" + a).text() == '')) {
           $('body').removeClass('open').addClass('close');
-          $("." + a).addClass("todaya");
+          $(".<%= Time.now.strftime('%a') %>").addClass("todaya");
           $(".logo a img").attr('src', "/assets/when-image-open.png");
           $("#ssss").attr('src', "/assets/closed-banner.png");
           $("#ssss").css('left', '2.3px');
@@ -49,7 +49,7 @@
         } else {
           var h = $("#" + a).text().trim().split(' ')[0]
           var m = $("#" + a).children('sup').text();
-          $("." + a).addClass("todaya");
+          $(".<%= Time.now.strftime('%a') %>").addClass("todaya");
           var liftoff = new Date();
           if (h == 12) {
             liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h), parseInt(m), 00);
