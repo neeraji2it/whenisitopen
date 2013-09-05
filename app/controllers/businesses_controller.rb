@@ -99,9 +99,13 @@ class BusinessesController < ApplicationController
   
   def confirm_business
     @business = Business.find(params[:id])
-    @business.update_attribute(:status, 'confirmed') if current_admin
     @admin = Admin.first
     sign_in(:admin,@admin,:bypass => true)
+    if params[:status] == 'confirm'
+      @business.update_attribute(:status, 'confirmed') if current_admin
+    else
+      @business.update_attribute(:status, 'rejected') if current_admin
+    end
     redirect_to imports_path
   end
   

@@ -33,7 +33,7 @@
           <div class="hand-icon">
             <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
           </div>
-          <% if business.status != 'pending' and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
+          <% if (business.status != 'pending' or business.status != 'rejected') and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
             <div class="red-rib" style="margin-top:27px;">
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                      $(document).ready(function() {
-                        $('body').removeClass('open').addClass('nohour');
-                        $(".logo a img").attr('src', "/assets/when-image-open.png");
-                        $("#ssss").attr('src', "/assets/no_hour.png");
-                        $("#ssss").css({top: 173});
-                        $(".location").css({top: 13});
-                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '110px');
-                      })
+                        $(document).ready(function() {
+                          $('body').removeClass('open').addClass('nohour');
+                          $(".logo a img").attr('src', "/assets/when-image-open.png");
+                          $("#ssss").attr('src', "/assets/no_hour.png");
+                          $("#ssss").css({top: 173});
+                          $(".location").css({top: 13});
+                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                          $(".hand-icon").css('padding-top', '110px');
+                        })
             </script>
           <% end %>
         <% end %>
