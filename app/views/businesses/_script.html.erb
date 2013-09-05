@@ -1,6 +1,6 @@
 <script>
-  var a = "<%= Date.today.strftime('%a') %>"
-  var b = "<%= Date.today.strftime('%a').downcase %>"
+  var a = "<%= Time.zone.now.strftime("%a") %>"
+  var b = "<%= Time.zone.now.strftime("%a").downcase %>"
   $(function() {
     setInterval(function() {
       if ($("#" + a).text().trim().split(' ')[0] == 12 && $("#" + b).text().trim().split(' ')[0] == 12) {
@@ -18,28 +18,28 @@
           $("#ssss").css('left', '2.3px');
           $(".hand-icon img").attr('src', "/assets/like-close.png");
           $("#message img").attr('src', "/assets/opensin.png");
-          if ($("#<%= (Time.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
-            if ($("#<%= (Time.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
-              var d = <%= (Time.now+3.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-              var m = $("#<%= (Time.now+3.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.now+3.days).strftime("%m") %>)
+          if ($("#<%= (Time.zone.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
+            if ($("#<%= (Time.zone.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
+              var d = <%= (Time.zone.now+3.days).strftime("%d").to_i+1 %>
+              var h = $("#<%= (Time.zone.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var m = $("#<%= (Time.zone.now+3.days).strftime('%a').downcase %>").children('sup').text();
+              var mn = parseInt(<%= (Time.zone.now+3.days).strftime("%m") %>)
             } else {
-              var d = <%= (Time.now+2.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
-              var m = $("#<%= (Time.now+2.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.now+2.days).strftime("%m") %>)
+              var d = <%= (Time.zone.now+2.days).strftime("%d").to_i+1 %>
+              var h = $("#<%= (Time.zone.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var m = $("#<%= (Time.zone.now+2.days).strftime('%a').downcase %>").children('sup').text();
+              var mn = parseInt(<%= (Time.zone.now+2.days).strftime("%m") %>)
             }
           } else {
-            var d = <%= (Time.now+1.day).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
-            var m = $("#<%= (Time.now+1.day).strftime('%a').downcase %>").children('sup').text();
-            var mn = parseInt(<%= (Time.now+1.day).strftime("%m") %>)
+            var d = <%= (Time.zone.now+1.day).strftime("%d").to_i+1 %>
+            var h = $("#<%= (Time.zone.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var m = $("#<%= (Time.zone.now+1.day).strftime('%a').downcase %>").children('sup').text();
+            var mn = parseInt(<%= (Time.zone.now+1.day).strftime("%m") %>)
           }
-          var y = parseInt(<%= Date.today.strftime("%Y") %>)
+          var y = parseInt(<%= Time.zone.now.strftime("%Y") %>)
           if (mn == 12) {
             mn = 1
-            var y = parseInt(<%= Date.today.strftime("%Y") %>) + 1
+            var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
           }
           var liftoff = new Date(y, mn - 1, d);
           liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), h - 24, m, 00);

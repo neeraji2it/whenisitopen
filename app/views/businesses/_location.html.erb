@@ -168,10 +168,10 @@
         window.location.href = '<%= categorie_search_businesses_path('company_name' => business.company_name, :city => business.city, :address => business.address) %>';
       });
 
-      var b = "<%= Date.today.strftime('%a') %>"
+      var b = "<%= Time.zone.now.strftime('%a') %>"
       $(function() {
         setInterval(function() {
-          if ((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) > <%= (Time.now).strftime("%H").to_i %>) {
+          if ((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) > <%= (Time.zone.now).strftime("%H").to_i %>) {
             $("#open_" +<%= business.id %>).show();
           } else {
             $("#close_" +<%= business.id %>).show();
