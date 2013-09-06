@@ -7,20 +7,7 @@ namespace :whenitopen do
     file = "#{Rails.root}/lib/Business.csv"
     CSV.foreach(file, headers: true) do |row|
       business = Business.find_by_company_name_and_city(row[0],row[2]) || Business.new
-      business.mon_from = row[6]
-      business.mon_to = row[7]
-      business.tue_from = row[8]
-      business.tue_to = row[9]
-      business.wed_from = row[10]
-      business.wed_to = row[11]
-      business.thu_from = row[12]
-      business.thu_to = row[13]
-      business.fri_from = row[14]
-      business.fri_to = row[15]
-      business.sat_from = row[16]
-      business.sat_to = row[17]
-      business.sun_from = row[18]
-      business.sun_to = row[19]
+      business.attributes = row.to_hash
       business.save!
     end
   end
