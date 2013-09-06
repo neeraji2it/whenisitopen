@@ -34,9 +34,6 @@ class ImportsController < ApplicationController
       # url = "http://www.yelp.com/search?find_desc=#{business.split(' ').join('+')}&find_loc=Edmonton%2C+AB&ns=1"
       url = "http://www.yelp.com/search?find_desc=#{business.company_name.split(' ').join('+')}&find_loc=#{business.city.split(' ').join('+')}%2C+#{business.state}&ns=1"
       data = Nokogiri::HTML(open(url,'User-Agent' => 'ruby'))
-      # Here is where we use the new method to create an object that holds all the
-      # concert listings.  Think of it as an array that we can loop through.  It's
-      # not an array, but it does respond very similarly.
       concerts = data.css('ul.ylist.ylist-bordered.search-results li')
 
       if concerts.empty? != true
