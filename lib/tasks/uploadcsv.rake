@@ -4,9 +4,9 @@ namespace :whenitopen do
 
   desc "Upload the businesses"
 	task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/10to11.csv"
+    file = "#{Rails.root}/lib/Businesses.csv"
     CSV.foreach(file, headers: true) do |row|
-      business = Business.new
+      business = Business.find_by_company_name_and_city(row[1],row[3]) || Business.new
       business.attributes = row.to_hash
       business.save!
     end
