@@ -35,6 +35,15 @@ class CreateBusinesses < ActiveRecord::Migration
       t.float :longitude
       t.float :latitude
       t.boolean :gmaps
+      t.string :mon_closed
+      t.string :tue_closed
+      t.string :wed_closed
+      t.string :thu_closed
+      t.string :fri_closed
+      t.string :sat_closed
+      t.string :sun_closed
+      t.string :status
+      t.timestamps
     end
   end
 end
