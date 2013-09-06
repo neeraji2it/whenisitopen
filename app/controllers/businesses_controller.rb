@@ -25,8 +25,7 @@ class BusinessesController < ApplicationController
   end
 
   def cities
-    @cities = Business.select('DISTINCT city,state').where("city ILIKE ?", "#{params[:city]}%") if Rails.env == 'production'
-    @cities = Business.select('DISTINCT city,state').where("city LIKE ?", "#{params[:city]}%") if Rails.env == 'development'
+    @cities = Business.select('DISTINCT city,state').where("city LIKE ?", "#{params[:city]}%") 
     respond_to do |format|
       format.js
     end
@@ -34,8 +33,7 @@ class BusinessesController < ApplicationController
 
   def city_businesses
     @name = params[:company_name].split(' and').join(' &')
-    @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name ILIKE ? and city = ?", "#{@name}%", "#{session[:city]}") if Rails.env == 'production'
-    @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? and city = ?", "#{@name}%", "#{session[:city]}") if Rails.env == 'development'
+    @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? and city = ?", "#{@name}%", "#{session[:city]}") 
     respond_to do |format|
       format.js
     end
@@ -44,14 +42,13 @@ class BusinessesController < ApplicationController
   def search
     if params[:company_name].present?
       @name = params[:company_name].split(' and').join(' &')
-      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'production'
-      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 if Rails.env == 'development'
+      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 
       if @ab_business_databases.empty?
         @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
       else
         a = Date.today.strftime("%a").downcase+"_to"
         @nears = Business.near(@name,100, :order =>:distance)
-        @all_categories = Business.where("category = ? and #{a} > '#{Time.zone.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
+        @all_categories = Business.where("category = ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
         @categorie_with_cond = @nears.where_values.reduce(:and)
         @categorie_with = @all_categories.where_values.reduce(:and)
         @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
@@ -66,11 +63,10 @@ class BusinessesController < ApplicationController
   end
   
   def categorie_search
-    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'production'
-    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 if Rails.env == 'development'
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 
     a = Date.today.strftime("%a").downcase+"_to"
     @nears = Business.near(params[:company_name],100, :order =>:distance)
-    @all_categories = Business.where("category = ? and #{a} > '#{Time.zone.now.strftime("%H").to_i - 12}' and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
+    @all_categories = Business.where("category = ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
     @categorie_with_cond = @nears.where_values.reduce(:and)
     @categorie_with = @all_categories.where_values.reduce(:and)
     @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
