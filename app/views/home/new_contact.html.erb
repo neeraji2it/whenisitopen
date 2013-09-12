@@ -25,11 +25,11 @@
         <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50', :style => 'resize: none;'%>
         <br/>
         <br/>
-        <button type="submit" value="Save" style="background: none; border: none;"><%=  image_tag("/assets/Send_message_button.png", :border=>'0', :width=>"140", :height=>"41") %></button>
+        <button type="submit" value="Save" style="background: none; border: none;"><%=  image_tag("/assets/Send_message_button.png", :border=>'0', :width=>"275", :height=>"54") %></button>
       <% end %>
-        <div>
-          <%= image_tag("/assets/icons.jpg", :width=>"351", :height=>"96") %>
-        </div>
+      <div style="position: relative;top: 15px;">
+        <%= image_tag("/assets/icons.jpg", :width=>"351", :height=>"96") %>
+      </div>
     </div>
     <div style="float: right;left: 90px;position: relative;top: -465px;">
       <%= image_tag("/assets/contact-hands.png") %>
