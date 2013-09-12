@@ -4,42 +4,31 @@ namespace :whenitopen do
 
   desc "Upload the businesses"
 	task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/1to2.csv"
-    CSV.foreach(file) do |row|
+    file = "#{Rails.root}/lib/timies.csv"
+    CSV.foreach(file, :headers => true) do |row|
       @user = Business.new(
-        :address => row[1],
-        :city => row[2],
-        :company_name => row[3],
-        :contact_name => row[4],
-        :employee => row[5],
-        :fax_number => row[6],
-        :gender => row[7],
-        :major_division_description => row[8],
-        :phone => row[9],
-        :state => row[10],
-        :sales => row[11],
-        :sic_2_code_description => row[12],
-        :sic_4_code=> row[13],
-        :category=> row[14],
-        :title=> row[15],
-        :url=> row[16],
-        :mon_from=> row[17],
-        :mon_to=> row[18],
-        :tue_from=> row[19],
-        :tue_to=> row[20],
-        :wed_from=> row[21],
-        :wed_to=> row[22],
-        :thu_from=> row[23],
-        :thu_to=> row[24],
-        :fri_from=> row[25],
-        :fri_to=> row[26],
-        :sat_from=> row[27],
-        :sat_to=> row[28],
-        :sun_from=> row[29],
-        :sun_to=> row[30],
-        :zip_code=> row[31],
-        :longitude=> row[32],
-        :latitude=> row[33]
+        :address => row[0],
+        :city => row[1],
+        :company_name => row[2],
+        :phone => row[3],
+        :state => row[4],
+        :mon_from=> row[5],
+        :mon_to=> row[6],
+        :tue_from=> row[7],
+        :tue_to=> row[8],
+        :wed_from=> row[9],
+        :wed_to=> row[10],
+        :thu_from=> row[11],
+        :thu_to=> row[12],
+        :fri_from=> row[13],
+        :fri_to=> row[14],
+        :sat_from=> row[15],
+        :sat_to=> row[16],
+        :sun_from=> row[17],
+        :sun_to=> row[18],
+        :zip_code=> row[19],
+        :longitude=> row[20],
+        :latitude=> row[21]
       )
       @user.save!
     end
