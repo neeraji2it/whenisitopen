@@ -517,9 +517,6 @@ body.nohours {
 .logo img {
     position:absolute;
 }
-body.cont {
-    background: url("/assets/cont-bg.png") repeat center top;
-}
 .headewrap .search-part {
     float: right;
     margin-right: 110px;
