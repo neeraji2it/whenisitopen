@@ -23,8 +23,7 @@ class Business < ActiveRecord::Base
   end
   
   def self.search_spelling_suggestions(query,city)
-    @name = query.split(' and').join(' &')
-    word = Business.where("(company_name sounds LIKE ? or company_name sounds LIKE ?) and city sounds LIKE ?","#{query}%","#{@name}","#{city}%").limit(1)
+    word = Business.where("company_name LIKE ? and city sounds LIKE ?","%#{query.slice(0..2)}%","#{city}%").limit(1)
     if word
       word
     end

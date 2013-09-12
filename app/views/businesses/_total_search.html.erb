@@ -272,12 +272,12 @@
           <div id="business_edit"><%= "Edit Business" %></div>
         <% end %>
       <% end %>
+      <script>
+        $('#business_edit').click(function() {
+          window.location.href = '<%= edit_business_path(business) %>';
+        });
+      </script>
     <% end %>
-    <script>
-      $('#business_edit').click(function() {
-        window.location.href = '<%= edit_business_path(business) %>';
-      });
-    </script>
   </div>
 </div>
 <% if !@spelling_suggestion %>

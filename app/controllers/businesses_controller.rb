@@ -44,7 +44,7 @@ class BusinessesController < ApplicationController
       @name = params[:company_name].split(' and').join(' &')
       @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 
       if @ab_business_databases.empty?
-        @spelling_suggestion = Business.search_spelling_suggestions(params[:company_name], session[:city])
+        @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
       else
         a = Date.today.strftime("%a").downcase+"_to"
         @nears = Business.near(@name,100, :order =>:distance)
