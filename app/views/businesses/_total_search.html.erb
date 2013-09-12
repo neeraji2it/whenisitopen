@@ -59,7 +59,7 @@
                       <td>
                         <span class="day">Monday </span>
                         <span class="val">
-                          <% if (business.mon_from == 'Closed' or business.mon_from.blank? or business.mon_to == 'Closed' or business.mon_to.blank?) %>
+                          <% if (business.mon_from == 'CLOSED' or business.mon_from == 'Closed' or business.mon_from.blank? or business.mon_to == 'Closed' or business.mon_to.blank?) %>
                             <span class="border_time" id="Mon" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -82,7 +82,7 @@
                       <td>
                         <span class="day">Tuesday </span>
                         <span class="val">
-                          <% if (business.tue_from == 'Closed' or business.tue_from.blank? or business.tue_to == 'Closed' or business.tue_to.blank?) %>
+                          <% if (business.tue_from == 'CLOSED' or business.tue_from == 'Closed' or business.tue_from.blank? or business.tue_to == 'Closed' or business.tue_to.blank?) %>
                             <span class="border_time" id="Tue" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -105,7 +105,7 @@
                       <td>
                         <span class="day">Wednesday </span>
                         <span class="val">
-                          <% if (business.wed_from == 'Closed' or business.wed_from.blank? or business.wed_to == 'Closed'  or business.wed_to.blank?) %>
+                          <% if (business.wed_from == 'CLOSED' or business.wed_from == 'Closed' or business.wed_from.blank? or business.wed_to == 'Closed'  or business.wed_to.blank?) %>
                             <span class="border_time" id="Wed" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -128,7 +128,7 @@
                       <td>
                         <span class="day">Thursday </span>
                         <span class="val">
-                          <% if (business.thu_from == 'Closed' or business.thu_from.blank? or business.thu_to == 'Closed' or business.thu_to.blank?) %>
+                          <% if (business.thu_from == 'CLOSED' or business.thu_from == 'Closed' or business.thu_from.blank? or business.thu_to == 'Closed' or business.thu_to.blank?) %>
                             <span class="border_time" id="Thu" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -155,7 +155,7 @@
                       <td>
                         <span class="day">Friday </span>
                         <span class="val">
-                          <% if (business.fri_from == 'Closed' or business.fri_from.blank? or business.fri_to == 'Closed'  or business.fri_to.blank?) %>
+                          <% if (business.fri_from == 'CLOSED' or business.fri_from == 'Closed' or business.fri_from.blank? or business.fri_to == 'Closed'  or business.fri_to.blank?) %>
                             <span class="border_time" id="Fri" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -178,7 +178,7 @@
                       <td>
                         <span class="day">Saturday </span>
                         <span class="val">
-                          <% if (business.sat_from == 'Closed' or business.sat_from.blank? or business.sat_to == 'Closed' or business.sat_to.blank?) %>
+                          <% if (business.sat_from == 'CLOSED' or business.sat_from == 'Closed' or business.sat_from.blank? or business.sat_to == 'Closed' or business.sat_to.blank?) %>
                             <span class="border_time" id="Sat" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -201,7 +201,7 @@
                       <td>
                         <span class="day">Sunday </span>
                         <span class="val">
-                          <% if (business.sun_from == 'Closed' or business.sun_from.blank? or business.sun_to == 'Closed' or business.sun_to.blank?) %>
+                          <% if (business.sun_from == 'CLOSED' or business.sun_from == 'Closed' or business.sun_from.blank? or business.sun_to == 'Closed' or business.sun_to.blank?) %>
                             <span class="border_time" id="Sun" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                        $(document).ready(function() {
-                          $('body').removeClass('open').addClass('nohour');
-                          $(".logo a img").attr('src', "/assets/when-image-open.png");
-                          $("#ssss").attr('src', "/assets/no_hour.png");
-                          $("#ssss").css({top: 173});
-                          $(".location").css({top: 13});
-                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                          $(".hand-icon").css('padding-top', '110px');
-                        })
+                      $(document).ready(function() {
+                        $('body').removeClass('open').addClass('nohour');
+                        $(".logo a img").attr('src', "/assets/when-image-open.png");
+                        $("#ssss").attr('src', "/assets/no_hour.png");
+                        $("#ssss").css({top: 173});
+                        $(".location").css({top: 13});
+                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                        $(".hand-icon").css('padding-top', '110px');
+                      })
             </script>
           <% end %>
         <% end %>
