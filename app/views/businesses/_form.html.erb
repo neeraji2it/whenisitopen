@@ -4,37 +4,37 @@
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :company_name, "BUSINESS NAME:" %></td>
-      <td><%= f.text_field :company_name, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :company_name, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :address, "ADDRESS:" %></td>
-      <td><%= f.text_field :address, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :address, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :city, "CITY:" %></td>
-      <td><%= f.text_field :city, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :city, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :state, "PROVINCE:" %></td>
-      <td><%= f.text_field :state, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.select :state,options_for_select(STATES, :selected => f.object.state) %></td>
     </tr>
     <% if @business.new_record? %>
       <tr>
         <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
-        <td><%= f.text_field :category, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+        <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").map{|c| [c.category]}, :selected => f.object.state) %></td>
       </tr>
     <% end %>
     <tr>
       <td style="text-align: right;"><%= f.label :longitude, "LONGITUDE:" %></td>
-      <td><%= f.text_field :longitude, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :longitude, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :latitude, "LATITUDE" %></td>
-      <td><%= f.text_field :latitude, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :latitude, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :phone, "PHONE NUMBER:" %></td>
-      <td><%= f.text_field :phone, :class => 'text', 'data-autosize-input' =>  '40' %></td>
+      <td><%= f.text_field :phone, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
       <td style="text-align: right;"><%= f.label :url, "WEBSITE URL:" %></td>
@@ -85,3 +85,13 @@
     $('#main').css({'min-height': 0, 'background-color': ''});
   })
 </script>
+<style>
+  #business_category,#business_state{
+    background-color: E5E5E5;
+    border: 1px solid #E5E5E5;
+    box-shadow: 1px;
+    max-width: 190px;
+    padding: 8px;
+    border-radius: 10px;
+  }
+</style>

@@ -65,7 +65,7 @@ Whenitopen::Application.configure do
     :port                 => 587,
     :domain               => 'gmail.com',
     :user_name            => 'whenisitopen@gmail.com',
-    :password             => 'whenisitopen123',
+    :password             => 'whenisitopen502',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
