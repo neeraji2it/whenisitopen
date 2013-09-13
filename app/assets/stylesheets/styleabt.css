@@ -65,7 +65,8 @@ position:absolute;
 }
 .aboutTitle {
 	float:left;
-	width:100%	
+	width:100%;
+        margin-top: -20px;
 }
 #aboutTagline {
 	width:100%;

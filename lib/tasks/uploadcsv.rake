@@ -6,31 +6,9 @@ namespace :whenitopen do
 	task :upload_csv => :environment do
     file = "#{Rails.root}/lib/timies.csv"
     CSV.foreach(file, :headers => true) do |row|
-      @user = Business.new(
-        :address => row[0],
-        :city => row[1],
-        :company_name => row[2],
-        :phone => row[3],
-        :state => row[4],
-        :mon_from=> row[5],
-        :mon_to=> row[6],
-        :tue_from=> row[7],
-        :tue_to=> row[8],
-        :wed_from=> row[9],
-        :wed_to=> row[10],
-        :thu_from=> row[11],
-        :thu_to=> row[12],
-        :fri_from=> row[13],
-        :fri_to=> row[14],
-        :sat_from=> row[15],
-        :sat_to=> row[16],
-        :sun_from=> row[17],
-        :sun_to=> row[18],
-        :zip_code=> row[19],
-        :longitude=> row[20],
-        :latitude=> row[21]
-      )
-      @user.save!
+      business = Business.find_by_city_and_company_name(row[1],row[2]) || Business.new
+      business.attributes = row.to_hash
+      business.save!
     end
   end
   

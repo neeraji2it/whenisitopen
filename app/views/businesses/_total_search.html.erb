@@ -237,27 +237,27 @@
             <%= render :partial => 'script' %>
           <% else %>
             <% if business.phone.present? %>
-              <div class="red-rib" style="margin-top:15px;margin-left: 40px;">
+              <div class="red-rib" style="margin-top:50px;margin-left: 40px;">
                 <div class="closeOpenLogo" style="display: block;">
                   <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
                 </div>
               </div>
             <% else %>
-              <div class="red-ribs" style="margin-top:15px;margin-left: 40px;">
+              <div class="red-ribs" style="margin-top:50px;margin-left: 40px;">
                 <div class="closeOpenLogo" style="display: block;">
                 </div>
               </div>
             <% end %>
             <script>
-                      $(document).ready(function() {
-                        $('body').removeClass('open').addClass('nohour');
-                        $(".logo a img").attr('src', "/assets/when-image-open.png");
-                        $("#ssss").attr('src', "/assets/no_hour.png");
-                        $("#ssss").css({top: 173});
-                        $(".location").css({top: 13});
-                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '110px');
-                      })
+                        $(document).ready(function() {
+                          $('body').removeClass('open').addClass('nohour');
+                          $(".logo a img").attr('src', "/assets/when-image-open.png");
+                          $("#ssss").attr('src', "/assets/no_hour.png");
+                          $("#ssss").css({top: 173});
+                          $(".location").css({top: 13});
+                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                          $(".hand-icon").css('padding-top', '145px');
+                        })
             </script>
           <% end %>
         <% end %>
