@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def contact(contact)
     @contact = contact
-    mail(:to => 'info@whenisitopen.ca', :subject => "Contact")
+    mail(:to => contact.email, :subject => "Contact")
   end
 end
