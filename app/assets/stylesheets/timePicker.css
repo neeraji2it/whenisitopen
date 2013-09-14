@@ -40,3 +40,16 @@ div.time-picker li.selected {
     top: -4px;
     left: -2px;
 }
+
+#business_category,#business_state{
+    background-color: E5E5E5;
+    border: 1px solid #E5E5E5;
+    box-shadow: 1px;
+    max-width: 190px;
+    padding: 8px;
+    border-radius: 10px;
+}
+#time1, #time2, #time3, #time4, #time5, #time6, #time7, #time8, #time9, #time10, #time11, #time12, #time13, #time14{
+    width: 68px;
+    padding: 2px;
+}

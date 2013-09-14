@@ -6,7 +6,7 @@
     <%= render :partial => 'businesses/search' %>
   </div>
   <div style="position: relative;top: 120px;width: 99%;padding: 5px;">
-    <div style="float: right;left: 860px;position: relative;top: -5px;">
+    <div style="right: 10px; position: absolute;">
       <%= link_to "Admin Page", imports_path() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <table border="1" width="100%" style="float: left;margin-top: -65px;text-align: center;font-size: 12px;">
@@ -52,7 +52,7 @@
           <td><%= business.sun_from %></td>
           <td><%= business.sun_to %></td>
           <td>
-            <%= link_to "Confirm", confirm_business_business_path(business, :status => 'confirm'), :method => :put %> |
+            <%= link_to "Accept", confirm_business_business_path(business, :status => 'accept'), :method => :put %> |
             <%= link_to "Reject", confirm_business_business_path(business), :method => :put %>
           </td>
         </tr>

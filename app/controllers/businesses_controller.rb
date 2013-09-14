@@ -97,7 +97,7 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     @admin = Admin.first
     sign_in(:admin,@admin,:bypass => true)
-    if params[:status] == 'confirm'
+    if params[:status] == 'accept'
       @business.update_attribute(:status, 'confirmed') if current_admin
     else
       @business.update_attribute(:status, 'rejected') if current_admin

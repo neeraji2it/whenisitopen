@@ -157,8 +157,10 @@
                 </span>
               </td>
             </tr>
-          <div id="open_<%= business.id %>" style="display: none;position: relative;left: 2px;text-align: center;"><%= image_tag("/assets/opensidebar.png")%></div>
-          <div id="close_<%= business.id %>" style="display: none;"><%= image_tag("/assets/closedsidebar.png")%></div>
+            <% if (business.status != 'pending' or business.status != 'rejected') and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
+            <div id="open_<%= business.id %>" style="display: none;position: relative;left: 2px;text-align: center;"><%= image_tag("/assets/opensidebar.png")%></div>
+            <div id="close_<%= business.id %>" style="display: none;"><%= image_tag("/assets/closedsidebar.png")%></div>
+          <% end %>
           </tbody>
         </table>
       </div>

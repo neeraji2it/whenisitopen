@@ -232,7 +232,7 @@
         var h = time.getHours();
         var hours = settings.show24Hours ? h : (((h + 11) % 12) + 1);
         var minutes = time.getMinutes();
-        return formatNumber(hours) + settings.separator + formatNumber(minutes) + (settings.show24Hours ? '' : ((h < 12) ? ' AM' : ' PM'));
+        return formatNumber(hours) + settings.separator + formatNumber(minutes) + (settings.show24Hours ? '' : ((h < 12) ? ' am' : ' pm'));
     }
 
     function formatNumber(value) {
@@ -251,10 +251,10 @@
 
             // Convert AM/PM hour to 24-hour format.
             if (!settings.show24Hours) {
-                if (hours === 12 && input.indexOf('AM') !== -1) {
+                if (hours === 12 && input.indexOf('am') !== -1) {
                     hours = 0;
                 }
-                else if (hours !== 12 && input.indexOf('PM') !== -1) {
+                else if (hours !== 12 && input.indexOf('pm') !== -1) {
                     hours += 12;
                 }
             }
