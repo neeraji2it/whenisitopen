@@ -1,7 +1,6 @@
 require 'csv'
 require 'heroku-api'
 namespace :whenitopen do
-
   desc "Restart app by process and time table"
   task :restart => :environment do
     time_hash = {
@@ -18,10 +17,10 @@ namespace :whenitopen do
     processes = time_hash[Time.now.hour]
     processes.each {|process| restart_process(process)} if processes
   end
-
+  
   def restart_process(name)
     puts "restarting process #{name}:"
-    heroku = Heroku::API.new('e7b6434e-8977-4e1f-9174-1c84c75fc4a5')  
-    heroku.ps_restart(ENV['APP_NAME'])
+    heroku = Heroku::API.new(:api_key => 'e7b6434e-8977-4e1f-9174-1c84c75fc4a5')
+    heroku.post_ps_scale(ENV['APP_NAME'], 'web', 2)
   end
 end
