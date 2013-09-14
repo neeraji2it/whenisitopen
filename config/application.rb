@@ -34,9 +34,6 @@ module Whenitopen
     if Rails.env == 'production'
       config.time_zone = 'Eastern Time (US & Canada)'
       config.active_record.default_timezone = :local
-    else
-      config.time_zone = 'Asia/Kolkata'
-      config.active_record.default_timezone = :local
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.
