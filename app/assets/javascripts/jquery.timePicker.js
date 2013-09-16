@@ -212,7 +212,7 @@
     $.fn.timePicker.defaults = {
         step: 15,
         startTime: new Date(0, 0, 0, 01, 0, 0),
-        endTime: new Date(0, 0, 0, 11, 45, 0),
+        endTime: new Date(0, 0, 0, 12, 00, 0),
         separator: ':',
         show24Hours: true
     };
@@ -232,11 +232,11 @@
         var h = time.getHours();
         var hours = settings.show24Hours ? h : (((h + 11) % 12) + 1);
         var minutes = time.getMinutes();
-        return formatNumber(hours) + settings.separator + formatNumber(minutes) + (settings.show24Hours ? '' : ((h < 12) ? ' AM' : ' PM'));
+        return formatNumber(hours) + settings.separator + formatNumber(minutes) + (settings.show24Hours ? '' : ((h < 12) ? ' am' : ' pm'));
     }
 
     function formatNumber(value) {
-        return (value < 10 ? '' : '') + value;
+        return (value < 10 ? '0' : '') + value;
     }
 
     function timeToDate(input, settings) {
@@ -251,10 +251,10 @@
 
             // Convert AM/PM hour to 24-hour format.
             if (!settings.show24Hours) {
-                if (hours === 12 && input.indexOf('AM') !== -1) {
+                if (hours === 12 && input.indexOf('am') !== -1) {
                     hours = 0;
                 }
-                else if (hours !== 12 && input.indexOf('PM') !== -1) {
+                else if (hours !== 12 && input.indexOf('pm') !== -1) {
                     hours += 12;
                 }
             }

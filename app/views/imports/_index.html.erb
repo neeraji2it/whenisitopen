@@ -1,0 +1,77 @@
+<div class="con-header" style="min-height: 1570px;height: auto;">
+  <div class="headewrap">
+    <div class="logo">
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), imports_path %>
+    </div>
+    <%= render :partial => 'businesses/search' %>
+  </div>
+  <div style="position: relative;top: 120px;width: 99%;padding: 5px;">
+    <div style="right: 10px; position: absolute;">
+      <%= link_to "Edited Businesses", pending_businesses_businesses_path() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to "Add New Business", new_business_path() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to "Import Csv", import_imports_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to "Export Csv", imports_path(:format => 'csv') %>
+    </div>
+    Select: <%= text_field_tag 'per_page', params[:per_page].to_i, :size => 4, :onchange => "if(this.value){window.location='?per_page='+this.value;}" %>
+    <table border="1" width="100%" style="float: left;margin-top: -65px;text-align: center;font-size: 12px;">
+      <br /><tr style="font-size: 10px;background-color: #60BED2;">
+        <th>Business Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Mon From</th>
+        <th>Mon To</th>
+        <th>Tue From</th>
+        <th>Tue To</th>
+        <th>Wed From</th>
+        <th>Wed To</th>
+        <th>Thu From</th>
+        <th>Thu To</th>
+        <th>Fri From</th>
+        <th>Fri To</th>
+        <th>Sat From</th>
+        <th>Sat To</th>
+        <th>Sun From</th>
+        <th>Sun To</th>
+        <th>Actions</th>
+      </tr>
+      <% for business in @businesses %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= business.company_name %></td>
+          <td><%= business.address %></td>
+          <td><%= business.city %></td>
+          <td><%= business.state %></td>
+          <td><%= business.mon_from %></td>
+          <td><%= business.mon_to %></td>
+          <td><%= business.tue_from %></td>
+          <td><%= business.tue_to %></td>
+          <td><%= business.wed_from %></td>
+          <td><%= business.wed_to %></td>
+          <td><%= business.thu_from %></td>
+          <td><%= business.thu_to %></td>
+          <td><%= business.fri_from %></td>
+          <td><%= business.fri_to %></td>
+          <td><%= business.sat_from %></td>
+          <td><%= business.sat_to %></td>
+          <td><%= business.sun_from %></td>
+          <td><%= business.sun_to %></td>
+          <td>
+            <%= link_to "Edit", edit_business_path(business) %> |
+            <%= link_to "Delete", business_path(business), :method => "DELETE", :confirm => "Are you sure." %>
+          </td>
+        </tr>
+      <% end %>
+    </table><br />
+  </div>
+</div>
+<style>
+  .footer{
+    display: none;
+  }
+  tr.odd{
+    background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+  }
+  tr.even{
+    background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+  }
+</style>

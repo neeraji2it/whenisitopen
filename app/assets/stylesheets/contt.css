@@ -21,8 +21,8 @@
 
 .page-title1 p
 {
-    color:#A3A3A3
-        display: block;
+    color:#A3A3A3;
+    display: block;
     margin: 1em 0;
     font-family: arial,sans-serif;
     font-size: 16px;
@@ -30,56 +30,24 @@
 }
 #ContactForm1
 {
-    color: #4A4A4A;
-    font-family: arial,sans-serif;
+    color: #00506A;
+    font-family:'Cooper Std Black';
     font-size: 16px;
     font-weight: bold;
     margin: 0;
     padding: 0;
 
 }
-#ContactForm1 .name
-{
-    background: url("/assets/search-bg.png") no-repeat scroll 0 0 transparent;
-    border: medium none;
-    height: 58px;
-    margin: 10px 0 0;
-    padding: 0 0 1px 10px;
-    width: 517px;
 
+#contact{
+    background-color: #E5E5E5;
+    border: 1px solid #007D8F;
+    box-shadow: 1px;
+    max-width: 510px;
+    padding: 15px;
+    border-radius: 10px;
 }
-#ContactForm1 .email
-{
-    background: url("/assets/search-bg.png") no-repeat scroll 0 0 transparent;
-    border: medium none;
-    height: 58px;
-    margin: 10px 0 0;
-    padding: 0 0 1px 10px;
-    width: 517px;
 
-}
-#ContactForm1 .msg
-{
-    background: url("/assets/msg-bg.png") no-repeat scroll 0 0 transparent;
-    border: medium none;
-    height:80px;
-    margin: 10px 0 0;
-    padding: 10px 17px 10px 13px;
-    width: 529px;
-
-}
-#ContactForm1 .sub
-{
-    background: url("/assets/send.png") no-repeat scroll 0 0 transparent;
-    border: medium none;
-    margin: 0 0 51px;
-    padding: 0 0 20px 92px;
-
-}
-#ContactForm1 .sub:hover{
-    opacity:0.84;
-    cursor:pointer;
-}
 .find
 {
     margin: 0 0 23px;

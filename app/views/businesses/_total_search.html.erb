@@ -1,7 +1,7 @@
 <div class="con-header">
   <div class="headewrap">
     <div class="logo">
-      <%= link_to image_tag("/assets/when-image-open.png"), "/" %>
+      <%= current_admin ? (link_to image_tag("/assets/when-image-open.png"), imports_path) : (link_to image_tag("/assets/when-image-open.png"), "/") %>
       <%= image_tag("/assets/auto-service-bg.png", :style => 'position: relative;top: 173px;', :id => 'ssss') %>
     </div>
     <%= render :partial => 'businesses/search' %>
@@ -33,7 +33,7 @@
           <div class="hand-icon">
             <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
           </div>
-          <% if !(business.mon_from.nil? and business.tue_from.nil? and business.wed_from.nil? and business.thu_from.nil? and business.fri_from.nil? and business.sat_from.nil? and business.sun_from.nil?) %>
+          <% if (business.status != 'pending' or business.status != 'rejected') and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
             <div class="red-rib" style="margin-top:27px;">
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
@@ -59,7 +59,7 @@
                       <td>
                         <span class="day">Monday </span>
                         <span class="val">
-                          <% if (business.mon_from == 'Closed' or business.mon_from.nil? or business.mon_to == 'Closed' or business.mon_to.nil?) %>
+                          <% if (business.mon_from == 'CLOSED' or business.mon_from == 'Closed' or business.mon_from.blank? or business.mon_to == 'Closed' or business.mon_to.blank?) %>
                             <span class="border_time" id="Mon" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -82,7 +82,7 @@
                       <td>
                         <span class="day">Tuesday </span>
                         <span class="val">
-                          <% if (business.tue_from == 'Closed' or business.tue_from.nil? or business.tue_to == 'Closed' or business.tue_to.nil?) %>
+                          <% if (business.tue_from == 'CLOSED' or business.tue_from == 'Closed' or business.tue_from.blank? or business.tue_to == 'Closed' or business.tue_to.blank?) %>
                             <span class="border_time" id="Tue" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -105,7 +105,7 @@
                       <td>
                         <span class="day">Wednesday </span>
                         <span class="val">
-                          <% if (business.wed_from == 'Closed' or business.wed_from.nil? or business.wed_to == 'Closed'  or business.wed_to.nil?) %>
+                          <% if (business.wed_from == 'CLOSED' or business.wed_from == 'Closed' or business.wed_from.blank? or business.wed_to == 'Closed'  or business.wed_to.blank?) %>
                             <span class="border_time" id="Wed" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -128,7 +128,7 @@
                       <td>
                         <span class="day">Thursday </span>
                         <span class="val">
-                          <% if (business.thu_from == 'Closed' or business.thu_from.nil? or business.thu_to == 'Closed' or business.thu_to.nil?) %>
+                          <% if (business.thu_from == 'CLOSED' or business.thu_from == 'Closed' or business.thu_from.blank? or business.thu_to == 'Closed' or business.thu_to.blank?) %>
                             <span class="border_time" id="Thu" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -155,7 +155,7 @@
                       <td>
                         <span class="day">Friday </span>
                         <span class="val">
-                          <% if (business.fri_from == 'Closed' or business.fri_from.nil? or business.fri_to == 'Closed'  or business.fri_to.nil?) %>
+                          <% if (business.fri_from == 'CLOSED' or business.fri_from == 'Closed' or business.fri_from.blank? or business.fri_to == 'Closed'  or business.fri_to.blank?) %>
                             <span class="border_time" id="Fri" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -178,7 +178,7 @@
                       <td>
                         <span class="day">Saturday </span>
                         <span class="val">
-                          <% if (business.sat_from == 'Closed' or business.sat_from.nil? or business.sat_to == 'Closed' or business.sat_to.nil?) %>
+                          <% if (business.sat_from == 'CLOSED' or business.sat_from == 'Closed' or business.sat_from.blank? or business.sat_to == 'Closed' or business.sat_to.blank?) %>
                             <span class="border_time" id="Sat" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -201,7 +201,7 @@
                       <td>
                         <span class="day">Sunday </span>
                         <span class="val">
-                          <% if (business.sun_from == 'Closed' or business.sun_from.nil? or business.sun_to == 'Closed' or business.sun_to.nil?) %>
+                          <% if (business.sun_from == 'CLOSED' or business.sun_from == 'Closed' or business.sun_from.blank? or business.sun_to == 'Closed' or business.sun_to.blank?) %>
                             <span class="border_time" id="Sun" style="position: relative;left: -20px;">
                               Closed
                             </span>
@@ -237,13 +237,13 @@
             <%= render :partial => 'script' %>
           <% else %>
             <% if business.phone.present? %>
-              <div class="red-rib" style="margin-top:15px;margin-left: 40px;">
+              <div class="red-rib" style="margin-top:50px;margin-left: 40px;">
                 <div class="closeOpenLogo" style="display: block;">
                   <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
                 </div>
               </div>
             <% else %>
-              <div class="red-ribs" style="margin-top:15px;margin-left: 40px;">
+              <div class="red-ribs" style="margin-top:50px;margin-left: 40px;">
                 <div class="closeOpenLogo" style="display: block;">
                 </div>
               </div>
@@ -254,9 +254,9 @@
                         $(".logo a img").attr('src', "/assets/when-image-open.png");
                         $("#ssss").attr('src', "/assets/no_hour.png");
                         $("#ssss").css({top: 173});
-                        $(".location").css({top: 13});
+                        $(".location").css({top: 10});
                         $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '110px');
+                        $(".hand-icon").css('padding-top', '145px');
                       })
             </script>
           <% end %>
@@ -266,12 +266,17 @@
     <div style="clear: both;"></div>
     <% if !@spelling_suggestion %>
       <% if current_admin %>
-        <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
+        <div id="business_edit"><%= "Edit Business" %></div>
       <% else %>
         <% if (business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
-          <div id="business_edit"><%= link_to "Edit Business", edit_business_path(business), :style => 'color: black;text-decoration: none;' %></div>
+          <div id="business_edit"><%= "Edit Business" %></div>
         <% end %>
       <% end %>
+      <script>
+        $('#business_edit').click(function() {
+          window.location.href = '<%= edit_business_path(business) %>';
+        });
+      </script>
     <% end %>
   </div>
 </div>

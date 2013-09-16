@@ -1,7 +1,7 @@
 <div class="innerContainer" style="margin: 0 auto; min-height: 915px; width: 980px;padding-top: 0px;">
   <div id="ContactContainer1">
     <div class="abtcon" style="width: 550px;position: relative;left: -170px;">
-      <h1 class="page-title1" style="color: #007D8F;">Contact us around the clock.</h1>
+      <h1 class="page-title1" style="color: #00506A;font-family:'Cooper Std Black'">Contact us around the clock.</h1>
       <% @contact.errors.full_messages.each do |msg| %>
         <ul>
           <li style = 'color: red;'>
@@ -10,23 +10,29 @@
         </ul>
       <% end %>
       <%= form_for @contact, :url =>  post_contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
-        <span style="color: #007D8F;">Your Name:</span>
+        <span>Your Name:</span>
         <br/>
-        <%= f.text_field :name, :class => "name", :size => "20" %>
-        <br/>
-        <br/>
-        <span style="color: #007D8F;">Your Email:</span>
-        <br/>
-        <%= f.email_field :email, :class => 'email', :size => '40' %>
+        <%= f.text_field :name, :id => 'contact', :size => '50' %>
         <br/>
         <br/>
-        <span style="color: #007D8F;">Your Message:</span>
+        <span>Your Email:</span>
         <br/>
-        <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50', :style => 'resize: none;'%>
+        <%= f.email_field :email, :id => 'contact', :size => '50' %>
         <br/>
         <br/>
-        <input class="sub" type="submit" onclick="show_alert()" value=""/>
+        <span>Your Message:</span>
+        <br/>
+        <%= f.text_area :message, :id => 'contact', :rows => '5', :cols => '57' %>
+        <br/>
+        <br/>
+        <button type="submit" value="Save" style="background: none; border: none;"><%=  image_tag("/assets/Send_message_button.png", :border=>'0', :width=>"275", :height=>"54") %></button>
       <% end %>
+      <div style="position: relative;top: 15px;">
+        <%= link_to image_tag("/assets/g.jpg", :width=>"77", :height=>"84"), "https://plus.google.com/b/118180764312183666395/118180764312183666395/posts" %>
+        <%= link_to image_tag("/assets/in.jpg", :width=>"77", :height=>"84"), "https://www.linkedin.com/" %>
+        <%= link_to image_tag("/assets/t.jpg", :width=>"77", :height=>"84"), "https://twitter.com/WhenisitOpen" %>
+        <%= link_to image_tag("/assets/f.jpg", :width=>"77", :height=>"84"), "http://www.facebook.com/whenisitopen" %>
+      </div>
     </div>
     <div style="float: right;left: 90px;position: relative;top: -465px;">
       <%= image_tag("/assets/contact-hands.png") %>

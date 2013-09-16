@@ -4,7 +4,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" href="http://whenisitopen.ca/favicon.ico" type="image/x-icon" />
     <%= stylesheet_link_tag 'style','styleabt','timePicker', :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", 'jquery.autosize.input' %>
     <title>When Is It Open?</title>
   </head>
   <body class="open">
@@ -55,3 +55,8 @@
     </div>
   </body>
 </html>
+<style>
+  body.cont {
+    background: url("/assets/cont-bg.png") repeat center top;
+  }
+</style>

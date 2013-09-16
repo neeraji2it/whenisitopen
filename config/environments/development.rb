@@ -28,7 +28,7 @@ Whenitopen::Application.configure do
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
     :user_name            => 'whenisitopen@gmail.com',
-    :password             => 'whenisitopen123',
+    :password             => 'whenisitopen502',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
