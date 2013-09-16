@@ -46,7 +46,7 @@ class BusinessesController < ApplicationController
       if @ab_business_databases.empty?
         @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
       else
-        a = Date.today.strftime("%a").downcase+"_to"
+        a = Time.zone.now.strftime("%a").downcase+"_to"
         @nears = Business.near(@name,10000, :order =>:distance)
         @all_categories = Business.where("category = ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
         @categorie_with_cond = @nears.where_values.reduce(:and)
@@ -54,7 +54,7 @@ class BusinessesController < ApplicationController
         @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
         @lat = @ab_business_databases.first.latitude
         @lng = @ab_business_databases.first.longitude
-        @locations = Business.search "('#{@ab_business_databases.first.company_name}')", :geo => [@lat, @lng], :order => "@geodist ASC", :conditions => {:id => "!#{@ab_business_databases.first.id}"}, :page => params[:location_page], :per_page => 3
+        @locations = Business.search @name, :geo => [@lat, @lng], :order => "@geodist ASC", :conditions => {:company_name => "#{@name}",:id => "!#{@ab_business_databases.first.id}"}, :page => params[:location_page], :per_page => 3
       end
     else
       redirect_to root_path
@@ -63,7 +63,7 @@ class BusinessesController < ApplicationController
   
   def categorie_search
     @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 
-    a = Date.today.strftime("%a").downcase+"_to"
+    a = Time.zone.now.strftime("%a").downcase+"_to"
     @nears = Business.near(params[:company_name],10000, :order =>:distance)
     @all_categories = Business.where("category = ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
     @categorie_with_cond = @nears.where_values.reduce(:and)

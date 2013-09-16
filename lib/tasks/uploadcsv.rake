@@ -4,15 +4,15 @@ namespace :whenitopen do
   
   desc "Update the existing database through csv file"
   task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/dollarama.csv"
+    file = "#{Rails.root}/lib/costco.csv"
     CSV.foreach(file, headers: true) do |row|
-      business = Business.find_by_city_and_address(row[1],row[0]) || Business.new
+      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
       business.attributes = row.to_hash
       puts business.address
       business.save!
     end
   end
-  
+    
   desc "Restart app by process and time table"
   task :restart => :environment do
     time_hash = {
