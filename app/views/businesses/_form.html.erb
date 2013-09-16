@@ -1,8 +1,6 @@
 <table cellspacing="2" cellpadding="3" style="font-size: 14px;font-weight: bold;font-size: 18px;text-align: left;font-weight: bold;color:#007D8F;font-family: 'House Slant'">
   <tbody>
     <tr>
-    </tr>
-    <tr>
       <td style="text-align: right;"><%= f.label :company_name, "BUSINESS NAME:" %></td>
       <td><%= f.text_field :company_name, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
@@ -74,7 +72,13 @@
     </tr>
     <tr>
       <td></td>
-      <td><div style='position: relative;border: 1px;border-radius: 5px;width: 60px;padding: 5px;text-align: center;left: 35px;margin-top: 10px;background-color: #FF6C00;'><%= f.submit "Save", :style => 'border: 0;background-color: #FF6C00;' %></div></td>
+      <td>
+        <% if @business.new_record? %>
+          <div style='position: relative;border: 1px;border-radius: 5px;width: 60px;padding: 5px;text-align: center;left: 35px;margin-top: 10px;background-color: #FF6C00;'><%= f.submit "Save", :style => 'border: 0;background-color: #FF6C00;' %></div>
+        <% else %>
+          <div style="position: relative;left: -45px;"><button type="submit" value="Save" style="background: none; border: none;cursor: pointer;"><%=  image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></button></div>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>
