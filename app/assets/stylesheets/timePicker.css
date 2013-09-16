@@ -42,7 +42,7 @@ div.time-picker li.selected {
 }
 
 #business_category,#business_state{
-    background-color: E5E5E5;
+    background-color: #E5E5E5;
     border: 1px solid #E5E5E5;
     box-shadow: 1px;
     max-width: 190px;

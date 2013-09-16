@@ -10,19 +10,19 @@
         </ul>
       <% end %>
       <%= form_for @contact, :url =>  post_contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
-        <span style="color: #00506A;font-family:'Cooper Std Black'">Your Name:</span>
+        <span>Your Name:</span>
         <br/>
-        <%= f.text_field :name, :class => "name", :size => "20" %>
-        <br/>
-        <br/>
-        <span style="color: #00506A;font-family:'Cooper Std Black'">Your Email:</span>
-        <br/>
-        <%= f.email_field :email, :class => 'email', :size => '40' %>
+        <%= f.text_field :name, :id => 'contact', :size => '50' %>
         <br/>
         <br/>
-        <span style="color: #00506A;font-family:'Cooper Std Black'">Your Message:</span>
+        <span>Your Email:</span>
         <br/>
-        <%= f.text_area :message, :class => 'msg', :rows => '5', :cols => '50', :style => 'resize: none;'%>
+        <%= f.email_field :email, :id => 'contact', :size => '50' %>
+        <br/>
+        <br/>
+        <span>Your Message:</span>
+        <br/>
+        <%= f.text_area :message, :id => 'contact', :rows => '5', :cols => '57' %>
         <br/>
         <br/>
         <button type="submit" value="Save" style="background: none; border: none;"><%=  image_tag("/assets/Send_message_button.png", :border=>'0', :width=>"275", :height=>"54") %></button>
