@@ -52,10 +52,9 @@ class BusinessesController < ApplicationController
         @categorie_with_cond = @nears.where_values.reduce(:and)
         @categorie_with = @all_categories.where_values.reduce(:and)
         @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
-        @all_locations = Business.where("company_name = ? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)","#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
-        @locations_with_cond = @nears.where_values.reduce(:and)
-        @locations_with = @all_locations.where_values.reduce(:and)
-        @locations = Business.where("(#{@locations_with_cond}) and (#{@locations_with})").paginate :page => params[:location_page], :per_page => 3
+        @lat = @ab_business_databases.first.latitude
+        @lng = @ab_business_databases.first.longitude
+        @locations = Business.search "('#{@ab_business_databases.first.company_name}')", :geo => [@lat, @lng], :order => "@geodist ASC", :conditions => {:id => "!#{@ab_business_databases.first.id}"}, :page => params[:location_page], :per_page => 3
       end
     else
       redirect_to root_path
@@ -70,10 +69,9 @@ class BusinessesController < ApplicationController
     @categorie_with_cond = @nears.where_values.reduce(:and)
     @categorie_with = @all_categories.where_values.reduce(:and)
     @categories = Business.where("(#{@categorie_with_cond}) and (#{@categorie_with})").paginate :page => params[:category_page], :per_page => 9
-    @all_locations = Business.where("company_name = ? and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)","#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
-    @locations_with_cond = @nears.where_values.reduce(:and)
-    @locations_with = @all_locations.where_values.reduce(:and)
-    @locations = Business.where("(#{@locations_with_cond}) and (#{@locations_with})").paginate :page => params[:location_page], :per_page => 3
+    @lat = @ab_business_databases.first.latitude
+    @lng = @ab_business_databases.first.longitude
+    @locations = Business.search "('#{@ab_business_databases.first.company_name}')", :geo => [@lat, @lng], :order => "@geodist ASC", :conditions => {:id => "!#{@ab_business_databases.first.id}"}, :page => params[:location_page], :per_page => 3
     render :action => 'search'
   end
   

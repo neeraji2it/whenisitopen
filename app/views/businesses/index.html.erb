@@ -27,7 +27,7 @@
     <% end %>
   </div>
 </div>
-<%= render :partial => 'businesses/geo_plugin' %>
+<%= render :partial => 'businesses/geo_plugin' if Rails.env == "production" %>
 <script>
         $("#sub").click(function() {
           if ($("#keywords").val() == '') {
