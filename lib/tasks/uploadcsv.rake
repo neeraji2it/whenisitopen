@@ -12,6 +12,39 @@ namespace :whenitopen do
       business.save!
     end
   end
+  
+  desc "Update the existing database through csv file"
+  task :upload_safe => :environment do
+    file = "#{Rails.root}/lib/safe.csv"
+    CSV.foreach(file, headers: true) do |row|
+      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
+      business.attributes = row.to_hash
+      puts business.address
+      business.save!
+    end
+  end
+  
+  desc "Update the existing database through csv file"
+  task :upload_toys => :environment do
+    file = "#{Rails.root}/lib/toys_r_us.csv"
+    CSV.foreach(file, headers: true) do |row|
+      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
+      business.attributes = row.to_hash
+      puts business.address
+      business.save!
+    end
+  end
+  
+  desc "Update the existing database through csv file"
+  task :upload_walmart => :environment do
+    file = "#{Rails.root}/lib/walmart.csv"
+    CSV.foreach(file, headers: true) do |row|
+      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
+      business.attributes = row.to_hash
+      puts business.address
+      business.save!
+    end
+  end
     
   desc "Restart app by process and time table"
   task :restart => :environment do
