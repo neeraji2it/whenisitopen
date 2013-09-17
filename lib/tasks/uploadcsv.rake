@@ -1,29 +1,6 @@
 require 'csv'
 require 'heroku-api'
 namespace :whenitopen do
-  
-  desc "Update the existing database through csv file"
-  task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/costco.csv"
-    CSV.foreach(file, headers: true) do |row|
-      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
-      business.attributes = row.to_hash
-      puts business.address
-      business.save!
-    end
-  end
-  
-  desc "Update the existing database through csv file"
-  task :upload_safe => :environment do
-    file = "#{Rails.root}/lib/safe.csv"
-    CSV.foreach(file, headers: true) do |row|
-      business = Business.find_by_address_and_city(row[0],row[1]) || Business.new
-      business.attributes = row.to_hash
-      puts business.address
-      business.save!
-    end
-  end
-  
   desc "Update the existing database through csv file"
   task :upload_toys => :environment do
     file = "#{Rails.root}/lib/toys_r_us.csv"
