@@ -51,10 +51,18 @@
           var m = $("#" + a).children('sup').text();
           $("." + a).addClass("todaya");
           var liftoff = new Date();
-          if (h == 12) {
-            liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
+          if ($("#" + a + "_to").text().trim() == 'am') {
+            if (h == 12) {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
+            } else {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
+            }
           } else {
-            liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
+            if (h == 12) {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
+            } else {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
+            }
           }
           $('#noDays_' + a).countdown({until: liftoff});
           $('#noDays_' + a).show();
