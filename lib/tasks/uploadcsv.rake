@@ -5,7 +5,15 @@ namespace :whenitopen do
   task :upload_csv => :environment do
     file = "#{Rails.root}/lib/toys_r_us.csv"
     CSV.foreach(file, headers: true) do |row|
-      business = Business.find_by_company_name_and_city(row[2],row[1]) || Business.new
+      business = Business.new
+      business.attributes = row.to_hash
+      puts business.address
+      business.save!
+    end
+    
+    file = "#{Rails.root}/lib/safeway.csv"
+    CSV.foreach(file, headers: true) do |row|
+      business = Business.new
       business.attributes = row.to_hash
       puts business.address
       business.save!
