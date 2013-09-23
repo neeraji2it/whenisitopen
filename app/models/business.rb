@@ -13,9 +13,9 @@ class Business < ActiveRecord::Base
   
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names[1..-1]
+      csv << column_names
       all.each do |business|
-        csv << business.attributes.values_at(*column_names[1..-1])
+        csv << business.attributes.values_at(*column_names)
       end
     end
   end
