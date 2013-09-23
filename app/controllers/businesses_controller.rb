@@ -42,7 +42,7 @@ class BusinessesController < ApplicationController
   def search
     if params[:company_name].present?
       @name = params[:company_name].split(' and').join(' &')
-      @ab_business_databases = Business.search "(#{@name}, *#{session[:city]}*)", :limit => 1 
+      @ab_business_databases = Business.search "(*#{@name}*, *#{session[:city]}*)", :limit => 1 
       if @ab_business_databases.empty?
         @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
       else
@@ -62,7 +62,7 @@ class BusinessesController < ApplicationController
   end
   
   def categorie_search
-    @ab_business_databases = Business.search "(#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1 
+    @ab_business_databases = Business.search "(*#{params[:company_name]}*, *#{params[:city]}*, *#{params[:address]}*)", :limit => 1 
     a = Time.zone.now.strftime("%a").downcase+"_to"
     @nears = Business.near(params[:company_name],10000, :order =>:distance)
     @all_categories = Business.where("category = ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}")
