@@ -16,7 +16,7 @@
               <tbody>
                 <tr>
                   <% if current_admin %>
-                    <%= link_to "Logout", destroy_admin_session_path(), :method => :delete %>
+                    <td><%= link_to "Logout", destroy_admin_session_path(), :method => :delete %></td>
                   <% else %>
                     <td width="65">Like us: </td>
                     <td width="39">
@@ -31,6 +31,9 @@
               </tbody>
             </table>
           </div>
+          <% if params[:controller] == 'businesses' and (params[:action] == 'search' or params[:action] == 'categorie_search')%>
+            <span style="position: relative;left: 295px;font-size: 15px;top: 35px;font-family: 'Tekton Pro';color: #FE6B00;">More business hours added regularly.</span>
+          <%end%>
         </div>
       </div>
       <%= yield %>
@@ -47,6 +50,9 @@
               </li>
               <li>
                 <%= link_to "Terms and Conditions", terms_and_conditions_path %>
+              </li>
+              <li>
+                <%= link_to "Add a Listing", "" %>
               </li>
             </ul>
           </div>

@@ -19,7 +19,7 @@
     <% if @business.new_record? %>
       <tr>
         <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
-        <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").map{|c| [c.category]}, :selected => f.object.state) %></td>
+        <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").map{|c| [c.category]}, :selected => f.object.category) %></td>
       </tr>
     <% end %>
     <tr>
@@ -74,7 +74,7 @@
       <td></td>
       <td>
         <% if @business.new_record? %>
-          <div style='position: relative;border: 1px;border-radius: 5px;width: 60px;padding: 5px;text-align: center;left: 35px;margin-top: 10px;background-color: #FF6C00;'><%= f.submit "Save", :style => 'border: 0;background-color: #FF6C00;' %></div>
+          <div><%= f.submit "Save", :id => "save_button" %></div>
         <% else %>
           <div style="position: relative;left: -45px;"><button type="submit" value="Save" style="background: none; border: none;cursor: pointer;"><%=  image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></button></div>
         <% end %>
