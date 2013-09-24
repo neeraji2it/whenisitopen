@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout :get_layout, :except => ['terms_and_conditions']
+  layout :get_layout
   def aboutus
     @title = "About Us"
   end
@@ -21,10 +21,6 @@ class HomeController < ApplicationController
   end
 
   def terms_and_conditions
-    send_file File.join(Rails.root,"lib/TermsandConditionsDoc.pdf"),
-      :type => 'pdf',
-      :file_name => "Terms and Conditions",
-      :disposition => 'inline',
-      :stream => false
+    @title = "Terms and Conditions"
   end
 end

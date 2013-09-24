@@ -14,7 +14,7 @@
       <div class="firstResult">
         <% for business in @ab_business_databases %>
           <div class="closed-auto-service-para">
-            <div class="location" style="position: relative; font-family:'Arial Black'">
+            <div class="location" style="position: relative; min-height: 145px; font-family:'Arial Black'">
               <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
                 <div id="main_id0">
                   <div class="spacedout1">
@@ -68,12 +68,12 @@
                               <%= business.mon_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.mon_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.mon_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Mon">
                               <%= business.mon_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.mon_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.mon_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -91,12 +91,12 @@
                               <%= business.tue_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.tue_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.tue_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Tue">
                               <%= business.tue_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.tue_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.tue_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -114,12 +114,12 @@
                               <%= business.wed_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.wed_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.wed_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Wed">
                               <%= business.wed_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.wed_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.wed_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -137,12 +137,12 @@
                               <%= business.thu_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.thu_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.thu_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Thu">
                               <%= business.thu_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.thu_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.thu_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -164,12 +164,12 @@
                               <%= business.fri_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.fri_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.fri_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Fri">
                               <%= business.fri_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.fri_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.fri_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -187,12 +187,12 @@
                               <%= business.sat_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.sat_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.sat_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Sat">
                               <%= business.sat_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.sat_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.sat_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -210,12 +210,12 @@
                               <%= business.sun_from.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.sun_from.split(/[: am pm]/).last %></sup>
                             </span>
-                            &nbsp;<sup>am</sup>
+                            &nbsp;<sup><%= business.sun_from.scan(/\d+|\D+/).last  %></sup>
                             <span class="border_time" id="Sun">
                               <%= business.sun_to.split(/[am pm :]/).first  %>
                               <sup class="time_mi"><%= business.sun_to.split(/[: am pm]/).last  %></sup>
                             </span>
-                            &nbsp;<sup>pm</sup>
+                            &nbsp;<sup id="<%= Time.zone.now.strftime("%a") %>_to"><%= business.sun_to.scan(/\d+|\D+/).last  %></sup>
                           <% end %>
                         </span>
                       </td>
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                      $(document).ready(function() {
-                        $('body').removeClass('open').addClass('nohour');
-                        $(".logo a img").attr('src', "/assets/when-image-open.png");
-                        $("#ssss").attr('src', "/assets/no_hour.png");
-                        $("#ssss").css({top: 173});
-                        $(".location").css({top: 10});
-                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '145px');
-                      })
+                        $(document).ready(function() {
+                          $('body').removeClass('open').addClass('nohour');
+                          $(".logo a img").attr('src', "/assets/when-image-open.png");
+                          $("#ssss").attr('src', "/assets/no_hour.png");
+                          $("#ssss").css({top: 173});
+                          $(".location").css({top: 10});
+                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                          $(".hand-icon").css('padding-top', '145px');
+                        })
             </script>
           <% end %>
         <% end %>
@@ -266,7 +266,8 @@
     <div style="clear: both;"></div>
     <% if !@spelling_suggestion %>
       <% if current_admin %>
-        <div id="business_edit"><%= "Edit Business" %></div>
+        <div id="business_edit"><%= "Edit Business" %></div><br />
+        <div id="business_edit"><%= link_to "Delete Business", business_path(business), :method => :delete, :confirm => "Are you sure", :style => 'text-decoration: none;background-color: #FF6C00;' %></div>
       <% else %>
         <% if (business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
           <div id="business_edit"><%= "Edit Business" %></div>
