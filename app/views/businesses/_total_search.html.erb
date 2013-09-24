@@ -14,7 +14,7 @@
       <div class="firstResult">
         <% for business in @ab_business_databases %>
           <div class="closed-auto-service-para">
-            <div class="location" style="position: relative; min-height: 145px; font-family:'Arial Black'">
+            <div class="location" style="top: -10px;position: relative; min-height: 138px; font-family:'Arial Black'">
               <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
                 <div id="main_id0">
                   <div class="spacedout1">
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                        $(document).ready(function() {
-                          $('body').removeClass('open').addClass('nohour');
-                          $(".logo a img").attr('src', "/assets/when-image-open.png");
-                          $("#ssss").attr('src', "/assets/no_hour.png");
-                          $("#ssss").css({top: 173});
-                          $(".location").css({top: 10});
-                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                          $(".hand-icon").css('padding-top', '145px');
-                        })
+                      $(document).ready(function() {
+                        $('body').removeClass('open').addClass('nohour');
+                        $(".logo a img").attr('src', "/assets/when-image-open.png");
+                        $("#ssss").attr('src', "/assets/no_hour.png");
+                        $("#ssss").css({top: 173});
+                        $(".location").css({top: 10});
+                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                        $(".hand-icon").css('padding-top', '145px');
+                      })
             </script>
           <% end %>
         <% end %>

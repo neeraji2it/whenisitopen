@@ -43,14 +43,15 @@
           }
           var liftoff = new Date(y, mn - 1, d);
           liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) - 24, m, 00);
-          $('#noDayss_' + a).countdown({until: liftoff});
+          $('#noDayss_' + a).countdown({until: liftoff, timezone: -4});
           $('#noDayss_' + a).show();
           $('#noDays_' + a).hide();
         } else {
           var h = $("#" + a).text().trim().split(' ')[0]
           var m = $("#" + a).children('sup').text();
           $("." + a).addClass("todaya");
-          var liftoff = new Date();
+          var date = '<%= Time.zone.now.strftime("%Y/%m/%d %H:%M:%S") %>';
+          var liftoff = new Date(date);
           if ($("#" + a + "_to").text().trim() == 'am') {
             if (h == 12) {
               liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
@@ -64,7 +65,7 @@
               liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
             }
           }
-          $('#noDays_' + a).countdown({until: liftoff});
+          $('#noDays_' + a).countdown({until: liftoff, timezone: -4});
           $('#noDays_' + a).show();
           $('#noDayss_' + a).hide();
         }

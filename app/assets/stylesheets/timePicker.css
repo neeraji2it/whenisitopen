@@ -53,3 +53,17 @@ div.time-picker li.selected {
     width: 68px;
     padding: 2px;
 }
+
+#save_button{
+    position:relative;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 110px;
+    padding: 5px;
+    text-align: center;
+    left: 25px;
+    margin-top: 10px;
+    background-color: #60BED2;
+    font-weight: bold;
+}
