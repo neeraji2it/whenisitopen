@@ -4,23 +4,23 @@
       <%= link_to_function "<div class='citySuggest'>#{city.city}, #{city.state}</div>".html_safe ,"text_field_value(this)",:remote => true, :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
     <% end %>
   <% end %>
-  <script>
-    function text_field_value(city) {
-      var cit = $(city).text().split(',')[0];
-      var sta = $(city).text().split(',')[1];
-      $("#city_stater").val($(city).text());
-      $("#ajaxcity").hide();
-      $.ajax({
-        url: '/',
-        data: {
-          city: cit,
-          state: sta
-        },
-        type: 'GET',
-        datatype: 'script',
-        success: function(data) {
-        }
-      });
-    }
-  </script>
 </div>
+<script>
+  function text_field_value(city) {
+    var cit = $(city).text().split(',')[0];
+    var sta = $(city).text().split(',')[1];
+    $("#city_stater").val($(city).text());
+    $("#ajaxcity").hide();
+    $.ajax({
+      url: '/',
+      data: {
+        city: cit,
+        state: sta
+      },
+      type: 'GET',
+      datatype: 'script',
+      success: function(data) {
+      }
+    });
+  }
+</script>
