@@ -1,7 +1,7 @@
 <div class="search-part">
   <div id="resss" style="float:left; padding-left: 80px;">
     <form id="cityForm" method="post">
-      <input id="city_stater" class="city_state" value="<%= session[:city] %>, <%= session[:state] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text"/>
+      <input id="city_stater" class="city_state" value="<%= session[:city] %>,<%= session[:state] %>" onblur="onBlur(this)" onfocus="onFocus(this)" type="text"/>
     </form>
     <div id="ajaxcity" style="display: none;overflow: auto;max-height: 200px;"></div>
   </div>
@@ -19,8 +19,6 @@
             <td>
               <div id="ajaxresults" style="display:none;height: 200px;overflow: auto;"></div>
             </td>
-            <td></td>
-            <td></td>
           </tr>
         </tbody>
       </table>

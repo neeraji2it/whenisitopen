@@ -276,7 +276,7 @@ input.city_state {
     color: #aaa;
     font-size: 16px;
     outline: medium none;
-    padding: 0px 4px 4px 90px;
+    padding: 4px 30px 4px 90px;
     width: 168px !important;
 }
 input.city_state:hover {
