@@ -33,7 +33,7 @@
           <div class="hand-icon">
             <%= image_tag("/assets/like-open.png", :width => '44', :height => '17') %>
           </div>
-          <% if (business.status != 'pending' or business.status != 'rejected') and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
+          <% if (business.status != 'pending' and business.status != 'rejected') and !(business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
             <div class="red-rib" style="margin-top:27px;">
               <div class="closeOpenLogo" style="display: block;">
                 <div id="image_src" style="display: block;"></div>
@@ -237,7 +237,7 @@
             <%= render :partial => 'script', :locals => {:business => business} %>
           <% else %>
             <% if business.phone.present? %>
-              <div class="red-rib" style="margin-top:50px;margin-left: 40px;">
+              <div class="red-rib" style="margin-top:34px;margin-left: 40px;">
                 <div class="closeOpenLogo" style="display: block;">
                   <div id="phone" style="display: block;"><%= number_to_phone(business.phone) %></div>
                 </div>
