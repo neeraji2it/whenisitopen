@@ -1,7 +1,7 @@
 <div>
   <% @cities.each_with_index do |city,index| %>
     <% if city.city.split("'").count == 1 %>
-      <%= link_to_function "<div class='citySuggest'>#{city.city}, #{city.state}</div>".html_safe ,"text_field_value(this)",:remote => true, :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
+      <%= link_to_function "<div class='citySuggest'>#{city.city.capitalize}, #{city.state}</div>".html_safe ,"text_field_value(this)",:remote => true, :style => 'color: #333333;font-family: arial;font-size: 12px;text-decoration: none;' %>
     <% end %>
   <% end %>
 </div>

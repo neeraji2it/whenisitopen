@@ -14,7 +14,7 @@
       <div class="firstResult">
         <% for business in @ab_business_databases %>
           <div class="closed-auto-service-para">
-            <div class="location" style="top: -10px;position: relative; min-height: 138px; font-family:'Arial Black'">
+            <div class="location" style="top: -10px;position: relative; min-height: 165px; font-family:'Arial Black'">
               <div id="0" class="primary_hider" style="padding:0 10px; text-align: center;">
                 <div id="main_id0">
                   <div class="spacedout1">
@@ -249,15 +249,15 @@
               </div>
             <% end %>
             <script>
-                      $(document).ready(function() {
-                        $('body').removeClass('open').addClass('nohour');
-                        $(".logo a img").attr('src', "/assets/when-image-open.png");
-                        $("#ssss").attr('src', "/assets/no_hour.png");
-                        $("#ssss").css({top: 173});
-                        $(".location").css({top: 10});
-                        $(".hand-icon img").attr('src', "/assets/like-nohour.png");
-                        $(".hand-icon").css('padding-top', '145px');
-                      })
+                        $(document).ready(function() {
+                          $('body').removeClass('open').addClass('nohour');
+                          $(".logo a img").attr('src', "/assets/when-image-open.png");
+                          $("#ssss").attr('src', "/assets/no_hour.png");
+                          $("#ssss").css({top: 173});
+                          $(".location").css({top: 10});
+                          $(".hand-icon img").attr('src', "/assets/like-nohour.png");
+                          $(".hand-icon").css('padding-top', '145px');
+                        })
             </script>
           <% end %>
         <% end %>
@@ -266,15 +266,15 @@
     <div style="clear: both;"></div>
     <% if !@spelling_suggestion %>
       <% if current_admin %>
-        <div id="business_edit"><%= "Edit Business" %></div><br />
-        <div id="business_edit"><%= link_to "Delete Business", business_path(business), :method => :delete, :confirm => "Are you sure", :style => 'text-decoration: none;background-color: #FF6C00;' %></div>
+        <div id="business_edit1"><%= image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></div><br />
+        <div id="business_edit"><%= link_to "Click here to delete this listing", business_path(business), :method => :delete, :confirm => "Are you sure", :style => 'text-decoration: none;color: white;font-size: 14px;' %></div>
       <% else %>
         <% if (business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
-          <div id="business_edit"><%= "Edit Business" %></div>
+          <div id="business_edit1"><%= image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></div>
         <% end %>
       <% end %>
       <script>
-        $('#business_edit').click(function() {
+        $('#business_edit1').click(function() {
           window.location.href = '<%= edit_business_path(business) %>';
         });
       </script>

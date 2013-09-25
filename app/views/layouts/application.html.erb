@@ -32,7 +32,7 @@
             </table>
           </div>
           <% if params[:controller] == 'businesses' and (params[:action] == 'search' or params[:action] == 'categorie_search')%>
-            <span style="position: relative;left: 295px;font-size: 15px;top: 35px;font-family: 'Tekton Pro';color: #FE6B00;">More business hours added regularly.</span>
+            <span style="position: relative;left: 295px;font-size: 14px;top: 22px;font-family: 'Tekton Pro';color: #FE8E00;">More business hours added regularly.</span>
           <%end%>
         </div>
       </div>
@@ -43,6 +43,9 @@
           <div class="footer-menu">
             <ul>
               <li>
+                <%= link_to "Add a Listing",  new_business_path %>
+              </li>
+              <li>
                 <%= link_to "About Us", aboutus_path %>
               </li>
               <li>
@@ -50,9 +53,6 @@
               </li>
               <li>
                 <%= link_to "Terms and Conditions", terms_and_conditions_path %>
-              </li>
-              <li>
-                <%= link_to "Add a Listing", "" %>
               </li>
             </ul>
           </div>
