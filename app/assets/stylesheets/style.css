@@ -258,7 +258,7 @@ min-height:600px;*/
 }
 .home #ajaxcity {
     border: 1px solid #7CC6D6 !important;
-    margin-left: 30px !important;
+    margin-left: 28px !important;
     width: 251px !important;
 }
 #ajaxcity {
@@ -276,7 +276,7 @@ input.city_state {
     color: #aaa;
     font-size: 16px;
     outline: medium none;
-    padding: 4px 30px 4px 90px;
+    padding: 4px 26px 4px 90px;
     width: 168px !important;
 }
 input.city_state:hover {
@@ -554,9 +554,9 @@ body.nohours {
     padding: 6px;
     text-align: center;
     left: 15px;
-    margin-top: -45px;
     background-color: #60BCD0;
     cursor: pointer;
+    top: -55px;
 }
 
 #business_edit1{
