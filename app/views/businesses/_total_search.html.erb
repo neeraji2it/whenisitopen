@@ -267,7 +267,7 @@
     <% if !@spelling_suggestion %>
       <% if current_admin %>
         <div id="business_edit1"><%= image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></div><br />
-        <div id="business_edit"><%= link_to "Click here to delete this listing", business_path(business), :method => :delete, :confirm => "Are you sure", :style => 'text-decoration: none;color: white;font-size: 14px;' %></div>
+        <div id="business_edit"><%= link_to "Click here to delete this listing", business_path(business), :method => :delete, :confirm => "Are you sure", :id => 'business_delete' %></div>
       <% else %>
         <% if (business.mon_from.blank? and business.tue_from.blank? and business.wed_from.blank? and business.thu_from.blank? and business.fri_from.blank? and business.sat_from.blank? and business.sun_from.blank?) %>
           <div id="business_edit1" style="margin-bottom: -40px;"><%= image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></div>
