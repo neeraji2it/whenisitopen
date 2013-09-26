@@ -1,12 +1,13 @@
 <script>
-  var a = "<%= Time.zone.now.strftime("%a") %>"
-  var b = "<%= Time.zone.now.strftime("%a").downcase %>"
+  var a = "<%= Time.zone.now.strftime("%a") %>";
+  var b = "<%= Time.zone.now.strftime("%a").downcase %>";
   $(function() {
     setInterval(function() {
       if ($("#" + a).text().trim().split(' ')[0] == 12 && $("#" + b).text().trim().split(' ')[0] == 12) {
         $('body').removeClass('open').addClass('nohour open');
         $('.clockDiv').hide();
         $('.closeOpenLogo').hide();
+        $('.red-rib').css("background", 'none');
         $("#twentyfour").show();
         $(".scheduleDiv").hide();
       } else {

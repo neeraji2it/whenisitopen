@@ -742,8 +742,9 @@ height: 28px;*/
     font-size: 32px;
     font-weight: bold !important;
     line-height: 49px;
-    padding-top:8px;
     text-transform: uppercase;
+    left: 20px;
+    position: relative;
 }
 #hrs {
     color:#f3f3f3 !important;
