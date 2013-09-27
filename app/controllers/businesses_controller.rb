@@ -1,13 +1,6 @@
 class BusinessesController < ApplicationController
   layout :get_layout
   def index
-    @businesses = Business.where("latitude is null or longitude is null")
-    for business in @businesses
-      business.update_attributes({
-          :latitude => 0,
-          :longitude => 0
-        })
-    end
     if params[:city]
       session[:city] = params[:city]
       session[:state] = params[:state]
