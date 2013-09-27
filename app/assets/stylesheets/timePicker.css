@@ -9,7 +9,7 @@ div.time-picker {
     margin: 0;
 }
 div.time-picker-12hours {
-    width:6em; /* needed for IE */
+    width:5em; /* needed for IE */
 }
 
 div.time-picker ul {
