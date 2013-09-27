@@ -258,7 +258,7 @@ min-height:600px;*/
 }
 .home #ajaxcity {
     border: 1px solid #7CC6D6 !important;
-    margin-left: 6px !important;
+    margin-left: 28px !important;
     width: 251px !important;
 }
 #ajaxcity {
@@ -276,7 +276,7 @@ input.city_state {
     color: #aaa;
     font-size: 16px;
     outline: medium none;
-    padding: 0px 4px 4px 90px;
+    padding: 4px 26px 4px 90px;
     width: 168px !important;
 }
 input.city_state:hover {
@@ -370,7 +370,7 @@ input.city_state:hover {
 .footer-menu {
     text-align:center;
     margin:auto;
-    width:480px;
+    width:490px;
 }
 .footer-menu li a {
     float:left;
@@ -546,17 +546,32 @@ body.nohours {
 }
 
 #business_edit{
-    cursor: pointer;
-    position: relative;
+    position:relative;
+    color: white;
     border: 1px solid gray;
     border-radius: 5px;
     width: 200px;
-    padding: 5px;
+    padding: 6px 4px 6px 6px;
     text-align: center;
+    left: 15px;
+    background-color: #60BCD0;
+    cursor: pointer;
+    top: -55px;
+}
+
+#business_delete{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 13px;
+}
+
+#business_edit1{
+    left: -8px;
     position: relative;
-    left: 16px;
-    margin-top: 0px;
-    background-color: #FF6C00;
+    top: -35px;
+    width: 245px;
+    cursor: pointer;
 }
 .textField1 {
     /*border: 1px solid #D9D9D9;
@@ -734,8 +749,9 @@ height: 28px;*/
     font-size: 32px;
     font-weight: bold !important;
     line-height: 49px;
-    padding-top:8px;
     text-transform: uppercase;
+    left: 20px;
+    position: relative;
 }
 #hrs {
     color:#f3f3f3 !important;

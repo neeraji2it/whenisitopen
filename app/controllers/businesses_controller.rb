@@ -20,6 +20,7 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(params[:business].reject{ |key, value| value.blank?})
     if @business.save
+      @business.update_attribute(:status, 'pending') if !current_admin
       redirect_to imports_path
     end
   end
