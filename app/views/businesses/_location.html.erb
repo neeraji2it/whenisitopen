@@ -186,10 +186,14 @@
             if ($("#" + "<%= Time.zone.now.strftime('%a') %>" + "_to" + "_<%= business.id%>").text().trim() == 'am') {
               $("#open_" +<%= business.id %>).show();
             } else {
-              if (((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) >= <%= (Time.zone.now).strftime("%H").to_i %>) && (((parseInt($("#" + a + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) + ':' + $("#" + a + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0]) > '<%= (Time.zone.now).strftime("%H:%M") %>')) {
-                $("#open_" +<%= business.id %>).show();
-              } else {
+              if (((parseInt($("#" + "<%= Time.zone.now.strftime('%a').downcase %>" + "_<%= business.id %>").text().trim().split(' ')[0])) >= <%= (Time.zone.now).strftime("%H").to_i %>) && (((parseInt($("#" + "<%= Time.zone.now.strftime('%a').downcase %>" + "_<%= business.id %>").text().trim().split(' ')[0])) + ':' + $("#" + "<%= Time.zone.now.strftime('%a').downcase %>" + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0]) > '<%= (Time.zone.now).strftime("%H:%M") %>')) {
                 $("#close_" +<%= business.id %>).show();
+              } else {
+                if (((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) >= <%= (Time.zone.now).strftime("%H").to_i %>) && (((parseInt($("#" + a + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) + ':' + $("#" + a + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0]) > '<%= (Time.zone.now).strftime("%H:%M") %>')) {
+                  $("#open_" +<%= business.id %>).show();
+                } else {
+                  $("#close_" +<%= business.id %>).show();
+                }
               }
             }
           }

@@ -51,7 +51,7 @@
           var h = $("#" + a).text().trim().split(' ')[0]
           var m = $("#" + a).children('sup').text();
           $("." + a).addClass("todaya");
-          if (($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0] >= <%= Time.zone.now.strftime("%H").to_i %> && (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0])) + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0]) > '<%= (Time.zone.now).strftime("%H:%M") %>') {
+          if (($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0] >= <%= Time.zone.now.strftime("%H").to_i %>) && ((parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0])) + ':' + ($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0])) > '<%= (Time.zone.now).strftime("%H:%M") %>') {
             $('body').removeClass('open').addClass('close');
             $("." + a).addClass("todaya");
             $(".logo a img").attr('src', "/assets/when-image-open.png");
