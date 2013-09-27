@@ -21,13 +21,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="mon">
+                    <span class="border_time" id="mon_<%= business.id %>">
                       <%= business.mon_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.mon_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Mon_<%= business.id %>">
                       <%= business.mon_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.mon_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Mon_to_<%= business.id %>"><%= business.mon_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -41,13 +42,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="tue">
+                    <span class="border_time" id="tue_<%= business.id %>">
                       <%= business.tue_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.tue_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Tue_<%= business.id %>">
                       <%= business.tue_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.tue_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Tue_to_<%= business.id %>"><%= business.tue_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -61,13 +63,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="wed">
+                    <span class="border_time" id="wed_<%= business.id %>">
                       <%= business.wed_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.wed_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Wed_<%= business.id %>">
                       <%= business.wed_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.wed_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Wed_to_<%= business.id %>"><%= business.wed_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -81,13 +84,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="thu">
+                    <span class="border_time" id="thu_<%= business.id %>">
                       <%= business.thu_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.thu_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Thu_<%= business.id %>">
                       <%= business.thu_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.thu_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Thu_to_<%= business.id %>"><%= business.thu_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -105,13 +109,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="fri">
+                    <span class="border_time" id="fri_<%= business.id %>">
                       <%= business.fri_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.fri_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Fri_<%= business.id %>">
                       <%= business.fri_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.fri_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Fri_to_<%= business.id %>"><%= business.fri_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -125,13 +130,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="sat">
+                    <span class="border_time" id="sat_<%= business.id %>">
                       <%= business.sat_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.sat_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Sat_<%= business.id %>">
                       <%= business.sat_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.sat_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Sat_to_<%= business.id %>"><%= business.sat_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -145,13 +151,14 @@
                       Closed
                     </span>
                   <% else %>
-                    <span class="border_time" id="sun">
+                    <span class="border_time" id="sun_<%= business.id %>">
                       <%= business.sun_from.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.sun_from.split(/[: am pm]/).last %></sup>
                     </span>
                     <span class="border_time" id="Sun_<%= business.id %>">
                       <%= business.sun_to.split(/[am pm :]/).first  %>
                       <sup class="time_mi"><%= business.sun_to.split(/[: am pm]/).last  %></sup>
+                      <sup id="Sun_to_<%= business.id %>"><%= business.sun_to.scan(/\d+|\D+/).last  %></sup>
                     </span>
                   <% end %>
                 </span>
@@ -173,10 +180,18 @@
       var b = "<%= Time.zone.now.strftime('%a') %>"
       $(function() {
         setInterval(function() {
-          if ((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) > <%= (Time.zone.now).strftime("%H").to_i %>) {
+          if ($("#" + "<%= Time.zone.now.strftime('%a').downcase %>" + "_<%= business.id %>").text().trim().split(' ')[0] == 12 && $("#" + "<%= Time.zone.now.strftime('%a') %>" + "_<%= business.id %>").text().trim().split(' ')[0] == 12) {
             $("#open_" +<%= business.id %>).show();
           } else {
-            $("#close_" +<%= business.id %>).show();
+            if ($("#" + "<%= Time.zone.now.strftime('%a') %>" + "_to" + "_<%= business.id%>").text().trim() == 'am') {
+              $("#open_" +<%= business.id %>).show();
+            } else {
+              if (((parseInt($("#" + b + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) >= <%= (Time.zone.now).strftime("%H").to_i %>) && (((parseInt($("#" + a + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12)) + ':' + $("#" + a + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0]) > '<%= (Time.zone.now).strftime("%H:%M") %>')) {
+                $("#open_" +<%= business.id %>).show();
+              } else {
+                $("#close_" +<%= business.id %>).show();
+              }
+            }
           }
         }, 30);
       });
