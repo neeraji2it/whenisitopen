@@ -9,7 +9,7 @@
 
       <div class="scheduleDiv" style="min-height: 100%;width: 440px;display: block;float: left;position: relative;top: 60px;left: 264px;background-color: #60BED2;padding: 20px;border-radius: 4px;">
         <div id="schedule0">
-          <%= form_for @business, :url => business_path(@business), :html => {:method => 'PUT', :autocomplete => 'off', :id => "submitForm"} do |f| %>
+          <%= form_for @business, :url => business_path(@business), :html => {:method => 'PUT', :autocomplete => 'off', :onsubmit => "alert('Thank you for contributing to our website. We will review your request and update our website shortly.')"} do |f| %>
             <%= render :partial => 'form', :locals => {:f => f} %>
           <% end %>
         </div>
@@ -17,8 +17,3 @@
     </div>
   </div>
 </div>
-<script>
-  $('#submitForm').submit(function() {
-    alert('Thank you for contributing to our website. We will review your request and update our website shortly.');
-  });
-</script>
