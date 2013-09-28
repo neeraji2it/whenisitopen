@@ -69,10 +69,7 @@ div.time-picker li.selected {
 }
 
 #business_comment{
-    color: #FE8E00;
-    font-family: 'Tekton Pro';
-    font-size: 16px;
     left: 270px;
     position: relative;
-    top: 22px;
+    top: 17px;
 }
