@@ -176,7 +176,6 @@
       $('#location_' +<%= business.id%>).click(function() {
         window.location.href = '<%= categorie_search_businesses_path('company_name' => business.company_name, :city => business.city, :address => business.address) %>';
       });
-
       var b = "<%= Time.zone.now.strftime('%a') %>"
       $(function() {
         setInterval(function() {
@@ -193,11 +192,13 @@
               if ((($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0]) >= <%= Time.zone.now.strftime("%H").to_i %>) && (($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0].replace(/\s+/g, '') + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, '')) > '<%= Time.zone.now.strftime("%H:%M") %>')) {
                 $("#close_" +<%= business.id %>).show();
               } else {
-                var dd = (((parseInt($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12))))
-                var cd = ((parseInt($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0].replace(/\s+/g, ''))) + parseInt(12))
+                var dd = (((($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0]))))
+                var st = (parseInt(dd, 10) + parseInt(12))
+                var cd = ((($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0].replace(/\s+/g, ''))))
+                var ft = (parseInt(cd, 10) + parseInt(12))
                 var tt = $("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, '')
-                var dt = cd + ":" + tt
-                if (((dd >= <%= Time.zone.now.strftime("%H").to_i %>) && (dt > '<%= Time.zone.now.strftime("%H:%M")%>'))) {
+                var dt = ft + ":" + tt
+                if (((st >= <%= Time.zone.now.strftime("%H").to_i %>) && (dt > '<%= Time.zone.now.strftime("%H:%M")%>'))) {
                   $("#open_" +<%= business.id %>).show();
                 } else {
                   $("#close_" +<%= business.id %>).show();
@@ -206,8 +207,7 @@
             }
           }
         }, 30);
-      });
-    </script>
+      });</script>
   <% end %>
   <div style="float: right;left: -25px;position: relative;">
     <%= will_paginate @locations, :param_name => 'location_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>
