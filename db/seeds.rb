@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Admin.create(:email => 'robertprsa10@gmail.com', :password => 'fur?56al', :password_confirmation => 'fur?56al', :username => 'Robert')
+SearchLimit.create(:searching_limit => 0)
