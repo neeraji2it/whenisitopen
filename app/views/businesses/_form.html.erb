@@ -1,41 +1,41 @@
 <table cellspacing="2" cellpadding="3" style="position: relative;top: 35px;left: 45px;font-size: 14px;font-weight: bold;font-size: 18px;text-align: left;font-weight: bold;color:#007D8F;font-family: 'House Slant'">
   <tbody>
     <tr>
-      <td><%= f.label :company_name, "BUSINESS NAME:" %></td>
+      <td style="text-align: right;"><%= f.label :company_name, "BUSINESS NAME:" %></td>
       <td><%= f.text_field :company_name, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :address, "ADDRESS:" %></td>
+      <td style="text-align: right;"><%= f.label :address, "ADDRESS:" %></td>
       <td><%= f.text_field :address, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :city, "CITY:" %></td>
+      <td style="text-align: right;"><%= f.label :city, "CITY:" %></td>
       <td><%= f.text_field :city, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :state, "PROVINCE:" %></td>
+      <td style="text-align: right;"><%= f.label :state, "PROVINCE:" %></td>
       <td><%= f.select :state,options_for_select(STATES, :selected => f.object.state) %></td>
     </tr>
     <% if @business.new_record? %>
       <tr>
-        <td><%= f.label :category, "CATEGORY:" %></td>
+        <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
         <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").map{|c| [c.category]}, :selected => f.object.category) %></td>
       </tr>
     <% end %>
     <tr>
-      <td><%= f.label :longitude, "LONGITUDE:" %></td>
+      <td style="text-align: right;"><%= f.label :longitude, "LONGITUDE:" %></td>
       <td><%= f.text_field :longitude, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :latitude, "LATITUDE" %></td>
+      <td style="text-align: right;"><%= f.label :latitude, "LATITUDE" %></td>
       <td><%= f.text_field :latitude, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :phone, "PHONE NUMBER:" %></td>
+      <td style="text-align: right;"><%= f.label :phone, "PHONE NUMBER:" %></td>
       <td><%= f.text_field :phone, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
     <tr>
-      <td><%= f.label :url, "WEBSITE URL:" %></td>
+      <td style="text-align: right;"><%= f.label :url, "WEBSITE URL:" %></td>
       <td><%= f.text_field :url, :class => 'text',:size => '20', 'data-autosize-input' =>  '40' %></td>
     </tr>
   </tbody>
@@ -43,31 +43,31 @@
 <table width="75%" cellpadding="5" style="font-size: 14px;left: 110px;position: relative;top: 40px;">
   <tbody>
     <tr>
-      <td>Mon:</td>
+      <td style="text-align: right;">Mon:</td>
       <td><%= f.text_field :mon_from, :id => 'time1', :size => '4', :readonly => true %>-<%= f.text_field :mon_to, :id => 'time2', :size => '4', :readonly => true %> <%= f.check_box :mon_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Tue:</td>
+      <td style="text-align: right;">Tue:</td>
       <td><%= f.text_field :tue_from, :id => 'time3', :size => '4', :readonly => true %>-<%= f.text_field :tue_to, :id => 'time4', :size => '4', :readonly => true %> <%= f.check_box :tue_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Wed:</td>
+      <td style="text-align: right;">Wed:</td>
       <td><%= f.text_field :wed_from, :id => 'time5', :size => '4', :readonly => true %>-<%= f.text_field :wed_to, :id => 'time6', :size => '4', :readonly => true %> <%= f.check_box :wed_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Thu:</td>
+      <td style="text-align: right;">Thu:</td>
       <td><%= f.text_field :thu_from, :id => 'time7', :size => '4', :readonly => true %>-<%= f.text_field :thu_to, :id => 'time8', :size => '4', :readonly => true %> <%= f.check_box :thu_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Fri:</td>
+      <td style="text-align: right;">Fri:</td>
       <td><%= f.text_field :fri_from, :id => 'time9', :size => '4', :readonly => true %>-<%= f.text_field :fri_to, :id => 'time10', :size => '4', :readonly => true %> <%= f.check_box :fri_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Sat:</td>
+      <td style="text-align: right;">Sat:</td>
       <td><%= f.text_field :sat_from, :id => 'time11', :size => '4', :readonly => true %>-<%= f.text_field :sat_to, :id => 'time12', :size => '4', :readonly => true %> <%= f.check_box :sat_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
-      <td>Sun:</td>
+      <td style="text-align: right;">Sun:</td>
       <td><%= f.text_field :sun_from, :id => 'time13', :size => '4', :readonly => true %>-<%= f.text_field :sun_to, :id => 'time14', :size => '4', :readonly => true %> <%= f.check_box :sun_closed, :value => "Closed" %>Closed</td>
     </tr>
     <tr>
@@ -77,7 +77,7 @@
           <div><%= f.submit "Save", :id => "save_button" %></div>
         <% else %>
           <div style="position: relative;left: -45px;"><button type="submit" value="Save" style="background: none; border: none;cursor: pointer;"><%=  image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></button></div>
-        <% end %>
+          <% end %>
       </td>
     </tr>
   </tbody>
@@ -96,8 +96,3 @@
     $('#main').css({'min-height': 0, 'background-color': ''});
   })
 </script>
-<style>
-  table tr > td:first-child {
-    text-align: right;
-  }
-</style>
