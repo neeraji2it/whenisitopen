@@ -1,13 +1,12 @@
-<div class="con-header" style="min-height: 1050px;">
+<div class="con-header" style="min-height: 1215px;margin-bottom: 0px;">
   <div class="headewrap">
     <div class="logo">
       <%= current_admin ? (link_to image_tag("/assets/about-logo.png"), imports_path) : (link_to image_tag("/assets/about-logo.png"), "/") %>
     </div>
     <%= render :partial => 'businesses/search' %>
     <div class="firstResult">
-      <span style="color: #404040;float: right;font-family: icon;font-size: 20px;font-weight: bold;left: 345px;position: relative;top: 105px;">Edit this Business</span>
-
-      <div class="scheduleDiv" style="min-height: 100%;width: 440px;display: block;float: left;position: relative;top: 60px;left: 264px;background-color: #60BED2;padding: 20px;border-radius: 4px;">
+      <span id="add_a_listing"><%= image_tag("/assets/edit_a_listing.png")%></span>
+      <div class="scheduleDiv" id="add_list_background">
         <div id="schedule0">
           <%= form_for @business, :url => business_path(@business), :html => {:method => 'PUT', :autocomplete => 'off', :onsubmit => "alert('Thank you for contributing to our website. We will review your request and update our website shortly.')"} do |f| %>
             <%= render :partial => 'form', :locals => {:f => f} %>

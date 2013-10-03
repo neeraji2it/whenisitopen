@@ -1,6 +1,6 @@
 var Plugins;
-(function (Plugins) {
-    var AutosizeInput = (function () {
+(function(Plugins) {
+    var AutosizeInput = (function() {
         function AutosizeInput(input, options) {
             var _this = this;
             this._input = $(input);
@@ -8,21 +8,21 @@ var Plugins;
 
             this._mirror = $('<span style="position:absolute; top:-999px; left:0; white-space:pre;"/>');
 
-            $.each(['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'letterSpacing', 'textTransform', 'wordSpacing', 'textIndent'], function (i, val) {
+            $.each(['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'letterSpacing', 'textTransform', 'wordSpacing', 'textIndent'], function(i, val) {
                 _this._mirror[0].style[val] = _this._input.css(val);
             });
             $("body").append(this._mirror);
 
-            this._input.on("keydown keyup input propertychange change", function (e) {
+            this._input.on("keydown keyup input propertychange change", function(e) {
                 _this.update();
             });
 
-            (function () {
+            (function() {
                 _this.update();
             })();
         }
         Object.defineProperty(AutosizeInput.prototype, "options", {
-            get: function () {
+            get: function() {
                 return this._options;
             },
             enumerable: true,
@@ -30,14 +30,14 @@ var Plugins;
         });
 
         Object.defineProperty(AutosizeInput, "instanceKey", {
-            get: function () {
+            get: function() {
                 return "autosizeInputInstance";
             },
             enumerable: true,
             configurable: true
         });
 
-        AutosizeInput.prototype.update = function () {
+        AutosizeInput.prototype.update = function() {
             var value = this._input.val();
 
             if (!value) {
@@ -58,16 +58,18 @@ var Plugins;
     })();
     Plugins.AutosizeInput = AutosizeInput;
 
-    var AutosizeInputOptions = (function () {
+    var AutosizeInputOptions = (function() {
         function AutosizeInputOptions(space) {
-            if (typeof space === "undefined") { space = 30; }
+            if (typeof space === "undefined") {
+                space = 30;
+            }
             this._space = space;
         }
         Object.defineProperty(AutosizeInputOptions.prototype, "space", {
-            get: function () {
+            get: function() {
                 return this._space;
             },
-            set: function (value) {
+            set: function(value) {
                 this._space = value;
             },
             enumerable: true,
@@ -77,12 +79,12 @@ var Plugins;
     })();
     Plugins.AutosizeInputOptions = AutosizeInputOptions;
 
-    (function ($) {
+    (function($) {
         var pluginDataAttributeName = "autosize-input";
         var validTypes = ["text", "password", "search", "url", "tel", "email"];
 
-        $.fn.autosizeInput = function (options) {
-            return this.each(function () {
+        $.fn.autosizeInput = function(options) {
+            return this.each(function() {
                 if (!(this.tagName == "INPUT" && $.inArray(this.type, validTypes) > -1)) {
                     return;
                 }
@@ -103,7 +105,7 @@ var Plugins;
             });
         };
 
-        $(function () {
+        $(function() {
             $("input[data-" + pluginDataAttributeName + "]").autosizeInput();
         });
     })(jQuery);
