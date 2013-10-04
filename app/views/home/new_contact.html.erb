@@ -28,10 +28,10 @@
         <button type="submit" value="Save" style="background: none; border: none;"><%=  image_tag("/assets/Send_message_button.png", :border=>'0', :width=>"275", :height=>"54") %></button>
       <% end %>
       <div style="position: relative;top: 15px;">
-        <%= link_to image_tag("/assets/g.jpg", :width=>"77", :height=>"84"), "https://plus.google.com/b/118180764312183666395/118180764312183666395/posts" %>
-        <%= link_to image_tag("/assets/in.jpg", :width=>"77", :height=>"84"), "https://www.linkedin.com/" %>
-        <%= link_to image_tag("/assets/t.jpg", :width=>"77", :height=>"84"), "https://twitter.com/WhenisitOpen" %>
-        <%= link_to image_tag("/assets/f.jpg", :width=>"77", :height=>"84"), "http://www.facebook.com/whenisitopen" %>
+        <%= link_to image_tag("/assets/g.jpg", :width=>"77", :height=>"84"), "https://plus.google.com/b/118180764312183666395/118180764312183666395/posts", :target => "_blank" %>
+        <%= link_to image_tag("/assets/in.jpg", :width=>"77", :height=>"84"), "https://www.linkedin.com/", :target => "_blank" %>
+        <%= link_to image_tag("/assets/t.jpg", :width=>"77", :height=>"84"), "https://twitter.com/WhenisitOpen", :target => "_blank" %>
+        <%= link_to image_tag("/assets/f.jpg", :width=>"77", :height=>"84"), "http://www.facebook.com/whenisitopen", :target => "_blank" %>
       </div>
     </div>
     <div style="float: right;left: 90px;position: relative;top: 130px;">
