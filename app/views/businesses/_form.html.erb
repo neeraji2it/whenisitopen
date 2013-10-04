@@ -19,7 +19,7 @@
     <% if @business.new_record? %>
       <tr>
         <td style="text-align: right;"><%= f.label :category, "CATEGORY:" %></td>
-        <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").map{|c| [c.category]}, :selected => f.object.category) %></td>
+        <td><%= f.select :category, options_for_select([["Select", ""]]+Business.select("DISTINCT category").where("category IS NOT NULL").order("category Asc").map{|c| [c.category]}, :selected => f.object.category) %></td>
       </tr>
     <% end %>
     <tr>
