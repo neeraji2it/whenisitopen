@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.countdown
 //= require jquery.timePicker
+//= require jquery.notifyBar
 //= require_tree .
 
 function onBlur(el) {

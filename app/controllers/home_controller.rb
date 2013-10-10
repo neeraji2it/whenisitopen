@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     @title = "Contact Us"
     @contact = Contact.new(params[:contact])
     if @contact.save
+      flash[:notice] = "Thank you for contacting us. We will review your message as shortly."
       UserMailer.contact(@contact).deliver
       redirect_to "/"
     else
