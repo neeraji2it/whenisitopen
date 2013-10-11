@@ -21,7 +21,7 @@ class ImportsController < ApplicationController
     
   end
   
-  def delete_all_by_company_name
+  def delete_all_by_business_name
     @businesses = Business.where("company_name = '#{params[:company_name]}'")
     for business in @businesses
       business.destroy

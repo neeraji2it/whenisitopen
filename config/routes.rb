@@ -29,7 +29,7 @@ Whenitopen::Application.routes.draw do
       post :upload_xls
       get :scraptiming
       get :delete_business
-      get :delete_all_by_company_name
+      get :delete_all_by_business_name
     end
   end
   # The priority is based upon order of creation:
