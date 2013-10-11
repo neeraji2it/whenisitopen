@@ -27,7 +27,6 @@ Whenitopen::Application.routes.draw do
     collection do
       get :import
       post :upload_xls
-      get :scraptiming
       get :delete_business
       get :delete_all_by_business_name
     end
