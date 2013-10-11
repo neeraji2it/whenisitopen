@@ -9,11 +9,11 @@
     <%= form_tag delete_all_by_company_name_imports_path, :method => :get do %>
       <table cellspacing="5" style="width: 400px;">
         <tr>
-          <td> <b> Delete All businesses by Company name </b><hr /></td>
+          <td> <b> Delete All businesses by Business name </b><hr /></td>
         </tr>
         <tr>
           <td>
-            Company Name: <%= text_field_tag :company_name,'',:placeholder => "Company Name" %>
+            Company Name: <%= text_field_tag :company_name,'',:placeholder => "Business Name" %>
           </td>
         </tr>
         <tr>
