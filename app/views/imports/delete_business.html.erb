@@ -1,0 +1,33 @@
+<div class="con-header">
+  <div class="headewrap">
+    <div class="logo">
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), imports_path %>
+    </div>
+    <%= render :partial => 'businesses/search' %>
+  </div>
+  <div style="left: 500px;position: relative;top: 150px;width: 400px;border: 1px solid black;">
+    <%= form_tag delete_all_by_company_name_imports_path, :method => :get do %>
+      <table cellspacing="5" style="width: 400px;">
+        <tr>
+          <td> <b> Delete All businesses by Company name </b><hr /></td>
+        </tr>
+        <tr>
+          <td>
+            Company Name: <%= text_field_tag :company_name,'',:placeholder => "Company Name" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br />
+            <%= submit_tag "Delete All", :style=>"width:75px; border-radius:20px;" %>
+          </td>
+        </tr>
+      </table>
+    <%end%>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('body').removeClass('open').addClass('cont');
+  })
+</script>
