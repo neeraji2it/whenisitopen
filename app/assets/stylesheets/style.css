@@ -37,6 +37,7 @@ html, body {
 }
 body.home {
     background: url(/assets/home-bg.png) repeat-x #EAEAEA;
+    height: 100%;
 }
 body {
     margin: 0px;
