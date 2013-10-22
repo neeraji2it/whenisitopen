@@ -73,7 +73,7 @@
           } else {
             var date = '<%= Time.zone.now.strftime("%Y/%m/%d %H:%M:%S") %>';
             var liftoff = new Date(date);
-            if ($("#" + a + "_to").text().trim() == 'am') {
+            if ($("#" + a + "_to").text().trim() == 'am' || $("#" + a + "_to").text().trim() == 'AM') {
               if (h == 12) {
                 liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
               } else {
