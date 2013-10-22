@@ -34,4 +34,11 @@ namespace :whenitopen do
     heroku = Heroku::API.new(:api_key => 'e7b6434e-8977-4e1f-9174-1c84c75fc4a5')
     heroku.post_ps_scale(ENV['APP_NAME'], 'web', 2)
   end
+  
+  desc "Delete the company name and city is null"
+  task :delete_business => :environment do
+    business = Business.where("company_name IS NULL and city IS NULL")
+    puts business
+    business.destroy_all
+  end
 end
