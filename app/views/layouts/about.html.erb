@@ -45,20 +45,7 @@
         <div class="footer-inner" style="min-width:1000px; margin:0 auto;">
           <div class="copyright">© When is it Open Inc. 2013</div>
           <div class="footer-menu">
-            <ul>
-              <li>
-                <%= link_to "Add a Listing", new_business_path %>
-              </li>
-              <li>
-                <%= link_to "About Us", aboutus_path %>
-              </li>
-              <li>
-                <%= link_to "Contact Us", new_contact_path %>
-              </li>
-              <li>
-                <%= link_to "Terms and Conditions", terms_and_conditions_path %>
-              </li>
-            </ul>
+            <%= render :partial => '/layouts/footer' %>
           </div>
         </div>
       </div>

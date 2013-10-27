@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @title = "About Us"
   end
 
-  def new_contact
+  def contactus
     @title = "Contact Us"
     @contact=Contact.new
   end
