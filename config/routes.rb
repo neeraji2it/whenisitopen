@@ -3,7 +3,7 @@ Whenitopen::Application.routes.draw do
 
   get "/aboutus" => 'home#aboutus', :as => :aboutus
 
-  get "/new_contact" => 'home#new_contact', :as => :new_contact
+  get "/contactus" => 'home#new_contact', :as => :new_contact
 
   post "/post_contact" => 'home#post_contact', :as => :post_contact
 
