@@ -5,7 +5,7 @@ Whenitopen::Application.routes.draw do
 
   get "/contactus" => 'home#contactus', :as => :contactus
 
-  post "/post_contact" => 'home#post_contact', :as => :post_contact
+  post "/contact" => 'home#contact', :as => :contact
 
   get "/terms_and_conditions" => 'home#terms_and_conditions', :as => :terms_and_conditions
   root :to => "businesses#index"

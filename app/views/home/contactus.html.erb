@@ -9,7 +9,7 @@
           </li>
         </ul>
       <% end %>
-      <%= form_for @contact, :url =>  post_contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
+      <%= form_for @contact, :url =>  contact_path(@contact), :html => {:id => "ContactForm1"} do |f| %>
         <span>Your Name:</span>
         <br/>
         <%= f.text_field :name, :id => 'contact', :size => '50' %>

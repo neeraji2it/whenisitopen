@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     @contact=Contact.new
   end
 
-  def post_contact
+  def contact
     @title = "Contact Us"
     @contact = Contact.new(params[:contact])
     if @contact.save
