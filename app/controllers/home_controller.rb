@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       UserMailer.contact(@contact).deliver
       redirect_to "/"
     else
-      render :action => 'new_contact'
+      render :action => 'contactus'
     end
   end
 
