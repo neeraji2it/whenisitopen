@@ -1,6 +1,6 @@
 /* CSS Document */
 body {
-	/* background: none repeat scroll 0 0 #CCCCCC;*/
+    /* background: none repeat scroll 0 0 #CCCCCC;*/
     border: medium none;
     color: #3D3B3B;
     font-family: arial,sans-serif;
@@ -11,117 +11,117 @@ body {
 }
 .abt-top
 {
- background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 #FFFFFF;
     margin: 0 auto;
     padding: 50px 0 0;
     width: 1024px;
 }
 .abt-lo
 {
- position: absolute;
+    position: absolute;
     top: 1px;
 }
 .abt-map
 {
-position:absolute;
-background: url("/assets/missuagwa-bg.png") no-repeat;
+    position:absolute;
+    background: url("/assets/missuagwa-bg.png") no-repeat;
 }
 .abt-search
 {
-background: url("/assets/search-bg.png") no-repeat;
-position:absolute;
+    background: url("/assets/search-bg.png") no-repeat;
+    position:absolute;
 
 }
 .abt-header
 {
-  background: url("/assets/abt-header-bg.png") repeat-x scroll 0 0 transparent;
+    background: url("/assets/abt-header-bg.png") repeat-x scroll 0 0 transparent;
     height: 35px;
-   /* margin: 0 auto;*/
+    /* margin: 0 auto;*/
     padding: 70px 0 0;
     /*width: 1024px;*/
 }
 .abt-page
 {
-  background-image: url("/assets/about-bg.png");
+    background-image: url("/assets/about-bg.png");
     height: 944px;
     margin: 0 auto;
     width: 1024px;
 }
 .abt-us
 {
-  margin: 0 auto;
+    margin: 0 auto;
     padding: 70px 0 0;
     width: 820px;
 
 }
 .abt
 {
-  color: #FF6600;
+    color: #FF6600;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 20px;
     font-weight: bold;
     padding: 0 0 20px;
-	 margin: 79px 0 0;
+    margin: 79px 0 0;
 }
 .aboutTitle {
-	float:left;
-	width:100%;
-        margin-top: -20px;
+    float:left;
+    width:100%;
+    margin-top: -20px;
 }
 #aboutTagline {
-	width:100%;
-	clear:both;
-	margin-bottom:40px;	
+    width:100%;
+    clear:both;
+    margin-bottom:40px;	
 }
 .aboutTopics {
-	float:left;
-	width:420px;
-	background-repeat:no-repeat;
-	padding-left:55px;
-	text-align:justify;
-	margin-bottom: 20px;
+    float:left;
+    width:420px;
+    background-repeat:no-repeat;
+    padding-left:55px;
+    text-align:justify;
+    margin-bottom: 20px;
 }
 .aboutGutter {
-	float:left;
-	width:30px;
-	height:1px;
+    float:left;
+    width:30px;
+    height:1px;
 }
 .aboutPara {
-	margin-top: 10px;
-	padding:0;
-	font-size:16px;
-	font-family:Arial, Helvetica, sans-serif;
-	line-height:20px;	
+    margin-top: 10px;
+    padding:0;
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:20px;	
 }
 #ourMission {
-	background-image:url(/assets/circle-mission.png);
+    background-image:url(/assets/circle-mission.png);
 }
 #howItWorks {
-	background-image:url(/assets/circle-howItWorks.png);	
+    background-image:url(/assets/circle-howItWorks.png);	
 }
 #ohNo {
-	background-image:url(/assets/circle-ohno.png);	
+    background-image:url(/assets/circle-ohno.png);	
 }
 #theCountdown {
-	background-image:url(/assets/circle-countdown.png);	
+    background-image:url(/assets/circle-countdown.png);	
 }
 .para
 {
- color: #333333;
+    color: #333333;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 16px;
     font-weight: normal;
     padding: 0 0 10px;
-	text-align:justify;
+    text-align:justify;
 }
 .aboutHead2
 {
-  color: #333333;
+    color: #333333;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 22px;
     font-weight: bolder;
     padding: 0 0 0 0;
-	margin:0;
+    margin:0;
 }
 /*.footer {
  background: none repeat scroll 0 0 #000000;
@@ -130,11 +130,11 @@ position:absolute;
     padding-bottom: 40px;
     padding-top: 10px;
 }
-	
+        
 .footer a
 {
-	color:#fff;
-	text-decoration: none;
-	font-size:12.6px;
+        color:#fff;
+        text-decoration: none;
+        font-size:12.6px;
 }
 */

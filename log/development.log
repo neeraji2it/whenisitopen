@@ -3320,3 +3320,40 @@ Processing by ImportsController#index as HTML
   Rendered imports/_index.html.erb (87.2ms)
   Rendered imports/index.html.erb within layouts/application (89.0ms)
 Completed 200 OK in 97ms (Views: 94.5ms | ActiveRecord: 0.5ms | Sphinx: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-30 12:15:51 +0530
+Processing by BusinessesController#index as HTML
+  [1m[36mSearchLimit Load (0.2ms)[0m  [1mSELECT `search_limits`.* FROM `search_limits` LIMIT 1[0m
+  Rendered businesses/index.html.erb within layouts/search (32.3ms)
+Compiled style.css  (0ms)  (pid 5207)
+Compiled jquery.notifyBar.css  (0ms)  (pid 5207)
+Compiled jquery.js  (5ms)  (pid 5207)
+Compiled jquery_ujs.js  (0ms)  (pid 5207)
+Compiled jquery.countdown.js  (1ms)  (pid 5207)
+Compiled jquery.timePicker.js  (0ms)  (pid 5207)
+Compiled jquery.notifyBar.js  (0ms)  (pid 5207)
+Compiled jquery.autosize.input.js  (0ms)  (pid 5207)
+Compiled application.js  (205ms)  (pid 5207)
+  Rendered layouts/_footer.html.erb (2.5ms)
+Completed 200 OK in 697ms (Views: 547.0ms | ActiveRecord: 104.5ms | Sphinx: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-30 12:18:04 +0530
+Processing by BusinessesController#index as HTML
+  [1m[35mSearchLimit Load (0.2ms)[0m  SELECT `search_limits`.* FROM `search_limits` LIMIT 1
+  Rendered businesses/index.html.erb within layouts/search (2.9ms)
+Compiled jquery.countdown.js  (0ms)  (pid 5207)
+Compiled jquery.notifyBar.js  (0ms)  (pid 5207)
+Compiled application.js  (4ms)  (pid 5207)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 45ms (Views: 43.3ms | ActiveRecord: 0.2ms | Sphinx: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-30 12:18:13 +0530
+Processing by BusinessesController#index as HTML
+  [1m[36mSearchLimit Load (0.1ms)[0m  [1mSELECT `search_limits`.* FROM `search_limits` LIMIT 1[0m
+  Rendered businesses/index.html.erb within layouts/search (1.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.1ms | Sphinx: 0.0ms)
