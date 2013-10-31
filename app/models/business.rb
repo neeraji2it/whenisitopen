@@ -33,7 +33,8 @@ class Business < ActiveRecord::Base
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
+    puts "vvvvvvvvvvvvvvvv"
+    CSV.foreach(file.path, headers: true, encoding: 'UTF-8') do |row|
       business = find_by_city_and_company_name_and_address(row[1],row[2],row[0]) || new
       business.attributes = row.to_hash.slice(*accessible_attributes)
       business.save!
