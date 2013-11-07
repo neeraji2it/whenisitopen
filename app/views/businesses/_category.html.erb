@@ -16,13 +16,6 @@
           $('#mini_simbox_<%=same_category.id%>').click(function() {
             window.location.href = '<%= categorie_search_businesses_path('company_name' => same_category.company_name, :city => same_category.city, :address => same_category.address) %>';
           });
-
-          $(function() {
-            $(".pagination a").click(function() {
-              $.getScript(this.href);
-              return false;
-            });
-          });
         </script>
       <% end %>
       <div style="clear:both;text-align:right;font-size:14px;padding:10px; padding-right:150px;">
