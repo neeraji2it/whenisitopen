@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   
   def search_limit?
     if SearchLimit.first.searching_limit < 2000
-      if (params[:controller] == 'businesses' and (params[:action] == 'search' or params[:action] == 'categorie_search'))
+      if (params[:controller] == 'businesses' and !(params[:location_page] or params[:category_page]) and (params[:action] == 'search' or params[:action] == 'categorie_search'))
         SearchLimit.first.update_attribute(:searching_limit, SearchLimit.first.searching_limit+1)
       end
     else

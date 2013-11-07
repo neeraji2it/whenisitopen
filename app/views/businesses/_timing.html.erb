@@ -14,12 +14,12 @@
                 <%= business.mon_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.mon_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.mon_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.mon_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Mon">
                 <%= business.mon_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.mon_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Mon_to"><%= business.mon_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Mon_to" class="left"><%= business.mon_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -37,12 +37,12 @@
                 <%= business.tue_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.tue_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.tue_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.tue_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Tue">
                 <%= business.tue_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.tue_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Tue_to"><%= business.tue_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Tue_to" class="left"><%= business.tue_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -60,12 +60,12 @@
                 <%= business.wed_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.wed_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.wed_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.wed_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Wed">
                 <%= business.wed_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.wed_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Wed_to"><%= business.wed_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Wed_to" class="left"><%= business.wed_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -83,12 +83,12 @@
                 <%= business.thu_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.thu_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.thu_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.thu_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Thu">
                 <%= business.thu_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.thu_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Thu_to"><%= business.thu_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Thu_to" class="left"><%= business.thu_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -110,12 +110,12 @@
                 <%= business.fri_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.fri_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.fri_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.fri_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Fri">
                 <%= business.fri_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.fri_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Fri_to"><%= business.fri_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Fri_to" class="left"><%= business.fri_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -133,12 +133,12 @@
                 <%= business.sat_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sat_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.sat_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.sat_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Sat">
                 <%= business.sat_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sat_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Sat_to"><%= business.sat_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Sat_to" class="left"><%= business.sat_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
@@ -156,18 +156,18 @@
                 <%= business.sun_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sun_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup><%= business.sun_from.scan(/\d+|\D+/).last  %></sup>
+              <sup class="left"><%= business.sun_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Sun">
                 <%= business.sun_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sun_to.split(/[: am pm AM PM]/).last  %></sup>
               </span>
-              <sup id="Sun_to"><%= business.sun_to.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Sun_to" class="left"><%= business.sun_to.scan(/\d+|\D+/).last  %></sup>
             <% end %>
           </span>
         </td>
       </tr>
       <% if business.url.present? %>
-        <tr class="todaya" id="website" onclick="window.open('<%= url_with_protocol(business.url) %>', '_blank')">
+        <tr class="todaya" id="website" onclick="window.open('<%= url_with_protocol(business.url) %>', '_blank');">
           <td style="text-align: center;font-family: House Slant;font-size: 18px;cursor: pointer;font-weight: normal;">
             <%= "WEBSITE" %>
           </td>

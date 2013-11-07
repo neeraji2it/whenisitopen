@@ -97,3 +97,7 @@ div.time-picker li.selected {
     background-repeat:no-repeat;
     background-image: url(/assets/form_background.png);
 }
+
+.left{
+    padding-left: 2px;
+}
