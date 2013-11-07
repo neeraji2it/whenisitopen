@@ -1,5 +1,5 @@
 <% if @locations.present? %>
-  <% @locations.each_with_geodist do |business,distance| %>
+  <% @locations.each do |business| %>
     <div class="otherResults"  id="location_<%= business.id %>">
       <div id="main_id1" style="font-size: 12px;">
         <div class="spacedout" style="height: 100px;">
