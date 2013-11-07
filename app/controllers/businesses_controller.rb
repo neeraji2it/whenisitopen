@@ -51,7 +51,7 @@ class BusinessesController < ApplicationController
         @lat = @ab_business_databases.first.latitude
         @lng = @ab_business_databases.first.longitude
         @categories = Business.near([@lat, @lng],20000, :order =>:distance).where("category = ? and company_name != ? and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}", "#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}").paginate :page => params[:category_page], :per_page => 9
-        @locations = Business.near([@lat, @lng],20000, :order =>:distance).where("company_name = ? and id NOT IN (?)", "#{@name}", "#{@ab_business_databases.first.id}").paginate :page => params[:location_page], :per_page => 3
+        @locations = Business.near([@lat, @lng],20000, :order =>:distance).where("company_name = ? and id NOT IN (?)", "#{@ab_business_databases.first.company_name}", "#{@ab_business_databases.first.id}").paginate :page => params[:location_page], :per_page => 3
       end
     else
       redirect_to root_path
