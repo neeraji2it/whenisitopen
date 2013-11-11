@@ -14,7 +14,7 @@
                 <%= business.mon_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.mon_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.mon_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Mon_from" class="left"><%= business.mon_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Mon">
                 <%= business.mon_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.mon_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -37,7 +37,7 @@
                 <%= business.tue_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.tue_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.tue_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Tue_from" class="left"><%= business.tue_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Tue">
                 <%= business.tue_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.tue_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -60,7 +60,7 @@
                 <%= business.wed_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.wed_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.wed_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Wed_from" class="left"><%= business.wed_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Wed">
                 <%= business.wed_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.wed_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -83,7 +83,7 @@
                 <%= business.thu_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.thu_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.thu_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Thu_from" class="left"><%= business.thu_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Thu">
                 <%= business.thu_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.thu_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -110,7 +110,7 @@
                 <%= business.fri_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.fri_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.fri_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Fri_from" class="left"><%= business.fri_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Fri">
                 <%= business.fri_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.fri_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -133,7 +133,7 @@
                 <%= business.sat_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sat_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.sat_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Sat_from" class="left"><%= business.sat_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Sat">
                 <%= business.sat_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sat_to.split(/[: am pm AM PM]/).last  %></sup>
@@ -156,7 +156,7 @@
                 <%= business.sun_from.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sun_from.split(/[: am pm AM PM]/).last %></sup>
               </span>
-              <sup class="left"><%= business.sun_from.scan(/\d+|\D+/).last  %></sup>
+              <sup id="Sun_from" class="left"><%= business.sun_from.scan(/\d+|\D+/).last  %></sup>
               <span class="border_time" id="Sun">
                 <%= business.sun_to.split(/[:]/).first  %>
                 <sup class="time_mi"><%= business.sun_to.split(/[: am pm AM PM]/).last  %></sup>

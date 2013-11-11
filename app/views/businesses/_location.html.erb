@@ -193,7 +193,11 @@
                 $("#close_" +<%= business.id %>).show();
               } else {
                 var dd = (((($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0]))))
-                var st = (parseInt(dd, 10) + parseInt(12))
+                if (parseInt(dd, 10) == 12) {
+                  var st = (parseInt(dd, 10))
+                } else {
+                  var st = (parseInt(dd, 10) + parseInt(12))
+                }
                 var cd = ((($("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").text().trim().split(' ')[0].replace(/\s+/g, ''))))
                 var ft = (parseInt(cd, 10) + parseInt(12))
                 var tt = $("#" + '<%= Time.zone.now.strftime("%a") %>' + "_<%= business.id %>").children('sup').text().split(/[: am pm AM PM]/)[0].replace(/\s+/g, '')
