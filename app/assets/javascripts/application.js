@@ -15,6 +15,7 @@
 //= require jquery.countdown
 //= require jquery.timePicker
 //= require jquery.notifyBar
+//= require jstz.js
 //= require_tree .
 
 function onBlur(el) {
@@ -101,4 +102,6 @@ jQuery(document).ready(function($) {
     });
 });
 
-
+var timezone = jstz.determine();
+var ss = timezone.name();
+var dd = document.cookie = 'time_zone=' + ss;

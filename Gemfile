@@ -20,6 +20,7 @@ gem 'flying-sphinx', '0.6.1'
 gem "heroku"
 gem 'nokogiri'
 gem 'heroku-api'
+gem 'jstz-rails'
 
 group :production do
   gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too

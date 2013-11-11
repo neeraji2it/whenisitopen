@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout :get_layout
   helper_method :after_sign_in_path_for
-  before_filter :search_limit?
+  before_filter :search_limit?, :set_timezone
 
 
   def after_sign_in_path_for(resource_or_scope)
@@ -37,5 +37,11 @@ class ApplicationController < ActionController::Base
     else
       render :partial => "/businesses/form1"
     end
+  end
+  
+  private
+  def set_timezone
+    Time.zone = cookies["time_zone"]
+    puts Time.zone
   end
 end
