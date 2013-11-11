@@ -11,7 +11,5 @@
   <li>
     <%= link_to "Terms and Conditions", terms_and_conditions_path %>
   </li>
-  <li>
-    <%= (Time.zone.name) %><%= (Time.zone.now) %>
-  </li>
 </ul>
+<%= render :partial => '/layouts/google_analytics' if Rails.env == 'production' %>
