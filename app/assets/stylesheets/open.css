@@ -1,12 +1,12 @@
 body{margin:0px;
      font-family:Arial;
      font-size:15px;}
-.open-page-wrapper{background:url(../images/open-page-bg.png) repeat-x;
+.open-page-wrapper{background:url(/assets/open-page-bg.png) repeat-x;
 
 }
-.header-open-bg{background:url(../images/header-bg.png) repeat-x;
+.header-open-bg{background:url(/assets/header-bg.png) repeat-x;
 }
-.open-auto-service{background:url(../images/auto-service-bg.png) no-repeat;
+.open-auto-service{background:url(/assets/auto-service-bg.png) no-repeat;
                    height: 192px;
                    width: 242px;
 }
