@@ -3,14 +3,6 @@ require 'heroku-api'
 namespace :whenitopen do
   desc "Update the existing database through csv file"
   task :upload_csv => :environment do
-    file = "#{Rails.root}/lib/best_buy.csv"
-    CSV.foreach(file, headers: true) do |row|
-      business = Business.find_by_city_and_company_name_and_address(row[1],row[2],row[0]) || Business.new
-      business.attributes = row.to_hash
-      puts business.address
-      business.save!
-    end
-    
     file = "#{Rails.root}/lib/best.csv"
     CSV.foreach(file, headers: true) do |row|
       business = Business.find_by_city_and_company_name_and_address(row[1],row[2],row[0]) || Business.new
