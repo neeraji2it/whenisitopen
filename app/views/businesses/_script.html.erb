@@ -55,7 +55,11 @@
           var h = $("#" + a).text().trim().split(' ')[0]
           var m = $("#" + a).children('sup').text();
           $("." + a).addClass("todaya");
-          if ((($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]) >= <%= Time.zone.now.strftime("%H").to_i %>) && (($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0].replace(/\s+/g, '') + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, '')) > '<%= Time.zone.now.strftime("%H:%M") %>')) {
+          var dddd = ($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0].replace(/\s+/g, '') + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, ''))
+          var sss = '<%= Time.zone.now.strftime("%H:%M") %>'
+          var ass = $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]
+          var dds = <%= Time.zone.now.strftime("%H").to_i %>
+          if ((ass > dds) && (dddd > sss)) {
             $('body').removeClass('open').addClass('close');
             $("." + a).addClass("todaya");
             $(".logo a img").attr('src', "/assets/when-image-open.png");
@@ -73,8 +77,32 @@
               var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
             }
             var liftoff = new Date(y, mn - 1, d - 1);
-            liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), h, m, 00);
+            if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM')) {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, m, 00);
+            } else {
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), h, m, 00);
+            }
           } else {
+            if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM') && (((parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]) + parseInt(12)) >= <%= Time.zone.now.strftime("%H").to_i %>) && (((parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0].replace(/\s+/g, '')) + parseInt(12)) + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, '')) > '<%= Time.zone.now.strftime("%H:%M") %>'))) {
+              $('body').removeClass('open').addClass('close');
+              $("." + a).addClass("todaya");
+              $(".logo a img").attr('src', "/assets/when-image-open.png");
+              $("#ssss").attr('src', "/assets/closed-banner.png");
+              $("#ssss").css('left', '2.3px');
+              $(".hand-icon img").attr('src', "/assets/like-close.png");
+              $("#message img").attr('src', "/assets/opensin.png");
+              var d = <%= (Time.zone.now).strftime("%d").to_i+1 %>
+              var h = $("#<%= (Time.zone.now).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var m = $("#<%= (Time.zone.now).strftime('%a').downcase %>").children('sup').text();
+              var mn = parseInt(<%= (Time.zone.now).strftime("%m") %>)
+              var y = parseInt(<%= Time.zone.now.strftime("%Y") %>)
+              if (mn == 12) {
+                mn = 1
+                var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
+              }
+              var liftoff = new Date(y, mn - 1, d - 1);
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, m, 00);
+            }
             var date = '<%= Time.zone.now.strftime("%Y/%m/%d %H:%M:%S") %>';
             var liftoff = new Date(date);
             if ($("#" + a + "_to").text().trim() == 'am' || $("#" + a + "_to").text().trim() == 'AM') {
@@ -84,11 +112,7 @@
                 liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 24, parseInt(m), 00);
               }
             } else {
-              if (h == 12) {
-                liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
-              } else {
-                liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
-              }
+              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
             }
           }
           $('#noDays_' + a).countdown({until: liftoff});
