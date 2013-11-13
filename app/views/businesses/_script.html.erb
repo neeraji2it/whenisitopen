@@ -112,7 +112,15 @@
                 liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 24, parseInt(m), 00);
               }
             } else {
-              liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
+              if (h == 12) {
+                if ($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM') {
+                  liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
+                } else {
+                  liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), parseInt(m), 00);
+                }
+              } else {
+                liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10) + 12, parseInt(m), 00);
+              }
             }
           }
           $('#noDays_' + a).countdown({until: liftoff});
