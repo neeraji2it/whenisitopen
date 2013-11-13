@@ -37,7 +37,7 @@ class Business < ActiveRecord::Base
     CSV.parse(csv_string, headers: true) do |row|
       business = find_by_city_and_company_name_and_address(row[1],row[2],row[0]) || new
       business.attributes = row.to_hash.slice(*accessible_attributes)
-      business.save! if !(row[1].nil? and row[2].nil? and row[3].nil?)
+      business.save! if !(row[1].nil? and row[2].nil? and row[0].nil?)
     end
   end
 end
