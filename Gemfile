@@ -21,6 +21,7 @@ gem "heroku"
 gem 'nokogiri'
 gem 'heroku-api'
 gem 'jstz-rails'
+gem "rack-timeout"
 
 group :production do
   gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too
