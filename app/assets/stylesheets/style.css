@@ -180,12 +180,12 @@ min-height:600px;*/
     line-height: 14px;
     text-align: center;
     width: 209px;
-    border:3px solid #ffffff;
+    border:1px solid #ffffff;
     margin-bottom:16px;
     box-shadow:2px 2px 3px gray;
 }
 .otherResults:hover {
-    border:3px solid #000000;
+    border:1px solid #000000;
 }
 .location {
     color: #000;
@@ -274,7 +274,7 @@ input.city_state {
     border: medium none;
     height: 58px;
     margin: 0px;
-    color: #aaa;
+    color: #707070;
     font-size: 16px;
     outline: medium none;
     padding: 4px 26px 4px 90px;
@@ -299,7 +299,7 @@ input.city_state:hover {
 }
 .mini_simbox {
     background-color:#f0f0f0;
-    border:3px solid #53a653;
+    border:1px solid #53a653;
     float: left;
     font-size: 16px;
     height: 160px;
@@ -311,7 +311,7 @@ input.city_state:hover {
     box-shadow:2px 2px 3px gray;
 }
 .mini_simbox:hover {
-    border:3px solid   #060;
+    border:1px solid   #060;
 }
 /*
 .mini_simbox{  background: url("/assets/box-bg.png") no-repeat scroll 0 0 transparent;
@@ -700,12 +700,11 @@ height: 28px;*/
 }
 
 #holiday_hours{
-    float: right;
-    position: relative;
-    right: 175px;
-    top: 13px;
-    font-weight: normal;
     font-family: Georgia;
+    font-weight: normal;
+    left: 827px;
+    position: absolute;
+    top: 159px;
 }
 
 .red-ribs {
