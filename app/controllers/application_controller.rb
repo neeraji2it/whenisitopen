@@ -32,6 +32,5 @@ class ApplicationController < ActionController::Base
   private
   def set_timezone
     Time.zone = cookies["time_zone"]
-    puts Time.zone
   end
 end
