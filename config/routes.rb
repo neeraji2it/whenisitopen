@@ -16,7 +16,6 @@ Whenitopen::Application.routes.draw do
       get :city_businesses
       get :csv
       get :cities
-      get :categorie_search
       get :pending_businesses
     end
     member do

@@ -14,7 +14,7 @@
         </div>
         <script>
           $('#mini_simbox_<%=same_category.id%>').click(function() {
-            window.location.href = '<%= categorie_search_businesses_path('company_name' => same_category.company_name, :city => same_category.city, :address => same_category.address) %>';
+            window.location.href = '<%= search_businesses_path('company_name' => same_category.company_name, :city => same_category.city, :address => same_category.address) %>';
           });
         </script>
       <% end %>

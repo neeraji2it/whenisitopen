@@ -699,6 +699,15 @@ height: 28px;*/
     width: 480px;
 }
 
+#holiday_hours{
+    float: right;
+    position: relative;
+    right: 175px;
+    top: 13px;
+    font-weight: normal;
+    font-family: Georgia;
+}
+
 .red-ribs {
     background: url("/assets/no_phone.png") no-repeat scroll 0 0 transparent;
     float: left;
