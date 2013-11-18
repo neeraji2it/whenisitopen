@@ -1,15 +1,64 @@
-<ul>
-  <li>
-    <%= link_to "Add a Listing", new_business_path %>
-  </li>
-  <li>
-    <%= link_to "About Us", aboutus_path %>
-  </li>
-  <li>
-    <%= link_to "Contact Us", contactus_path %>
-  </li>
-  <li>
-    <%= link_to "Terms and Conditions", terms_and_conditions_path %>
-  </li>
-</ul>
+<div id="footerContentContainer">
+  <div id="footerContent">
+    <div class="footerColumn">
+      <h3 class="footerTitle"><img src="/assets/footer-about.png"><span class="footerTitleText">About</span></h3>
+      <p class="footerAbout">When is it Open Inc provides you with quick and easy access to business hours across Canada.  We are constantly bringing you more reliable hours of operation for your favourite business locations. </p>
+      <p class="footerAbout">Wondering when a business is open? Start your search now.</p>
+    </div>
+    <div class="footerGutter">
+    </div>
+    <div class="footerColumn">
+      <h3 class="footerTitle"><img src="/assets/footer-twitter.png"><span class="footerTitleText">Twitter <a target="_blank" href="https://twitter.com/WhenisitOpen">@WhenIsItOpen</a></span></h3>
+      <% url = "https://twitter.com/WhenisitOpen" %>
+      <% doc = Nokogiri::HTML(open(url)) %>
+      <% @sses = doc.css(".content")[0..1] %>
+      <% @sses.each do |item| %>
+        <% @content = item.at_css(".tweet-text").text%>
+        <% @time = item.at_css(".time").text %>
+        <p class="footerTweet"><%= @content %></p>
+        <p class="footerTweetDate"><%= @time %></p>
+      <% end %>
+    </div>
+    <div class="footerGutter">
+    </div>
+    <div class="footerColumn">
+      <h3 class="footerTitle"><img src="/assets/footer-added.png"><span class="footerTitleText">Recently Added</span></h3>
+      <div class="recentAddedList">
+        <p class="recentlyAdded">
+          <% Business.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").limit(7).each do |business| %>
+            <%= business.company_name %><br />
+          <% end %>
+        </p>
+      </div>    
+      <div class="recentAddedList">
+        <p class="recentlyAdded">
+          <% Business.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").limit(8).offset(8).each do |business| %>
+            <%= business.company_name %><br />
+          <% end %>
+        </p>
+      </div>   
+    </div>
+  </div>
+</div>
+<div class="footer" style="font-size:13px">
+  <div class="footer-inner" style="min-width:1000px; margin:0 auto;">
+    <div class="copyright">© When is it Open Inc. 2013</div>
+    <div class="footer-menu">
+      <ul>
+        <li>
+          <%= link_to "Add a Listing", new_business_path %>
+        </li>
+        <li>
+          <%= link_to "About Us", aboutus_path %>
+        </li>
+        <li>
+          <%= link_to "Contact Us", contactus_path %>
+        </li>
+        <li>
+          <%= link_to "Terms and Conditions", terms_and_conditions_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 <%= render :partial => '/layouts/google_analytics' if Rails.env == 'production' %>

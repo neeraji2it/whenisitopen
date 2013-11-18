@@ -81,7 +81,7 @@ input {
 }
 .footer {
     background:url(/assets/footer-bg.png) repeat-x;
-    height:85px;
+    height:35px;
     width:100%;
     position:absolute;
     bottom:0px;
@@ -333,7 +333,7 @@ input.city_state:hover {
 }
 .home .footer {
     background:url(/assets/footer1-bg.png) repeat-x;
-    height:91px;
+    height:35px;
     width:100%;
     position:absolute;
     bottom:0px;
@@ -837,9 +837,6 @@ height: 28px;*/
     float:right;
 }
 .todaya .val {
-}
-.home .copyright {
-    padding-top: 10px;
 }
 .border_time {
     border:1px solid #000;

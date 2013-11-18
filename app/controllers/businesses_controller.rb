@@ -76,7 +76,7 @@ class BusinessesController < ApplicationController
   end
   
   def pending_businesses
-    @businesses = Business.where("status = 'pending'")
+    @businesses = Business.where("status = 'pending'").paginate :page => params[:page], :per_page => 10
   end
   
   def confirm_business

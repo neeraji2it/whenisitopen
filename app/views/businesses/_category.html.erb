@@ -22,7 +22,7 @@
       </div>
     </div>
     <div style="float: right;left: -40px;position: relative;top: -25px;">
-      <%= will_paginate @categories, :param_name => 'category_page', :page_links => false, :previous_label => 'Prev', :next_label => "Next" %>
+      <%= will_paginate @categories, :param_name => 'category_page', :page_links => false, :previous_label => ' ', :next_label => " " %>
     </div>
   <% else %>
     <p style="text-align: center;">Sorry. There are no similar businesses open right now.</p>

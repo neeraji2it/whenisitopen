@@ -3,7 +3,7 @@
   <head>
     <title><%= @title %></title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-    <%= stylesheet_link_tag 'style','contt','styleabt', :media => "all" %>
+    <%= stylesheet_link_tag 'application','style','contt','styleabt', :media => "all" %>
     <%= javascript_include_tag "application" %>
   </head>
   <body class="cont">
@@ -41,13 +41,8 @@
         </div>
       </div>
       <%= yield %>
-      <div class="footer" style="font-size:13px">
-        <div class="footer-inner" style="min-width:1000px; margin:0 auto;">
-          <div class="copyright">© When is it Open Inc. 2013</div>
-          <div class="footer-menu">
-            <%= render :partial => '/layouts/footer' %>
-          </div>
-        </div>
+      <div id='footer_page'>
+        <%= render :partial => '/layouts/footer' %>
       </div>
     </div>
   </body>

@@ -3,7 +3,7 @@
   <head>
     <title>When Is It Open?</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-    <%= stylesheet_link_tag 'style',"jquery.notifyBar", :media => "all" %>
+    <%= stylesheet_link_tag 'application','style',"jquery.notifyBar", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <% ['notice', 'error', 'warning'].each do |f|%>
       <% if flash[f.to_sym]%>
@@ -30,13 +30,8 @@
           <%= yield %>
         </div>
       </div>
-      <div class="footer" style="font-size:13px">
-        <div class="footer-inner" style="min-width:1000px; margin:0 auto;">
-          <div class="copyright">© When is it Open Inc. 2013</div>
-          <div class="footer-menu">
-            <%= render :partial => '/layouts/footer' %>
-          </div>
-        </div>
+      <div id='footer_page'>
+        <%= render :partial => '/layouts/footer' %>
       </div>
     </div>
   </body>
