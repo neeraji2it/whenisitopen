@@ -1,5 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout :get_layout

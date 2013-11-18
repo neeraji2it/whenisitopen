@@ -9,15 +9,10 @@
     </div>
     <div class="footerColumn">
       <h3 class="footerTitle"><img src="/assets/footer-twitter.png"><span class="footerTitleText">Twitter <a target="_blank" href="https://twitter.com/WhenisitOpen">@WhenIsItOpen</a></span></h3>
-      <% url = "https://twitter.com/WhenisitOpen" %>
-      <% doc = Nokogiri::HTML(open(url)) %>
-      <% @sses = doc.css(".content")[0..1] %>
-      <% @sses.each do |item| %>
-        <% @content = item.at_css(".tweet-text").text%>
-        <% @time = item.at_css(".time").text %>
-        <p class="footerTweet"><%= @content %></p>
-        <p class="footerTweetDate"><%= @time %></p>
-      <% end %>
+      <p class="footerTweet">Wondering when a business is open? Start your search now and #knowwhentogo</p>
+      <p class="footerTweetDate">3 days ago</p>
+      <p class="footerTweet">Wondering when a business is open? Start your search now and #knowwhentogo</p>
+      <p class="footerTweetDate">5 days ago</p>
     </div>
     <div class="footerGutter">
     </div>
