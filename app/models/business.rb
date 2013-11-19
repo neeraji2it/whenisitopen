@@ -4,10 +4,7 @@ class Business < ActiveRecord::Base
   define_index do
     indexes company_name
     indexes city
-    indexes id
-    indexes state
     indexes address
-    has :latitude,:longitude
     set_property :enable_star => true
   end
   
