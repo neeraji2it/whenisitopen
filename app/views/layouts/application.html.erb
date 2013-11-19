@@ -17,14 +17,16 @@
                   <% if current_admin %>
                     <td><%= link_to "Logout", destroy_admin_session_path(), :method => :delete %></td>
                   <% else %>
-                    <td width="65">Like us: </td>
-                    <td width="39">
-                      <%= link_to image_tag("/assets/h-facebook.png", :width => "32", :height => "32"), "http://www.facebook.com/whenisitopen", :target => "_blank" %>
-                    </td>
-                    <td width="80">Follow us:</td>
-                    <td>
-                      <%= link_to image_tag("/assets/h-twitter.png", :width => "32", :height => "32"), "https://twitter.com/WhenisitOpen", :target => "_blank" %>
-                    </td>
+                    <% if (params[:controller] != 'devise/sessions') %>
+                      <td width="65">Like us: </td>
+                      <td width="39">
+                        <%= link_to image_tag("/assets/h-facebook.png", :width => "32", :height => "32"), "http://www.facebook.com/whenisitopen", :target => "_blank" %>
+                      </td>
+                      <td width="80">Follow us:</td>
+                      <td>
+                        <%= link_to image_tag("/assets/h-twitter.png", :width => "32", :height => "32"), "https://twitter.com/WhenisitOpen", :target => "_blank" %>
+                      </td>
+                    <% end %>
                   <% end %>
                 </tr>
               </tbody>

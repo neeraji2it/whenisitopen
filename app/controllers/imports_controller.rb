@@ -22,9 +22,7 @@ class ImportsController < ApplicationController
   
   def delete_all_by_business_name
     @businesses = Business.where("company_name = ?", "#{params[:company_name]}")
-    for business in @businesses
-      business.destroy
-    end
+    @businesses.destroy_all
     redirect_to imports_path
   end
 
