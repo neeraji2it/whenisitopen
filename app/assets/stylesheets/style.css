@@ -354,8 +354,9 @@ input.city_state:hover {
     margin: 0 auto;
     min-height: 400px;
     min-width: 980px;
-    padding-top: 30px;
     text-align: center;
+    position: relative;
+    top: 30px;
 }
 .home .mainpage {
     min-width: 1000px;
@@ -702,9 +703,8 @@ height: 28px;*/
 #holiday_hours{
     font-family: Georgia;
     font-weight: normal;
-    left: 827px;
-    position: absolute;
-    top: 159px;
+    float: right;
+    margin: 15px 166px 0px;
 }
 
 .red-ribs {

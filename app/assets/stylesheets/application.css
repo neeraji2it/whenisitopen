@@ -25,13 +25,6 @@ a.previous_page{
     background:#e6e6e6;
     overflow:hidden;
     position: relative;
-}
-
-.home #footerContentContainer{
-    top: -80px; 
-}
-
-#footerContentContainer{
     top: -35px;
 }
 
