@@ -38,6 +38,8 @@ a.previous_page{
     width:250px;
     font-family:Arial, Helvetica, sans-serif;
     padding: 25px 0; 
+    position: relative;
+    left: 50px;
 }
 
 .footerAbout {
