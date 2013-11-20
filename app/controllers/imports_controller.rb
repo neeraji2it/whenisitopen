@@ -20,6 +20,19 @@ class ImportsController < ApplicationController
     
   end
   
+  def add_recent_business
+    @recent_business = RecentAddBusiness.new
+  end
+  
+  def create_recent_business
+    @recent_business = RecentAddBusiness.new(params[:recent_add_business])
+    if @recent_business.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+  
   def delete_all_by_business_name
     @businesses = Business.where("company_name = ?", "#{params[:company_name]}")
     @businesses.destroy_all

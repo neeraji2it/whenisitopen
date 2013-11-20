@@ -25,6 +25,8 @@ Whenitopen::Application.routes.draw do
   resources :imports do
     collection do
       get :import
+      get :add_recent_business
+      post :create_recent_business
       post :upload_xls
       get :delete_business
       get :delete_all_by_business_name

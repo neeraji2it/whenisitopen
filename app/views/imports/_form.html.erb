@@ -1,0 +1,38 @@
+<div class="con-header" style="min-height: 500px;height: auto;">
+  <div class="headewrap">
+    <div class="logo">
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), imports_path %>
+    </div>
+    <%= render :partial => 'businesses/search' %>
+  </div>
+  <div style="left: 500px;position: relative;top: 150px;width: 360px;border: 1px solid black;">
+    <%= form_for @recent_business, :url => create_recent_business_imports_path, :html => {:method => 'POST'}, :remote => true do |f| %>
+      <% @recent_business.errors.full_messages.each do |msg| %>
+        <ul>
+          <li style = 'color: red; list-style: none;'>
+            <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+      <table cellspacing="5">
+        <tr>
+          <td>Company Name:</td>
+          <td>
+            <%= f.text_field :company_name, :placeholder => 'Company Name', :style=>"width: 200px;" %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= submit_tag "Add Recent", :id => 'save_button' %>
+          </td>
+        </tr>
+      </table>
+    <%end%>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('body').removeClass('open').addClass('cont');
+  })
+</script>

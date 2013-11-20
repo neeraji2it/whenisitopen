@@ -26,14 +26,14 @@
       <h3 class="footerTitle"><img src="/assets/footer-added.png"><span class="footerTitleText">Recently Added</span></h3>
       <div class="recentAddedList">
         <p class="recentlyAdded">
-          <% Business.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").limit(7).each do |business| %>
+          <% RecentAddBusiness.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").limit(8).each do |business| %>
             <%= business.company_name %><br />
           <% end %>
         </p>
       </div>    
       <div class="recentAddedList">
         <p class="recentlyAdded">
-          <% Business.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").limit(6).offset(7).each do |business| %>
+          <% RecentAddBusiness.select("distinct company_name").where("company_name IS NOT NULL").order("created_at desc").offset(8).limit(8).each do |business| %>
             <%= business.company_name %><br />
           <% end %>
         </p>
