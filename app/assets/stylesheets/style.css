@@ -82,14 +82,22 @@ input:focus {
 input {
     padding-left: 10px;
 }
-.footer {
-    background:url(/assets/footer-bg.png) repeat-x;
+
+.footer{
     height:35px;
     width:100%;
     position:absolute;
     bottom:0px;
     left:0;
-    margin:0px;
+    margin:0px;  
+}
+
+.footer {
+    background:url(/assets/footer-bg.png) repeat-x;
+}
+
+.home .footer {
+    background:url(/assets/footer1-bg.png) repeat-x;
 }
 .footer a {
     color:#fff;
@@ -333,15 +341,6 @@ input.city_state:hover {
     color:#000000;
     font-weight:bold;
     text-decoration:none;
-}
-.home .footer {
-    background:url(/assets/footer1-bg.png) repeat-x;
-    height:35px;
-    width:100%;
-    position:absolute;
-    bottom:0px;
-    left:0;
-    margin:0px;
 }
 .page-wrap {
     min-height: 100%;
