@@ -6,7 +6,7 @@
     <%= render :partial => 'businesses/search' %>
   </div>
   <div style="left: 500px;position: relative;top: 150px;width: 360px;border: 1px solid black;">
-    <%= form_for @recent_business, :url => create_recent_business_imports_path, :html => {:method => 'POST'}, :remote => true do |f| %>
+    <%= form_for @recent_business, :url => recent_add_business_path(@recent_business), :html => {:method => 'PUT'}, :remote => true do |f| %>
       <% @recent_business.errors.full_messages.each do |msg| %>
         <ul>
           <li style = 'color: red; list-style: none;'>

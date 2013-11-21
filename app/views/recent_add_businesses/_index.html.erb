@@ -1,0 +1,49 @@
+<div class="con-header" style="min-height: 500px;height: auto;margin-bottom: 0px;">
+  <div class="headewrap">
+    <div class="logo">
+      <%= link_to image_tag("/assets/about-logo.png",:width => "251", :height => "169"), imports_path %>
+    </div>
+    <%= render :partial => 'businesses/search' %>
+  </div>
+  <div style="top: 175px; position: absolute;right: 0px;">
+    <%= link_to "Add Recent Business", new_recent_add_business_path %>&nbsp;&nbsp;
+  </div>
+  <table border="1" width="100%" style="float: left;text-align: center;font-size: 12px;margin-top: 55px;">
+    <br /><tr style="font-size: 10px;background-color: #60BED2;">
+      <th>Id</th>
+      <th>Business Name</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+    <% @recent_businesses.each_with_index do |business,index| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= index+1 %></td>
+        <td><%= business.company_name %></td>
+        <td><%= business.created_at.strftime("%d-%m-%Y") %></td>
+        <td>
+          <%= link_to "Edit", edit_recent_add_business_path(business) %> |
+          <%= link_to "Delete", recent_add_business_path(business), :method => "DELETE", :confirm => "Are you sure." %>
+        </td>
+      </tr>
+    <% end %>
+  </table><br />
+  <div style="float: right;position: relative;top: 10px;">
+    <%= will_paginate @recent_businesses, :param_name => 'recent_page', :page_links => false, :previous_label => "", :next_label => "" %>
+  </div>
+</div>
+<script>
+  $(function() {
+    $(".pagination a").click(function() {
+      $.getScript(this.href);
+      return false;
+    });
+  });
+</script>
+<style>
+  tr.odd{
+    background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+  }
+  tr.even{
+    background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+  }
+</style>

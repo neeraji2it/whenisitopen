@@ -22,16 +22,17 @@ Whenitopen::Application.routes.draw do
       put :confirm_business
     end
   end
+  
   resources :imports do
     collection do
       get :import
-      get :add_recent_business
-      post :create_recent_business
       post :upload_xls
       get :delete_business
       get :delete_all_by_business_name
     end
   end
+  
+  resources :recent_add_businesses
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

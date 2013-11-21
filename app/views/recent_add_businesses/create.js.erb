@@ -1,5 +1,5 @@
 <% if @recent_business.errors.present? %>
   $("#recent_business").html('<%= escape_javascript render :partial => 'form' %>');
 <% else %>
-  window.location.href = '<%= imports_path %>';
+  window.location.href = '<%= recent_add_businesses_path %>';
 <% end %>
