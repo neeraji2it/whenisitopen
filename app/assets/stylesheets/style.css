@@ -139,11 +139,8 @@ h1.page-title {
 .mainContainer {
     width:980px;
     margin:0 auto;
-    min-height:695px;
-    /*background-image: url('/assets/Arm_Edit.jpg');
-                background-repeat: no-repeat;
-                background-position: 0px -70px;
-    */	display:block;
+    min-height:620px;
+    display:block;
     background-size: contain;
 }
 .clockStyle {
