@@ -1,6 +1,3 @@
-@import "style";
-@import "styleabt";
-
 .previous_page.disabled,.next_page.disabled,a.next_page,a.previous_page{
     padding: 3px 55px 0px 7px;
     width: 62px;

@@ -3,7 +3,7 @@
   <head>
     <title>When Is It Open?</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-    <%= stylesheet_link_tag 'application',"jquery.notifyBar", :media => "all" %>
+    <%= stylesheet_link_tag 'application','style',"jquery.notifyBar", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <% ['notice', 'error', 'warning'].each do |f|%>
       <% if flash[f.to_sym]%>
