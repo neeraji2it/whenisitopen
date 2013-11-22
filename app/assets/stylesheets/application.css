@@ -29,6 +29,7 @@ a.previous_page{
     overflow:hidden;
     position: relative;
     top: -35px;
+    min-height: 205px;
 }
 
 #footerContent {

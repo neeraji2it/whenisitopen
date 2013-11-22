@@ -5,7 +5,6 @@ class Business < ActiveRecord::Base
     indexes company_name
     indexes city
     indexes address
-    set_property :enable_star => true
   end
   
   def self.to_csv(options = {})

@@ -46,9 +46,9 @@ class BusinessesController < ApplicationController
       a = Time.zone.now.strftime("%a").downcase+"_to"
       b = Time.zone.now.strftime("%a").downcase+"_from"
       if params[:address].present?
-        @ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}*, #{params[:address]}*)", :limit => 1 
+        @ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1 
       else
-        @ab_business_databases = Business.search "(^#{@name}, *#{session[:city]}*)", :limit => 1 
+        @ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1 
       end
       if @ab_business_databases.empty?
         @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
