@@ -215,9 +215,9 @@
                 var dt = ft + ":" + tt
                 if (((st > <%= Time.zone.now.strftime("%H").to_i %>))) {
                   if (($("#" + "<%= Time.zone.now.strftime('%a') %>" + "_from" + "_<%= business.id%>").text().trim() == 'pm' || $("#" + "<%= Time.zone.now.strftime('%a') %>" + "_from" + "_<%= business.id%>").text().trim() == 'PM') && (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0]) == 12)) {
-                    var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0]))
+                    var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0]), 10)
                   } else {
-                    var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0]) + parseInt(12))
+                    var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>' + "_<%= business.id %>").text().trim().split(' ')[0], 10) + parseInt(12))
                   }
                   if (($("#" + "<%= Time.zone.now.strftime('%a') %>" + "_from" + "_<%= business.id%>").text().trim() == 'pm' || $("#" + "<%= Time.zone.now.strftime('%a') %>" + "_from" + "_<%= business.id%>").text().trim() == 'PM') && (tm > <%= Time.zone.now.strftime("%H").to_i %>)) {
                     $("#close_" +<%= business.id %>).show();

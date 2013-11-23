@@ -77,7 +77,7 @@
               mn = 1
               var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
             }
-            var liftoff = new Date(y, mn - 1, d - 1);
+            alert($("#" + a + "_from").text().trim())
             if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM')) {
               if (h == 12) {
                 liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), m, 00);
@@ -89,9 +89,9 @@
             }
           } else {
             if ((parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]) == 12)) {
-              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]))
+              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]), 10)
             } else {
-              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]) + parseInt(12))
+              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0], 10) + parseInt(12))
             }
             if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM') && (tm > <%= Time.zone.now.strftime("%H").to_i %>)) {
               $('body').removeClass('open').addClass('close');
