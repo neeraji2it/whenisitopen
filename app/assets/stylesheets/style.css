@@ -321,19 +321,6 @@ input.city_state:hover {
 .mini_simbox:hover {
     border:1px solid   #060;
 }
-/*
-.mini_simbox{  background: url("/assets/box-bg.png") no-repeat scroll 0 0 transparent;
-    float: left;
-    font-size: 14px;
-    height: 125px;
-    margin: 0 15px 15px 0;
-    padding: 19px;
-    text-align: center;
-    width: 141px;
-        color:#575757;
-        line-height:18px;
-}
-*/
 .mini_simbox a {
     color:#000000;
     font-weight:bold;

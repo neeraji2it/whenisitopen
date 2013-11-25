@@ -42,7 +42,6 @@ body {
 }
 .abt-page
 {
-    background-image: url("/assets/about-bg.png");
     height: 944px;
     margin: 0 auto;
     width: 1024px;
@@ -123,18 +122,24 @@ body {
     padding: 0 0 0 0;
     margin:0;
 }
-/*.footer {
- background: none repeat scroll 0 0 #000000;
-    border-top: thin solid #CCCCCC;
-     margin-top: 180px;
-    padding-bottom: 40px;
-    padding-top: 10px;
+
+#google,#linked_in,#twitter,#facebook{
+    background-image: url("/assets/icons.jpg");
+    padding-left: 0;
+    padding: 70px 85px 0px 0px;
+    position: relative;
+    top: 70px;
 }
-        
-.footer a
-{
-        color:#fff;
-        text-decoration: none;
-        font-size:12.6px;
+
+#google{
+    background-position: 518px center;
 }
-*/
+#linked_in{
+    background-position: 430px center;
+}
+#twitter{
+    background-position: 348px center;
+}
+#facebook{
+    background-position: 260px center;
+}

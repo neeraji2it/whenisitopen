@@ -1,4 +1,5 @@
 class RecentAddBusinessesController < ApplicationController
+  before_filter :login?
   def index
     @recent_businesses = RecentAddBusiness.paginate :page => params[:recent_page], :per_page => 10
   end
@@ -32,8 +33,6 @@ class RecentAddBusinessesController < ApplicationController
   def destroy
     @recent_business = RecentAddBusiness.find(params[:id])
     @recent_business.destroy
-    @admin = Admin.first
-    sign_in(:admin,@admin,:bypass => true)
     redirect_to recent_add_businesses_path
   end
 end

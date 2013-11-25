@@ -41,25 +41,17 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    if params[:company_name].present?
-      @name = params[:company_name].split(' and').join(' &')
-      a = Time.zone.now.strftime("%a").downcase+"_to"
-      b = Time.zone.now.strftime("%a").downcase+"_from"
-      if params[:address].present?
-        @ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1 
-      else
-        @ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1 
-      end
-      if @ab_business_databases.empty?
-        @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
-      else
-        @lat = @ab_business_databases.first.latitude
-        @lng = @ab_business_databases.first.longitude
-        @categories = Business.near([@lat, @lng],200000, :order =>:distance).where("category = ? and company_name != ? and #{b} <= #{Time.zone.now.strftime("%H").to_i} and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}", "#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}").paginate :page => params[:category_page], :per_page => 9
-        @locations = Business.near([@lat, @lng],200000, :order =>:distance).where("company_name = ? and id NOT IN (?)", "#{@ab_business_databases.first.company_name}", "#{@ab_business_databases.first.id}").paginate :page => params[:location_page], :per_page => 3
-      end
+    @name = params[:company_name].split(' and').join(' &')
+    a = Time.zone.now.strftime("%a").downcase+"_to"
+    b = Time.zone.now.strftime("%a").downcase+"_from"
+    params[:address].present? ? (@ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1) : (@ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1)
+    if @ab_business_databases.empty?
+      @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
     else
-      redirect_to root_path
+      @lat = @ab_business_databases.first.latitude
+      @lng = @ab_business_databases.first.longitude
+      @categories = Business.near([@lat, @lng],200000, :order =>:distance).where("category = ? and company_name != ? and #{b} <= #{Time.zone.now.strftime("%H").to_i} and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}", "#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}").paginate :page => params[:category_page], :per_page => 9
+      @locations = Business.near([@lat, @lng],200000, :order =>:distance).where("company_name = ? and id NOT IN (?)", "#{@ab_business_databases.first.company_name}", "#{@ab_business_databases.first.id}").paginate :page => params[:location_page], :per_page => 3
     end
   end
   
@@ -81,21 +73,13 @@ class BusinessesController < ApplicationController
   
   def confirm_business
     @business = Business.find(params[:id])
-    @admin = Admin.first
-    sign_in(:admin,@admin,:bypass => true)
-    if params[:status] == 'accept'
-      @business.update_attribute(:status, 'confirmed') if current_admin
-    else
-      @business.update_attribute(:status, 'rejected') if current_admin
-    end
+    params[:status] == 'accept' ? (@business.update_attribute(:status, 'confirmed')) : (@business.update_attribute(:status, 'rejected'))
     redirect_to imports_path
   end
   
   def destroy
     @business = Business.find(params[:id])
     @business.destroy
-    @admin = Admin.first
-    sign_in(:admin,@admin,:bypass => true)
     redirect_to imports_path
   end
 end
