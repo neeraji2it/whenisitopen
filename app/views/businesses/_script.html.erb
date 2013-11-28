@@ -77,6 +77,7 @@
               mn = 1
               var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
             }
+            var liftoff = new Date(y, mn - 1, d - 1);
             if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM')) {
               if (h == 12) {
                 liftoff = new Date(liftoff.getFullYear(), liftoff.getMonth(), liftoff.getDate(), parseInt(h, 10), m, 00);
