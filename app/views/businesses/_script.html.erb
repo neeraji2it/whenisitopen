@@ -23,25 +23,25 @@
           if ($("#<%= (Time.zone.now+1.day).strftime("%a") %>").text().trim() == "Closed") {
             if ($("#<%= (Time.zone.now+2.days).strftime("%a") %>").text().trim() == "Closed") {
               var d = <%= (Time.zone.now+3.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.zone.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var h = $("#<%= (Time.zone.now+3.days).strftime('%a').downcase %>").text().trim().split(' ')[0];
               var m = $("#<%= (Time.zone.now+3.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.zone.now+3.days).strftime("%m") %>)
+              var mn = parseInt(<%= (Time.zone.now+3.days).strftime("%m") %>);
             } else {
               var d = <%= (Time.zone.now+2.days).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.zone.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var h = $("#<%= (Time.zone.now+2.days).strftime('%a').downcase %>").text().trim().split(' ')[0];
               var m = $("#<%= (Time.zone.now+2.days).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.zone.now+2.days).strftime("%m") %>)
+              var mn = parseInt(<%= (Time.zone.now+2.days).strftime("%m") %>);
             }
           } else {
             var d = <%= (Time.zone.now+1.day).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.zone.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var h = $("#<%= (Time.zone.now+1.day).strftime('%a').downcase %>").text().trim().split(' ')[0];
             var m = $("#<%= (Time.zone.now+1.day).strftime('%a').downcase %>").children('sup').text();
-            var mn = parseInt(<%= (Time.zone.now+1.day).strftime("%m") %>)
+            var mn = parseInt(<%= (Time.zone.now+1.day).strftime("%m") %>);
           }
-          var y = parseInt(<%= Time.zone.now.strftime("%Y") %>)
+          var y = parseInt(<%= Time.zone.now.strftime("%Y") %>);
           if (mn == 12) {
-            mn = 1
-            var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
+            mn = 1;
+            var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1;
           }
           var liftoff = new Date(y, mn - 1, d);
           if (h == 12) {
@@ -53,13 +53,13 @@
           $('#noDayss_' + a).show();
           $('#noDays_' + a).hide();
         } else {
-          var h = $("#" + a).text().trim().split(' ')[0]
+          var h = $("#" + a).text().trim().split(' ')[0];
           var m = $("#" + a).children('sup').text();
           $("." + a).addClass("todaya");
-          var dddd = ($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0].replace(/\s+/g, '') + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, ''))
-          var sss = '<%= Time.zone.now.strftime("%H:%M") %>'
-          var ass = $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]
-          var dds = <%= Time.zone.now.strftime("%H").to_i %>
+          var dddd = ($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0].replace(/\s+/g, '') + ':' + $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').children('sup').text().split(/[: am pm]/)[0].replace(/\s+/g, ''));
+          var sss = '<%= Time.zone.now.strftime("%H:%M") %>';
+          var ass = $("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0];
+          var dds = <%= Time.zone.now.strftime("%H").to_i %>;
           if ((ass > dds) && (dddd > sss)) {
             $('body').removeClass('open').addClass('close');
             $("." + a).addClass("todaya");
@@ -69,13 +69,13 @@
             $(".hand-icon img").attr('src', "/assets/like-close.png");
             $("#message img").attr('src', "/assets/opensin.png");
             var d = <%= (Time.zone.now).strftime("%d").to_i+1 %>
-            var h = $("#<%= (Time.zone.now).strftime('%a').downcase %>").text().trim().split(' ')[0]
+            var h = $("#<%= (Time.zone.now).strftime('%a').downcase %>").text().trim().split(' ')[0];
             var m = $("#<%= (Time.zone.now).strftime('%a').downcase %>").children('sup').text();
-            var mn = parseInt(<%= (Time.zone.now).strftime("%m") %>)
-            var y = parseInt(<%= Time.zone.now.strftime("%Y") %>)
+            var mn = parseInt(<%= (Time.zone.now).strftime("%m") %>);
+            var y = parseInt(<%= Time.zone.now.strftime("%Y") %>);
             if (mn == 12) {
-              mn = 1
-              var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
+              mn = 1;
+              var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1;
             }
             var liftoff = new Date(y, mn - 1, d - 1);
             if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM')) {
@@ -89,9 +89,9 @@
             }
           } else {
             if ((parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]) == 12)) {
-              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]), 10)
+              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0]), 10);
             } else {
-              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0], 10) + parseInt(12))
+              var tm = (parseInt($("#" + '<%= Time.zone.now.strftime("%a").downcase %>').text().trim().split(' ')[0], 10) + parseInt(12));
             }
             if (($("#" + a + "_from").text().trim() == 'pm' || $("#" + a + "_from").text().trim() == 'PM') && (tm > <%= Time.zone.now.strftime("%H").to_i %>)) {
               $('body').removeClass('open').addClass('close');
@@ -101,13 +101,13 @@
               $("#ssss").css('left', '2.3px');
               $(".hand-icon img").attr('src', "/assets/like-close.png");
               $("#message img").attr('src', "/assets/opensin.png");
-              var d = <%= (Time.zone.now).strftime("%d").to_i+1 %>
-              var h = $("#<%= (Time.zone.now).strftime('%a').downcase %>").text().trim().split(' ')[0]
+              var d = <%= (Time.zone.now).strftime("%d").to_i+1 %>;
+              var h = $("#<%= (Time.zone.now).strftime('%a').downcase %>").text().trim().split(' ')[0];
               var m = $("#<%= (Time.zone.now).strftime('%a').downcase %>").children('sup').text();
-              var mn = parseInt(<%= (Time.zone.now).strftime("%m") %>)
-              var y = parseInt(<%= Time.zone.now.strftime("%Y") %>)
+              var mn = parseInt(<%= (Time.zone.now).strftime("%m") %>);
+              var y = parseInt(<%= Time.zone.now.strftime("%Y") %>);
               if (mn == 12) {
-                mn = 1
+                mn = 1;
                 var y = parseInt(<%= Time.zone.now.strftime("%Y") %>) + 1
               }
               var liftoff = new Date(y, mn - 1, d - 1);
