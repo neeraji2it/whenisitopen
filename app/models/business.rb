@@ -20,14 +20,6 @@ class Business < ActiveRecord::Base
     "#{self.id}-#{self.company_name.to_s.parameterize}"
   end
   
-  def self.search_spelling_suggestions(query,city)
-    word = Business.where("company_name LIKE ? and city sounds LIKE ?","%#{query.slice(0..2)}%","#{city}%").limit(1)
-    if word
-      word
-    end
-    return word.first.company_name unless word == query
-  end
-
   def self.import(file)
     csv_string = file.read.encode!("UTF-8", "iso-8859-1", invalid: :replace)
     CSV.parse(csv_string, headers: true) do |row|

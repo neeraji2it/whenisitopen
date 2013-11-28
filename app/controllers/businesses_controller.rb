@@ -45,9 +45,7 @@ class BusinessesController < ApplicationController
     a = Time.zone.now.strftime("%a").downcase+"_to"
     b = Time.zone.now.strftime("%a").downcase+"_from"
     params[:address].present? ? (@ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1) : (@ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1)
-    if @ab_business_databases.empty?
-      @spelling_suggestion = Business.search_spelling_suggestions(@name, session[:city])
-    else
+    if @ab_business_databases.present?
       @lat = @ab_business_databases.first.latitude
       @lng = @ab_business_databases.first.longitude
       @categories = Business.near([@lat, @lng],200000, :order =>:distance).where("category = ? and company_name != ? and #{b} <= #{Time.zone.now.strftime("%H").to_i} and #{a} > #{Time.zone.now.strftime("%H").to_i - 12} and address IS NOT NULL and city IS NOT NULL and address != ? and id NOT IN (?)", "#{@ab_business_databases.first.category}", "#{@ab_business_databases.first.company_name}","#{@ab_business_databases.first.address}","#{@ab_business_databases.first.id}").paginate :page => params[:category_page], :per_page => 9

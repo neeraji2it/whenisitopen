@@ -5,10 +5,9 @@
       <%= image_tag("/assets/auto-service-bg.png", :style => 'position: relative;top: 173px;', :id => 'ssss') %>
     </div>
     <%= render :partial => 'businesses/search' %>
-    <% if @spelling_suggestion %>
-      <div style=" float:left; text-align:center; margin-left:265px; margin-top:20px;">
-        Did you mean:
-        <%=link_to @spelling_suggestion, search_businesses_path(:company_name => @spelling_suggestion, :city => session[:city]) %>
+    <% if !@ab_business_databases.present? %>
+      <div style=" float:left; text-align:center; margin-left:305px; margin-top:20px;">
+        No Results Found.
       </div>
     <% else %>
       <div class="firstResult">
@@ -90,7 +89,7 @@
       <% end %>
     </div>
     <div style="clear: both;"></div>
-    <% if !@spelling_suggestion %>
+    <% if @ab_business_databases.present? %>
       <% if current_admin %>
         <div id="business_edit1"><%= image_tag("/assets/Edit Button.png", :border=>'0', :width=>"261", :height=>"54") %></div><br />
         <div id="business_edit"><%= link_to "Click here to delete this listing", business_path(business), :method => :delete, :confirm => "Are you sure", :id => 'business_delete' %></div>
@@ -107,7 +106,7 @@
     <% end %>
   </div>
 </div>
-<% if !@spelling_suggestion %>
+<% if @ab_business_databases.present? %>
   <div id="PageContainer">
     <div class="orange">
       <div class="titles">
