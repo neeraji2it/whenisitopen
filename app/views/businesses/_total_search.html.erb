@@ -6,9 +6,15 @@
     </div>
     <%= render :partial => 'businesses/search' %>
     <% if !@ab_business_databases.present? %>
-      <div style=" float:left; text-align:center; margin-left:305px; margin-top:20px;">
-        No Results Found.
-      </div>
+      <% if @spelling %>
+        <div style=" float:left; text-align:center; margin-left:305px; margin-top:20px;">
+          Did you Mean: <%= link_to @spelling, search_businesses_path(:company_name => @spelling, :city => session[:city]) %>
+        </div>
+      <% else %>
+        <div style=" float:left; text-align:center; margin-left:305px; margin-top:20px;">
+          No Results Found.
+        </div>
+      <% end %>
       <style>
         #footerContentContainer{
           display: none;
