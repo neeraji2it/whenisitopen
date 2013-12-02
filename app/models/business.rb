@@ -16,6 +16,14 @@ class Business < ActiveRecord::Base
     end
   end
   
+  #  def self.search_spelling(query,city)
+  #    word = Business.where("company_name sounds like ? and city sounds like ?", "#{query}","#{city}")
+  #    if word
+  #      word
+  #    end
+  #    return word.first.company_name unless word == query
+  #  end
+  
   def to_param
     "#{self.id}-#{self.company_name.to_s.parameterize}"
   end
