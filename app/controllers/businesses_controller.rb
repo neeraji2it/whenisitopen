@@ -34,7 +34,8 @@ class BusinessesController < ApplicationController
 
   def city_businesses
     @name = params[:company_name].split(' and').join(' &')
-    @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? and city = ?", "#{@name}%", "#{session[:city]}") 
+    @namee = params[:company_name].split(' &').join(' and')
+    @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? or company_name LIKE ? and city = ?", "#{@name}%", "#{@namee}%", "#{session[:city]}") 
     respond_to do |format|
       format.js
     end
