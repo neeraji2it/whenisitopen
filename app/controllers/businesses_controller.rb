@@ -33,7 +33,7 @@ class BusinessesController < ApplicationController
   end
 
   def city_businesses
-    @name = params[:company_name]
+    @name = params[:company_name].split(' and').join(' &')
     @cities = Business.select('DISTINCT company_name').where("address IS NOT NULL and company_name LIKE ? and city = ?", "#{@name}%", "#{session[:city]}") 
     respond_to do |format|
       format.js
@@ -41,7 +41,7 @@ class BusinessesController < ApplicationController
   end
 
   def search
-    @name = params[:company_name]
+    @name = params[:company_name].split(' and').join(' &')
     a = Time.zone.now.strftime("%a").downcase+"_to"
     b = Time.zone.now.strftime("%a").downcase+"_from"
     params[:address].present? ? (@ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1) : (@ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1)
