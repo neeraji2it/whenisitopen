@@ -45,7 +45,7 @@ class BusinessesController < ApplicationController
     @name = params[:company_name].split(' and').join(' &')
     a = Time.zone.now.strftime("%a").downcase+"_to"
     b = Time.zone.now.strftime("%a").downcase+"_from"
-    params[:address].present? ? (@ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1) : (@ab_business_databases = Business.search "(^#{@name}$ | (#{@name}), ^#{session[:city]})", :match_mode => :extended2, :limit => 1)
+    params[:address].present? ? (@ab_business_databases = Business.search "(^#{params[:company_name]}, #{params[:city]}, #{params[:address]})", :limit => 1) : (@ab_business_databases = Business.search "(^#{@name}, ^#{session[:city]})", :limit => 1)
     @spelling = Business.search_spelling(@name, session[:city]) if @ab_business_databases.empty?
     if @ab_business_databases.present?
       @lat = @ab_business_databases.first.latitude
